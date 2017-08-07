@@ -1,0 +1,538 @@
+{
+	"uauto_demosticFlagList" : [
+		{"value" : "0","label" : "否"},
+		{"value" : "1","label" : "是"}
+	],
+	
+	"uauto_fuelTypeList" : [
+		{ "value": "0", "label": "燃油" },
+        { "value": "1", "label": "纯电动" },
+        { "value": "2", "label": "燃料电池" },
+        { "value": "3", "label": "插电式混合动力" },
+        { "value": "4", "label": "其他混合动力" }
+	],
+	
+	"uauto_loanVehFlagList" : [
+		{ "value": "0", "label": "否" },
+    	{ "value": "1", "label": "是" }
+	],
+	
+	"uauto_inspectCodeList" : [
+		{ "value": "1", "label": "新车" },
+        { "value": "2", "label": "按期续保" },
+        { "value": "3", "label": "单保责任险" }
+	],
+	
+	"uauto_inspectStatusList" : [
+		{ "value": "1", "label": "已验" },
+        { "value": "2", "label": "免验" },
+        { "value": "3", "label": "后补" }
+	],
+	
+	"uauto_busTypeList" : [
+		{ "value": "3", "label": "新车" },
+        { "value": "1", "label": "续保" },
+        { "value": "2", "label": "转保" }
+	],
+	
+	"uauto_specApplList" : [
+		{ "value": "1", "label": "车辆所有权转移重新投保" },
+        { "value": "2", "label": "临时入境的境外机动车" },
+        { "value": "3", "label": "临时上道路行驶的机动车" },
+        { "value": "4", "label": "距报废期限不足一年的机动车" },
+        { "value": "5", "label": "其它保监会规定允许投保短期单的车" }
+	],
+	
+	"uauto_travelAreaList" : [
+		{ "value": "0", "label": "全国" },
+        { "value": "1", "label": "省内行驶" },
+        { "value": "2", "label": "固定行驶路线" },
+        { "value": "3", "label": "场内" }
+	],
+	
+	"uauto_useYearList" : [
+		{ "value": "373011", "label": "T<1年" },
+        { "value": "373012", "label": "1≦T<2年" },
+        { "value": "373013", "label": "2≦T<4年" },
+        { "value": "373014", "label": "4≦T<6年" },
+        { "value": "373015", "label": "T≧6年" }
+	],
+	
+	"uauto_trafficAutoTypeList" : [
+		{ "value": "K11", "label": "大型普通客车" },
+        { "value": "K13", "label": "大型卧铺客车" },
+        { "value": "K15", "label": "大型越野客车" },
+        { "value": "K22", "label": "中型双层客车" },
+        { "value": "K24", "label": "中型铰接客车" },
+        { "value": "K31", "label": "小型普通客车" },
+        { "value": "K41", "label": "微型普通客车" },
+        { "value": "K12", "label": "大型双层客车" },
+        { "value": "K14", "label": "大型铰接客车" },
+        { "value": "K21", "label": "中型普通客车" },
+        { "value": "K23", "label": "中型卧铺客车" },
+        { "value": "K25", "label": "中型越野客车" },
+        { "value": "K32", "label": "小型越野客车" },
+        { "value": "K42", "label": "微型越野客车" },
+        { "value": "K33", "label": "轿车" },
+        { "value": "K43", "label": "微型轿车" },
+        { "value": "H11", "label": "重型普通货车" },
+        { "value": "H13", "label": "重型封闭货车" },
+        { "value": "H15", "label": "重型平板货车" },
+        { "value": "H17", "label": "重型自卸货车" },
+        { "value": "H21", "label": "中型普通货车" },
+        { "value": "H23", "label": "中型封闭货车" },
+        { "value": "H25", "label": "中型平板货车" },
+        { "value": "H27", "label": "中型自卸货车" },
+        { "value": "H31", "label": "轻型普通货车" },
+        { "value": "H33", "label": "轻型封闭货车" },
+        { "value": "H35", "label": "轻型平板货车车" },
+        { "value": "H38", "label": "轻型特殊结构货车" },
+        { "value": "H42", "label": "微型厢式货车牌" },
+        { "value": "H44", "label": "微型罐式货车牌" },
+        { "value": "H46", "label": "微型特殊结构货车" },
+        { "value": "H52", "label": "低速厢式货车" },
+        { "value": "H12", "label": "重型厢式货车牌" },
+        { "value": "H14", "label": "重型罐式货车牌" },
+        { "value": "H16", "label": "重型集装箱车牌" },
+        { "value": "H18", "label": "重型特殊结构货车牌" },
+        { "value": "H22", "label": "中型厢式货车牌" },
+        { "value": "H24", "label": "中型罐式货车牌" },
+        { "value": "H26", "label": "中型集装箱车" },
+        { "value": "H28", "label": "中型特殊结构货车" },
+        { "value": "H32", "label": "轻型厢式货车牌" },
+        { "value": "H34", "label": "轻型罐式货车牌" },
+        { "value": "H37", "label": "轻型自卸货车车" },
+        { "value": "H41", "label": "普通货车号" },
+        { "value": "H43", "label": "微型封闭货车牌" },
+        { "value": "H45", "label": "微型自卸货车牌" },
+        { "value": "H51", "label": "普通货车" },
+        { "value": "H53", "label": "低速罐式货车" },
+        { "value": "B11", "label": "重型普通半挂车牌" },
+        { "value": "B13", "label": "重型罐式半挂车牌" },
+        { "value": "B15", "label": "重型集装箱半挂车牌" },
+        { "value": "B17", "label": "重型特殊结构半挂车牌" },
+        { "value": "B22", "label": "中型厢式半挂车牌" },
+        { "value": "B24", "label": "中型平板半挂车牌" },
+        { "value": "B26", "label": "中型自卸半挂车   " },
+        { "value": "B31", "label": "轻型普通半挂车" },
+        { "value": "B33", "label": "轻型罐式半挂车牌" },
+        { "value": "B35", "label": "轻型自卸半挂车牌" },
+        { "value": "B12", "label": "重型厢式半挂车车" },
+        { "value": "B14", "label": "重型平板半挂车号" },
+        { "value": "B16", "label": "重型自卸半挂车牌" },
+        { "value": "B21", "label": "普通半挂车牌" },
+        { "value": "B23", "label": "中型罐式半挂车" },
+        { "value": "B25", "label": "中型集装箱半挂车 " },
+        { "value": "B27", "label": "中型特殊结构半挂车牌" },
+        { "value": "B32", "label": "轻型厢式半挂车牌" },
+        { "value": "B34", "label": "轻型平板半挂车牌" },
+        { "value": "D11", "label": "无轨电车牌" },
+        { "value": "D12", "label": "有轨电车牌" },
+        { "value": "G11", "label": "重型普通全挂车牌" },
+        { "value": "G13", "label": "重型罐式全挂车   " },
+        { "value": "G15", "label": "重型集装箱全挂车" },
+        { "value": "G21", "label": "中型普通全挂车牌" },
+        { "value": "G23", "label": "中型罐式全挂车牌" },
+        { "value": "G25", "label": "中型集装箱全挂车车" },
+        { "value": "G31", "label": "轻型普通全挂车号" },
+        { "value": "G33", "label": "轻型罐式全挂车牌" },
+        { "value": "G35", "label": "轻型自卸全挂车牌" },
+        { "value": "G12", "label": "重型厢式全挂车" },
+        { "value": "G14", "label": "重型平板全挂车" },
+        { "value": "G16", "label": "型自卸全挂车牌" },
+        { "value": "G22", "label": "中型厢式全挂车牌" },
+        { "value": "G24", "label": "中型平板全挂车牌" },
+        { "value": "G26", "label": "型自卸全挂车牌" },
+        { "value": "G32", "label": "轻型厢式全挂车牌" },
+        { "value": "G34", "label": "轻型平板全挂车牌" },
+        { "value": "J11", "label": "轮式装载机械" },
+        { "value": "J13", "label": "轮式平地机械" },
+        { "value": "J12", "label": "轮式挖掘机械牌" },
+        { "value": "N11", "label": "三轮农用运输车牌" },
+        { "value": "N22", "label": "四轮农用厢式货车车" },
+        { "value": "N24", "label": "四轮农用自卸货车号" },
+        { "value": "N21", "label": "四轮农用普通货" },
+        { "value": "N23", "label": "轮农用罐式货车" },
+        { "value": "Q11", "label": "重型半挂牵引车" },
+        { "value": "Q31", "label": "轻型半挂牵引车" },
+        { "value": "Q21", "label": "中型半挂牵引车" },
+        { "value": "X99", "label": "其它" },
+        { "value": "Z11", "label": "大型专项作业车" },
+        { "value": "Z31", "label": "小型专项作业车" },
+        { "value": "Z51", "label": "重型专项作业车" },
+        { "value": "Z21", "label": "中型专项作业车" },
+        { "value": "Z41", "label": "微型专项作业车" },
+        { "value": "Z71", "label": "轻型专项作业车" }
+	],
+	
+	"uauto_autoSubTypeList": {
+        "365030": [
+            { "label": "20座以上客车", "value": "365030" }
+        ],
+        "sp1": [
+            { "label": "汽罐车", "value": "379002" },
+            { "label": "油罐车", "value": "379001" },
+            { "label": "液罐车", "value": "379003" }
+        ],
+        "sp2-biz": [
+            { "label": "特种车一以外的罐式货车", "value": "379005" },
+            { "label": "起重车", "value": "379006" },
+            { "label": "混凝土搅拌车", "value": "379004" },
+            { "label": "清扫车", "value": "379022" },
+            { "label": "装卸车", "value": "379012" },
+            { "label": "净水车", "value": "379010" },
+            { "label": "冷藏车", "value": "379008" },
+            { "label": "清障车", "value": "379011" },
+            { "label": "保温车", "value": "379026" },
+            { "label": "推土车", "value": "379025" },
+            { "label": "清洁车", "value": "379009" },
+            { "label": "挖掘车", "value": "379007" },
+            { "label": "升降车", "value": "379024" },
+            { "label": "吸污车", "value": "379023" },
+            { "label": "其他", "value": "379013" }
+        ],
+        "sp3": [
+            { "label": "监测车", "value": "379027" },
+            { "label": "推土车", "value": "379025" },
+            { "label": "电视转播车", "value": "379017" },
+            { "label": "消防车", "value": "379015" },
+            { "label": "升降车", "value": "379024" },
+            { "label": "救护车", "value": "379014" },
+            { "label": "运钞车", "value": "379016" },
+            { "label": "其他", "value": "379013" }
+        ],
+        "sp4": [
+            { "label": "集装箱拖头", "value": "379019" }
+        ]
+    },
+
+	"uauto_autoTypeList" : {
+        "364111001": [
+            { "label": "6座以下客车", "value": "365001" },
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10座以上客车", "value": "365032" }
+        ],
+        "364113012": [
+            { "label": "6座以下客车", "value": "365001" },
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10-20座客车", "value": "365003" },
+            { "label": "20-36座客车", "value": "365004" },
+            { "label": "36座以上客车", "value": "365005" }
+        ],
+        "364113006": [
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10-20座客车", "value": "365003" },
+            { "label": "20-36座客车", "value": "365004" },
+            { "label": "36座以上客车", "value": "365005" }
+        ],
+        "364113005": [
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10-20座客车", "value": "365003" },
+            { "label": "20-36座客车", "value": "365004" },
+            { "label": "36座以上客车", "value": "365005" }
+        ],
+        "364113007": [
+            { "label": "2吨以下货车", "value": "365006" },
+            { "label": "2-5吨货车", "value": "365007" },
+            { "label": "5-10吨货车", "value": "365008" },
+            { "label": "10吨以上货车", "value": "365009" },
+            { "label": "低速载货汽车", "value": "365018" }
+        ],
+        "364113009": [
+            { "label": "2吨以下货车", "value": "365006" },
+            { "label": "2-5吨货车", "value": "365007" },
+            { "label": "5-10吨货车", "value": "365008" },
+            { "label": "10吨以上货车", "value": "365009" },
+            { "label": "低速载货汽车", "value": "365018" }
+        ],
+        "364112014": [
+            { "label": "挂车(2吨以下)", "value": "365014" },
+            { "label": "挂车(2-5吨)", "value": "365017" },
+            { "label": "挂车(5-10吨)", "value": "365015" },
+            { "label": "挂车(10吨以上)", "value": "365016" }
+        ],
+        "364113112": [
+            { "label": "挂车(2吨以下)", "value": "365014" },
+            { "label": "挂车(2-5吨)", "value": "365017" },
+            { "label": "挂车(5-10吨)", "value": "365015" },
+            { "label": "挂车(10吨以上)", "value": "365016" }
+        ],
+        "364113018": [
+            { "label": "特种车一", "value": "365010" },
+            { "label": "特种车二", "value": "365011" },
+            { "label": "特种车三", "value": "365012" },
+            { "label": "特种车四", "value": "365013" },
+            { "label": "特种车型一挂车", "value": "365019" },
+            { "label": "特种车型二挂车", "value": "365020" },
+            { "label": "特种车型三挂车", "value": "365021" },
+            { "label": "特种车型四挂车", "value": "365022" }
+        ],
+        "364113017": [
+            { "label": "特种车一", "value": "365010" },
+            { "label": "特种车二", "value": "365011" },
+            { "label": "特种车三", "value": "365012" },
+            { "label": "特种车四", "value": "365013" },
+            { "label": "特种车型一挂车", "value": "365019" },
+            { "label": "特种车型二挂车", "value": "365020" },
+            { "label": "特种车型三挂车", "value": "365021" },
+            { "label": "特种车型四挂车", "value": "365022" }
+        ],
+        "364113003": [
+            { "label": "6座以下客车", "value": "365001" },
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10-20座客车", "value": "365032" },
+            { "label": "20座以上客车", "value": "365030" }
+        ],
+        "364113002": [
+            { "label": "6座以下客车", "value": "365001" },
+            { "label": "6-10座客车", "value": "365002" },
+            { "label": "10-20座客车", "value": "365032" },
+            { "label": "20座以上客车", "value": "365030" }
+        ]
+	},
+	
+	"uauto_usageCodeList" : [
+		{ "label": "家庭自用汽车", "value": "364111001" },
+		{ "label": "企业非营业客车", "value": "364113002" },
+		{ "label": "党政机关、事业团体非营业客车", "value": "364113003" },
+        { "label": "出租、租赁营业客车", "value": "364113012" },
+        { "label": "公路客运营业客车", "value": "364113006" },
+        { "label": "城市公交营业客车", "value": "364113005" },
+        { "label": "非营业货车", "value": "364113007" },
+        { "label": "营业货车", "value": "364113009" },
+        { "label": "营业挂车", "value": "364112014" },
+        { "label": "非营业挂车", "value": "364113112" },
+        { "label": "非营业特种车", "value": "364113018" },
+        { "label": "营业特种车", "value": "364113017" }
+	],
+	
+	"uauto_plateTypeList" : [
+		{ "value": "110003001", "label": "大型汽车号牌" },
+        { "value": "110003002", "label": "小型汽车号牌" },
+        { "value": "110003003", "label": "使馆汽车号牌" },
+        { "value": "110003004", "label": "领馆汽车号牌" },
+        { "value": "110003005", "label": "境外汽车号牌" },
+        { "value": "110003006", "label": "外籍汽车号牌" },
+        { "value": "110003007", "label": "两、三轮摩托车号牌" },
+        { "value": "110003008", "label": "轻便摩托车号牌" },
+        { "value": "110003009", "label": "使馆摩托车号牌" },
+        { "value": "110003010", "label": "领馆摩托车号牌" },
+        { "value": "110003011", "label": "境外摩托车号牌" },
+        { "value": "110003012", "label": "外籍摩托车" },
+        { "value": "110003013", "label": "农用运输车号牌" },
+        { "value": "110003014", "label": "拖拉机号牌" },
+        { "value": "110003015", "label": "挂车号牌" },
+        { "value": "110003016", "label": "教练汽车号牌" },
+        { "value": "110003017", "label": "教练摩托车号牌" },
+        { "value": "110003018", "label": "试验汽车号牌" },
+        { "value": "110003019", "label": "试验摩托车号牌" },
+        { "value": "110003020", "label": "临时入境汽车号牌" },
+        { "value": "110003021", "label": "临时入境摩托车号牌" },
+        { "value": "110003022", "label": "临时行驶车号牌" },
+        { "value": "110003023", "label": "警用汽车号牌" },
+        { "value": "110003024", "label": "警用摩托车号牌" },
+        { "value": "110003025", "label": "武警号牌" },
+        { "value": "110003026", "label": "军队号牌 " },
+        { "value": "110003027", "label": "其他号牌" }
+	],
+	
+	"uauto_custRiskList" : [{
+			"value" : "9153",
+			"label" : "待评估",
+			"children" : [{
+					"value" : "915301",
+					"label" : "待评估"
+				}
+			]
+		}, {
+			"value" : "9152",
+			"label" : "高风险",
+			"children" : [{
+					"value" : "915201",
+					"label" : "虚假证件"
+				}, {
+					"value" : "915202",
+					"label" : "政治公众人物"
+				}, {
+					"value" : "915203",
+					"label" : "金融违规记录"
+				}, {
+					"value" : "915204",
+					"label" : "监管机构提示关注"
+				}, {
+					"value" : "915205",
+					"label" : "洗钱类负面报道"
+				}, {
+					"value" : "915206",
+					"label" : "反洗钱监控地区"
+				}, {
+					"value" : "915207",
+					"label" : "拒绝开展尽职调查"
+				}, {
+					"value" : "915208",
+					"label" : "可疑情形"
+				}
+			]
+		}
+	],
+	
+	"uauto_clntLevelList" : [
+		{"value" : "141001", "label" : "钻石级"},
+        {"value" : "141002", "label" : "白金级"},
+        {"value" : "141003", "label" : "黄金级"}
+	],
+
+	"uauto_genderList" : [
+		{"value" : "1","label" : "男"},
+		{"value" : "2","label" : "女"}
+	],
+
+	"uauto_certfTypeList_personal" : [
+		{"value" : "120001","label" : "居民身份证"},
+	    {"value" : "120002","label" : "护照"},
+	    {"value" : "120003","label" : "军人证"},
+	    {"value" : "120009","label" : "其他"}
+	],
+	
+	"uauto_certfTypeList_organization" : [
+		{"value" : "110001","label" : "组织机构代码证"},
+        {"value" : "110002","label" : "工商注册号码"},
+        {"value" : "110003","label" : "营业执照"},
+        {"value" : "110009","label" : "其它"}
+	],
+
+	"uauto_insrntCateList" : [
+		{"value" : "1", "label" : "车辆所有人" }, 
+        {"value" : "2", "label" : "车辆管理人" }, 
+        {"value" : "3", "label" : "被保险人允许的合法驾驶员" }, 
+        {"value" : "9", "label" : "其他" }
+	],
+	
+	"uauto_clntTypeList" : [
+		{"value" : "1", "label" : "个人"},
+        {"value" : "2", "label" : "机关"},
+        {"value" : "3", "label" : "企业"}
+	],
+
+	"uauto_thirdBsnsFlagList": [
+        { "value": "0", "label": "否" },
+        { "value": "1", "label": "是" }
+    ],
+
+	"uauto_purePrmFlagList": [
+        { "value": "1", "label": "标准车型保费" },
+        { "value": "2", "label": "标准车型非标准保费" },
+        { "value": "3", "label": "非标准车型保费" }
+    ],
+    
+	"uauto_ratioTypeList": [
+        { "value": "0", "label": "按日" },
+        { "value": "1", "label": "按月" }
+    ],
+
+	"uauto_sttlList": [
+        { "value": "0", "label": "依法向人民法院起诉" },
+        { "value": "1", "label": "提交仲裁委员会" }
+    ],
+
+	"uauto_payTypeList" : [
+		{ "value": "1", "label": "刷卡缴费" },
+        { "value": "2", "label": "支票缴费" },
+        { "value": "3", "label": "转账缴费" }
+	],
+	
+	
+	"uauto_deptList" : [
+		{ "value" : "110000", "label" : "北京分公司" },
+        { "value" : "310000", "label" : "上海分公司" },
+        { "value" : "440000", "label" : "广州分公司" }
+	],
+
+	"uauto_salesNameList" : [
+		{ "value" : "1", "label" : "杨宏" },
+        { "value" : "2", "label" : "麦基" },
+        { "value" : "3", "label" : "科比" }
+    ],
+
+	"uauto_salesChannelList" : [{
+			"value" : "100",
+			"label" : "直接业务",
+			"children" : [{
+					"value" : "110",
+					"label" : "传统直销业务",
+					"children" : [{
+							"value" : "111",
+							"label" : "通过业务员等销售模式获得的业务"
+						}, {
+							"value" : "112",
+							"label" : "直销柜面"
+						}, {
+							"value" : "113",
+							"label" : "直销配送"
+						}
+					]
+				}, {
+					"value" : "120",
+					"label" : "新渠道直销业务",
+					"children" : [{
+							"value" : "121",
+							"label" : "电话销售业务"
+						}, {
+							"value" : "122",
+							"label" : "互联网销售业务"
+						}, {
+							"value" : "123",
+							"label" : "移动网络销售业务"
+						}, {
+							"value" : "124",
+							"label" : "直邮销售业务"
+						}
+					]
+				}, {
+					"value" : "190",
+					"label" : "其他直接业务"
+				}
+			]
+		}, {
+			"value" : "200",
+			"label" : "代理业务",
+			"children" : [{
+					"value" : "210",
+					"label" : "个人代理人业务"
+				}, {
+					"value" : "220",
+					"label" : "兼业代理机构业务",
+					"children" : [{
+							"value" : "221",
+							"label" : "银行类金融机构机构代理业务"
+						}, {
+							"value" : "222",
+							"label" : "邮政代理业务"
+						}, {
+							"value" : "223",
+							"label" : "汽车制造、批发、零售商代理业务"
+						}, {
+							"value" : "224",
+							"label" : "保险公司相互代理业务"
+						}, {
+							"value" : "225",
+							"label" : "非银行类金融机构代理业务"
+						}, {
+							"value" : "249",
+							"label" : "其他兼业代理业务"
+						}
+					]
+				}, {
+					"value" : "250",
+					"label" : "专业代理机构业务"
+				}
+			]
+		}, {
+			"value" : "300",
+			"label" : "经纪业务"
+		}, {
+			"value" : "999",
+			"label" : "其他"
+		}
+	]
+}

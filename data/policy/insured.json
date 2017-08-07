@@ -1,0 +1,30 @@
+{
+	"model" : {
+		"c_pk_id" : "",
+		"c_pk_id_jq" : "",
+		"c_pk_id_sy" : "",
+		"c_quot_no" : "",
+		"c_pkg_no" : "",
+		"c_appl_no" : "",
+		"c_plcy_no" : "",
+		"c_address" : "",
+		"c_insrnt_name" : "",
+		"c_clnt_type" : "",
+		"c_cntr_name" : "",
+		"c_mobile" : "",
+		"c_certf_type" : "",
+		"c_certf_code" : "",
+		"c_gender" : "",
+		"d_birthday" : "",
+		"c_full_addr" : "",
+		"c_insrnt_cate" : "",
+		"c_tel" : "",
+		"c_clnt_lvl" : "",
+		"c_resv_txt_4" : "",
+		"c_risk_rank" : "",
+		"c_client_type" : ""
+	},
+	"tempModel" : {
+		"custRisk" : []
+	}
+}

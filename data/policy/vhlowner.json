@@ -1,0 +1,26 @@
+{
+	"model" : {
+		"c_pk_id" : "",
+		"c_pk_id_jq" : "",
+		"c_pk_id_sy" : "",
+		"c_quot_no" : "",
+		"c_pkg_no" : "",
+		"c_appl_no" : "",
+		"c_plcy_no" : "",
+		"c_upd_cde" : "",
+		"c_owner_name" : "",
+		"c_resid_addr" : "",
+		"c_certf_code" : "",
+		"c_clnt_type" : "",
+		"t_crt_tm" : "",
+		"t_birthday" : "",
+		"c_certf_type" : "",
+		"c_crt_cde" : "",
+		"c_clnt_addr" : "",
+		"t_upd_tm" : "",
+		"c_sex" : "",
+		"c_client_name" : ""
+	},
+	"tempModel" : {
+	}
+}

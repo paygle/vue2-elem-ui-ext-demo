@@ -1,0 +1,20 @@
+{
+	"CVRG_NO" : {
+		"cvrg_jq" : "010016",
+		"cvrg_damage" : "010001",
+		"cvrg_third_party" : "010002",
+		"cvrg_driver" : "010003",
+		"cvrg_passagers" : "010017",
+		"cvrg_car_robbery" : "010004",
+		"cvrg_mental" : "010014",
+		"cvrg_lost_third_paty" : "010011",
+		"cvrg_wade" : "010009",
+		"cvrg_self_ignition" : "010006",
+		"cvrg_add_equipment" : "010007",
+		"cvrg_designate_factory" : "010012",
+		"cvrg_glass" : "010005",
+		"cvrg_repairing_compensation" : "010010",
+		"cvrg_scratch" : "010008",
+		"cvrg_goods" : "010013"
+	}
+}

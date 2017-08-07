@@ -1,0 +1,168 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    color:#475669;
+    padding: 0px;
+    margin: 0px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+#policyPanel {
+    width: 100%;
+    height: 100%;
+}
+
+.componentPanel{
+	padding-top : 10px;
+	padding-left : 2%;
+	padding-bottom : 10px;
+	width:90%;
+}
+
+.componentTitle{
+	background-color: #20A0FF;
+	font-weight: 600;
+	color: white;
+	font-size:14px;
+	height:28px;
+	line-height:28px;
+	border-radius:5px 5px 0 5px;
+	padding-left:14px
+}
+
+.componentTail{
+	background-color: #EFF2F7;
+	height:23px;
+	margin-top:5px;
+	border-radius:0 5px 5px 0;
+}
+
+.elName{
+	text-align: right;
+	padding-right: 5px;
+}
+
+.elCtrl{
+	text-align: left;
+	padding-left: 5px;
+}
+
+.commonRow{
+	padding-top:3px;
+	line-height:28px
+}
+
+.el-date-editor{
+	width:100% !important;
+	color:#475669 !important
+}
+
+.el-cascader{
+	height:25px !important;
+	width:100% !important;
+	color:#475669 !important
+}
+
+.el-select{
+	height:25px !important;
+	width:100% !important;
+	color:#475669 !important
+}
+
+.el-cascader__label{
+	height:25px !important;
+	font-size:12px !important;
+	color:#475669 !important
+}
+
+.el-input__inner{
+	height:25px !important;
+	font-size:12px !important;
+	color:#475669 !important
+}
+
+.row-collapse{
+	text-align: right
+}
+
+.collapse-button{
+	cursor: pointer;
+}
+
+.el-select-dropdown__item{
+	font-size : 12px !important;
+	padding: 5px 10px !important;
+	height: 28px !important
+}
+
+.el-select-dropdown__item.selected{
+	color : #5d9cec !important;
+	background-color: #F9FAFC !important
+}
+
+.el-select-dropdown__wrap{
+	max-height: 374px !important
+}
+
+.jqIcon {
+	cursor: auto;
+	font-size: 14px;
+	background-color: white;
+	text-align: center;
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	margin-top: 6px;
+	margin-right: 10px;
+	color: #5d9cec !important;
+	border: 2px solid #5d9cec !important;
+	line-height: normal !important;
+	font: normal !important;
+}
+
+.syIcon {
+	cursor: auto;
+	font-size: 14px;
+	background-color: white;
+	text-align: center;
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	margin-top: 6px;
+	margin-right: 10px;
+	color: #f0ad4e !important;
+	border: 2px solid #f0ad4e !important;
+	line-height: normal !important;
+	font: normal !important;
+}
+
+.insuredTimeRow{
+	line-height:50px
+}
+
+.tc{
+	text-align:center
+}
+
+ .tabtopsty {
+     border-bottom-color: #5d9cec !important;
+     border: 0px !important;
+     background-color: #fafafa !important;
+     text-align: center
+ }
+ 
+ .menuNav{
+ 	height:40px;
+ 	font-size:14px
+ }
+ 
+  .menuItem{
+ 	height:40px !important;
+ 	line-height:40px !important;
+ }
