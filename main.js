@@ -1,10 +1,9 @@
 define([
   'vue',
-  'elemui'
-], function(require, factory) {
+  'ELEMENT'
+], function(Vue, ELEMENT) {
   'use strict';
-  // require('jquery');
-  // require('vue');
-  // require('elemui');
+  Vue.use(ELEMENT); //使用框架组件
+ 
   
 });
