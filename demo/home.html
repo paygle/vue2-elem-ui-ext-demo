@@ -1,44 +1,266 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-	<meta name="renderer" content="webkit"> <!-- 360浏览器自动使用极速模式 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
-	<meta name="format-detection" content="telephone=no">
-	<!-- IE 兼容补丁 -->
-	<!--[if gt IE 8]>
-	<style type="text/css">
-	body .el-select .el-input .el-input__icon{
-		-ms-transform: translateY(-50%);
-	}
-	</style>
-	<![endif]-->
-	<link rel="icon" href="/img/favicon.ico">
-	<title>新车险承保前端测试</title>
-	<link href="/js/vendor/css/bootstrap.min.css" rel="stylesheet"></link>
-	<link href="/js/vendor/elem-ui-ext.css" rel="stylesheet"></link>
-	<link href="/css/demo.css" rel="stylesheet"></link>
-</head>
-<body>
-	<div id="homePanel" v-cloak>
-		<pageheader></pageheader>
-		<el-row class="componentPanel">
-			<el-col :span="5" :offset="1" v-for="card in cardList">
-				<el-card class="box-card">
-					<div slot="header" class="clearfix">
-						<span style="line-height: 36px;" v-text="card.cardName"></span>
-						<el-button style="float: right;" type="primary" @click="newPolicy(card)" size="small">点我出单</el-button>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit"> <!-- 360浏览器自动使用极速模式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <!-- IE 兼容补丁 -->
+    <!--[if gt IE 8]>
+    <style type="text/css">
+    body .el-select .el-input .el-input__icon{
+      -ms-transform: translateY(-50%);
+    }
+    </style>
+    <![endif]-->
+    <link rel="icon" href="/img/favicon.ico">
+    <link href="/js/css/bootstrap.css" rel="stylesheet"></link>
+    <link href="/js/elem-ui-ext.css" rel="stylesheet"></link>
+    <link href="/css/public.css" rel="stylesheet"></link>
+    <title>home Page - 展示 </title>
+  </head>
+  <body>
+    <div id="main-body" v-cloak>
+			<main-header nowuser="admin" nowdate="2016-11-17 星期四"></main-header>
+			<main-nav></main-nav> 
+			<div class="fwidth">
+				<h3 class="col-header">
+					<span class="bottom"></span>
+					<span class="line"></span>
+					<span class="label-angle"></span>
+					<span class="label">产品定义</span>
+				</h3>
+				<indicator :path-data="pathData"></indicator>
+				<a id="vehicle" class="el-icon-fixed-pos"> 车锚点 </a>
+				<div class="container" style="width: 100%;">
+						<el-steps :active="1">
+							<el-step title="步骤 1" description="这是一段很长很长很长的描述性文字"></el-step>
+							<el-step title="步骤 2" description="这是一段很长很长很长的描述性文字"></el-step>
+							<el-step title="步骤 3" description="这是一段很长很长很长的描述性文字"></el-step>
+						</el-steps>
+					<div class="row">
+						<div class="col-md-12 text-center mt-2">
+							<freeze>
+								<el-input v-model="inputPrecision" histype precision="3" roundoff placeholder="精度测试"></el-input>
+								<rich-button shape="capsule" icon='search'>查询</rich-button>
+								<rich-button shape="capsule" icon='quit' @click="titleClick">重置</rich-button>
+							</freeze>
+						</div>
 					</div>
-					<div v-for="o in 4" class="text item">
-						{{'列表内容 ' + o }}
+					<el-row :gutter="20">
+						<el-col :span="6"><div class="grid-content bg-purple">1111</div></el-col>
+						<el-col :span="6"><div class="grid-content bg-purple">2222</div></el-col>
+						<el-col :span="6"><div class="grid-content bg-purple">3333</div></el-col>
+						<el-col :span="6"><div class="grid-content bg-purple">4444</div></el-col>
+					</el-row>
+					<h3 style="line-height:2em;margin-top:1em;">
+					<el-button
+							type="primary"
+							@click.native="openFullScreen"
+							v-loading.fullscreen.lock="fullscreenLoading">
+							显示整页加载，3 秒后消失
+						</el-button>
+					</h3>
+					<h3 style="line-height:2em;margin-top:1em;"> 自定义 icollapse 折叠面板 </h3>
+					<icollapse v-model="activeNames">
+						<icollapse-item title="一致性" name="1">
+							<el-date-picker
+								v-model="range_time"
+								type="datetimerange"
+								data-type="string"
+								placeholder="选择时间范围">
+							</el-date-picker>
+							<div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+							<div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+						</icollapse-item>
+						<icollapse-item title="反馈 Feedback" name="2">
+							<div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+							<div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+						</icollapse-item>
+						<icollapse-item :title="changeTitle" name="3">
+							<div>简化流程：设计简洁直观的操作流程；</div>
+							<div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+							<div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+						</icollapse-item>
+						<icollapse-item title="通过界面样式和交互动效让用户可以清晰的感知" name="4">
+							<div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+							<div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+						</icollapse-item>
+					</icollapse>
+		
+					<h3 style="line-height:2em;margin-top:1em;"> 非组件表单元素 </h3>
+	 
+		
+					<h3 style="line-height:2em;margin-top:1em;"> El-Tabs元素 </h3>
+					<el-tabs type="border-card" v-model="activeName2" active-name="second" @tab-click="handleClick22">
+						<el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+						<el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+						<el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+						<el-tab-pane :closable="true" label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+					</el-tabs>
+					<h3 style="line-height:2em;margin-top:1em;">静态表格，和 v-model 绑定 </h3>
+					<div style="width: 180px;margin: 10px;">
+						<el-checkbox v-model="bcheck" true-label="你选择了我" false-label="啥都没有">选择框</el-checkbox>
+						<el-switch v-model="bswitch" on-color="#13ce66" off-color="#ff4949"></el-switch>
+						<el-radio-group v-model="radioVal">
+							<el-radio :label="3">备选项</el-radio>
+							<el-radio :label="6">备选项</el-radio>
+						</el-radio-group>
 					</div>
-				</el-card>
-			</el-col>
-		</el-row>
-	</div>
-</body>
-<script src="/js/vendor/libs/require.js" data-main="/js/demo/home/home"></script>
-<script src="/js/vendor/configs/config.js"></script>
+					<a id="wuwuwu" class="el-icon-fixed-pos"> 物锚点 </a>
+					<h3 style="line-height:2em;margin-top:1em;"> 时间区间选择 </h3>
+					<div style="width: 280px;margin: 10px;">
+						<el-date-picker
+							v-model="range_time"
+							type="datetimerange"
+							data-type="string"
+							placeholder="选择时间范围">
+						</el-date-picker>
+						<el-date-picker
+							v-model="select_date"
+							data-type="string"
+							placeholder="选择日期">
+						</el-date-picker>
+					</div>
+					<div style="margin: 10px;">
+						<rich-button shape="capsule" icon="rotate-swap" @click="btnClick">RichButton</rich-button>
+		
+						<h3 style="line-height:2em;margin-top:1em;">RichCheckbox</h3>
+						<rich-checkbox v-model="bcheck" true-label="你选择了我" false-label="啥都没有">选择框U</rich-checkbox>
+						<rich-checkbox-group v-model="checklist">
+							<rich-checkbox label="你选择我"></rich-checkbox>
+							<rich-checkbox label="你选择了我" disabled></rich-checkbox>
+							<rich-checkbox label="啥都没有"></rich-checkbox>
+							<rich-checkbox label="你选了我"></rich-checkbox>
+							<rich-checkbox label="啥没有"></rich-checkbox>
+						</rich-checkbox-group>
+							<h3 style="line-height:2em;margin-top:1em;">RichRadio </h3>
+							<rich-radio v-model="radiox" label="12">备选项1</rich-radio>
+							<rich-radio v-model="radiox" label="32">备选项2</rich-radio>
+							<rich-radio v-model="radiox" label="35" disabled>备选项3</rich-radio>
+							<rich-radio-group v-model="radioVal">
+								<rich-radio label="43">组选项A</rich-radio>
+								<rich-radio label="54" disabled>组选项B</rich-radio>
+								<rich-radio label="72">组选项C</rich-radio>
+							</rich-radio-group>
+					</div>
+<!-- 		
+					<table>
+						<tr>
+							<td>
+								<el-select v-model="mselects" clearable placeholder="请选择" disabled>
+									<el-option 
+										v-for="(item, index) in options" 
+										:key="index"
+										:label="item.label" 
+										:value="item.value">
+									</el-option>
+								</el-select>
+							</td>
+							<td>
+								<address-box disabled params="123" @address-change="addressChanged" v-model="address" data-url="./static/data/address-data.json"></address-box>
+							</td>
+							<td><el-date-picker v-model="value1" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker></td>
+						</tr>
+					</table> -->
+					<button @click="chgAddress">切换地址</button>
+					<el-select v-model="multipleSel" multiple placeholder="请多项选择">
+						<el-option 
+							v-for="(opt, index) in options" 
+							:key="index" 
+							:label="opt.label" 
+							:value="opt.value">
+						</el-option>
+					</el-select>
+					<h3 style="line-height:2em;margin-top:1em;">自定义 Table  v-for 列表中的表单不能使用 v-model 进行双向绑定，需要使用 vuex 进行数据管理</h3>
+					<!-- <table>
+						<tr v-for="(item, index) in tableData" :index="index" :key="index">
+							<td label="日期" prop="date">
+								<el-input :value="item.date"/>
+							</td>
+							<td label="姓名" prop="name" twidth="80">
+								<el-input :value="item.name"/>
+							</td>
+							<td label="选择" prop="choose" twidth="80">
+								<el-select :value="item.choose" placeholder="请选择" @change="selectChange">
+									<el-option 
+										v-for="(opt, index) in options"
+										:key="index"  
+										:label="opt.label" 
+										:value="opt.value">
+									</el-option>
+								</el-select>
+							</td>
+						</tr>
+					</table>
+		 -->
+					<!-- <h3 style="line-height:2em;margin-top:1em;">El-Table 表格</h3>
+					<el-table :data="tableData" borderstyle="width: 100%" @selection-change="handleSelectionChange">
+						<el-table-column type="selection" width="50" label="选择"></el-table-column>
+						<el-table-column prop="date" label="日期"></el-table-column>
+						<el-table-column prop="name" label="姓名" width="120" ></el-table-column>
+						<el-table-column prop="strnumber" label="数值"></el-table-column>
+						<el-table-column prop="choose" label="下拉选择"></el-table-column>
+						<el-table-column prop="address" label="省市区"></el-table-column>
+						<el-table-column prop="addressDetail" label="详细地址"></el-table-column>
+					</el-table> -->
+<!-- 		
+					<h3 style="line-height:2em;margin-top:1em;">Form-Table 表格-表单组件</h3>
+					<form-table
+						ref="homeFormTable"
+						:data="tableData"
+						borderstyle="width: 100%"
+						@selection-change="handleSelectionChange">
+						<form-table-column type="selection" width="50" label="选择"></form-table-column>
+						<form-table-column
+							type="date"
+							prop="date"
+							label="日期"
+							:picker-options="pickerOptions0"
+							:date-option="{type:'datetime'}"></form-table-column>
+						<form-table-column type="input" :editable='inputEditable' prop="name" label="姓名" width="120" :input-option="inputOption"></form-table-column>
+						<form-table-column type="input" prop="strnumber" label="数值" :input-option="inputOption1"></form-table-column>
+						<form-table-column type="select" :editable='selectEditable'  :options-data="options" prop="choose" label="下拉选择"></form-table-column>
+						<form-table-column type="address" prop="address" label="省市区"></form-table-column>
+						<form-table-column prop="addressDetail" label="详细地址" ></form-table-column>
+						<form-table-column type="checkbox" prop="schecked" label="可选"
+							:header-checked = "true"
+							:checkbox-option="checkboxOption"
+							:checked-selection="checkedSelection"
+							:checkbox-all-toggle="checkboxAllToggle"></form-table-column>
+					</form-table>
+		
+					<el-button @click="AddFormData">添加数据</el-button> -->
+
+					<a id="human" class="el-icon-fixed-pos"> 人锚点 </a>
+					<h3 style="line-height:2em;margin-top:1em;">Mesh-Tabs 选项卡无需路由</h3>
+		
+					<!-- <mesh-tabs
+						type="card"
+						ref="meshTab"
+						:components="tabsComponents"
+						@tab-click="tabClick"
+						:close-call="closeCall"
+						@tab-remove="tabRemove"
+						:showLast="false"
+						:route-data="meshTabsData"
+						:active-name="activeName"></mesh-tabs> -->
+					<el-button @click.native="addNewTabs">增加一个tab</el-button>
+		
+					<h3 style="line-height:2em;margin-top:1em;">Architecture 架构树</h3>
+					<!-- <architecture
+						:data="archData"
+						:props="defaultProps"
+						@node-click="handleNodeClick">
+					</architecture>
+		 -->
+					<div style="height:50px;"></div>
+				</div>
+			</div>
+    </div>
+  </body>
+  <script src="/js/libs/require.js" data-main="./home/main.js"></script>
+  <script src="/js/configs/config.js"></script>
 </html>

@@ -1,8 +1,7 @@
-/** Index 入口模块JS处理 */
+/** home 入口模块JS处理 */
 define([
   'vue',
-  'ELEMENT',
-  'components/login/main'
+  'ELEMENT'
 ], function(Vue, ELEMENT) {
   'use strict';
   Vue.use(ELEMENT); //使用框架组件

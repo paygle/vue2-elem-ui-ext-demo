@@ -1,0 +1,35 @@
+.welcome{font-size: 30px; text-align: center; margin: 1em;}
+section{ width: 80%;margin:0 auto;}
+ul.icon-list{padding:10px;}
+ul,li{
+  list-style:none;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+}
+.icon-list li i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #8492a6;
+}
+.icon-list li span {
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    color: #99a9bf;
+}
+.icon-list li {
+    float: left;
+    width: 16.66%;
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+    color: #666;
+    font-size: 13px;
+    transition: color .15s linear;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    border: 1px solid rgba(132, 146, 166, 0.21);
+}
