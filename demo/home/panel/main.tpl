@@ -15,7 +15,7 @@
   <form-table :data="localTableData" borderstyle="width: 100%" @selection-change="handleSelectionChange">
     <form-table-column type="selection" width="50" label="选择"></form-table-column>
     <form-table-column type="date" prop="date" label="日期"></form-table-column>
-    <form-table-column type="input" prop="name" label="姓名" width="120" :input-option="inputOption"></form-table-column>
+    <form-table-column type="input" prop="name" label="姓名" width="120"></form-table-column>
     <form-table-column type="select" :options-data="options" prop="choose" label="下拉选择"></form-table-column>
     <form-table-column type="address" prop="address" label="省市区"></form-table-column>
     <form-table-column prop="addressDetail" label="详细地址" show-overflow-tooltip></form-table-column>

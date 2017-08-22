@@ -45,7 +45,9 @@ require.config({
 		'ELEMENT':{
 			deps: ['jquery', 'vue', 'snap'],
 			exports: 'ELEMENT'
-		}
+		},
+		'jquery.ztree':{ deps: ['jquery'] },
+		'bootstrap':{ deps: ['jquery'] },
 	},
 	paths : {
 		// 路径配置
@@ -58,11 +60,22 @@ require.config({
 		// 常用库配置
 		"text" : JSPATH + "/libs/require-text",
 		"jquery" : JSPATH + "/libs/jquery",
+		"jquery.ztree" : JSPATH + "/libs/jquery.ztree.all",
+		"bootstrap" : JSPATH + "/libs/bootstrap",
+		"echarts" : JSPATH + "/libs/echarts",
+		"easypiechart" : JSPATH + "/libs/easypiechart",
+		"md5" : JSPATH + "/libs/md5",
+		"websocket" : JSPATH + "/libs/re-websocket",
 		"snap" : JSPATH + "/libs/snap",
+		"tether" : JSPATH + "/libs/tether",
 		"vue" : JSPATH + "/libs/vue",
+		"vuex" : JSPATH + "/libs/vuex",
+		"vueRouter" : JSPATH + "/libs/vue-router",
 		"ELEMENT" : JSPATH + "/elem-ui-ext",
-		"cfgutil" : JSPATH + "/configs/util",
-		"data" : JSPATH + "/configs/data"
+		"dictStore" : JSPATH + "/utils/dictStore",
+		"util" : JSPATH + "/utils/util",
+		"utilExt" : JSPATH + "/utils/util-ext",
+		"cacheUtil" : JSPATH + "/utils/cache-util",
 	}
 });
 

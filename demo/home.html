@@ -23,16 +23,15 @@
   </head>
   <body>
     <div id="main-body" v-cloak>
-			<main-header nowuser="admin" nowdate="2016-11-17 星期四"></main-header>
+			<main-header logo-link="../img/logo.png" nowuser="admin" nowdate="2016-11-17 星期四"></main-header>
 			<main-nav></main-nav> 
-			<div class="fwidth">
+			<div class="fwidth" v-side-guide="sideGuideData">
 				<h3 class="col-header">
 					<span class="bottom"></span>
 					<span class="line"></span>
 					<span class="label-angle"></span>
 					<span class="label">产品定义</span>
 				</h3>
-				<indicator :path-data="pathData"></indicator>
 				<a id="vehicle" class="el-icon-fixed-pos"> 车锚点 </a>
 				<div class="container" style="width: 100%;">
 						<el-steps :active="1">
@@ -146,7 +145,7 @@
 								<rich-radio label="72">组选项C</rich-radio>
 							</rich-radio-group>
 					</div>
-<!-- 		
+		
 					<table>
 						<tr>
 							<td>
@@ -160,11 +159,11 @@
 								</el-select>
 							</td>
 							<td>
-								<address-box disabled params="123" @address-change="addressChanged" v-model="address" data-url="./static/data/address-data.json"></address-box>
+								<address-box params="123" @address-change="addressChanged" v-model="address"></address-box>
 							</td>
 							<td><el-date-picker v-model="value1" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker></td>
 						</tr>
-					</table> -->
+					</table>
 					<button @click="chgAddress">切换地址</button>
 					<el-select v-model="multipleSel" multiple placeholder="请多项选择">
 						<el-option 
@@ -174,8 +173,8 @@
 							:value="opt.value">
 						</el-option>
 					</el-select>
-					<h3 style="line-height:2em;margin-top:1em;">自定义 Table  v-for 列表中的表单不能使用 v-model 进行双向绑定，需要使用 vuex 进行数据管理</h3>
-					<!-- <table>
+					<h3 style="line-height:2em;margin-top:1em;">自定义 Table  v-for 列表中的表单</h3>
+					<table>
 						<tr v-for="(item, index) in tableData" :index="index" :key="index">
 							<td label="日期" prop="date">
 								<el-input :value="item.date"/>
@@ -195,8 +194,8 @@
 							</td>
 						</tr>
 					</table>
-		 -->
-					<!-- <h3 style="line-height:2em;margin-top:1em;">El-Table 表格</h3>
+		
+					<h3 style="line-height:2em;margin-top:1em;">El-Table 表格</h3>
 					<el-table :data="tableData" borderstyle="width: 100%" @selection-change="handleSelectionChange">
 						<el-table-column type="selection" width="50" label="选择"></el-table-column>
 						<el-table-column prop="date" label="日期"></el-table-column>
@@ -205,8 +204,8 @@
 						<el-table-column prop="choose" label="下拉选择"></el-table-column>
 						<el-table-column prop="address" label="省市区"></el-table-column>
 						<el-table-column prop="addressDetail" label="详细地址"></el-table-column>
-					</el-table> -->
-<!-- 		
+					</el-table>
+		
 					<h3 style="line-height:2em;margin-top:1em;">Form-Table 表格-表单组件</h3>
 					<form-table
 						ref="homeFormTable"
@@ -232,12 +231,12 @@
 							:checkbox-all-toggle="checkboxAllToggle"></form-table-column>
 					</form-table>
 		
-					<el-button @click="AddFormData">添加数据</el-button> -->
+					<el-button @click="AddFormData">添加数据</el-button>
 
 					<a id="human" class="el-icon-fixed-pos"> 人锚点 </a>
 					<h3 style="line-height:2em;margin-top:1em;">Mesh-Tabs 选项卡无需路由</h3>
 		
-					<!-- <mesh-tabs
+					<mesh-tabs
 						type="card"
 						ref="meshTab"
 						:components="tabsComponents"
@@ -246,16 +245,16 @@
 						@tab-remove="tabRemove"
 						:showLast="false"
 						:route-data="meshTabsData"
-						:active-name="activeName"></mesh-tabs> -->
+						:active-name="activeName"></mesh-tabs>
 					<el-button @click.native="addNewTabs">增加一个tab</el-button>
 		
 					<h3 style="line-height:2em;margin-top:1em;">Architecture 架构树</h3>
-					<!-- <architecture
+					<architecture
 						:data="archData"
 						:props="defaultProps"
 						@node-click="handleNodeClick">
 					</architecture>
-		 -->
+		
 					<div style="height:50px;"></div>
 				</div>
 			</div>

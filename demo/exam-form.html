@@ -23,9 +23,11 @@
   </head>
   <body>
     <div id="main-body" v-cloak>
-   
+      <main-header nowuser="admin" nowdate="2016-11-18 星期四"></main-header>
+      <main-nav :home-hide="true"></main-nav>
+      <router-view></router-view>
     </div>
   </body>
-  <script src="/js/libs/require.js" data-main="./main.js"></script>
+  <script src="/js/libs/require.js" data-main="./exam-form/main.js"></script>
   <script src="/js/configs/config.js"></script>
 </html>

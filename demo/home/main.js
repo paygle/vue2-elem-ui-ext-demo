@@ -6,85 +6,18 @@ define([
 ], function(Vue, ELEMENT, Panel) {
   'use strict';
   Vue.use(ELEMENT); //使用框架组件
-debugger
+
   new Vue({
 		el: '#main-body',
     name: 'home',
     data: {
-				pathData: null,
 				inputPrecision: 1.164618,
 				multipleSel:[],
 				changeTitle: '效率 Efficiency',
 				vehicle: '',
 				human: '',
-				// sideGuideData:{
-				// //  width: '110px',           // 菜单宽度
-				// //  align: 'let',            // 文字对齐   left | center | right
-				// //  displaySide: 'left',     // 菜单显示位置  left | right
-				// 	setGuider: this.setGuider,
-				// 	sideStore: this.siderStore,
-				// 	data: [{
-				// 		anchor: 'vehicle',
-				// 		text: '车',
-				// 		icon: 'el-icon-car-back',
-				// 		hidden: true,  
-				// 		list: [
-				// 		{
-				// 			anchor: 'vehicle',
-				// 			text: '粤B123545',
-				// 			icon: 'el-icon-car-back',
-				// 		}
-				// 		],
-				// 		operations:[
-				// 		{
-				// 			action: this.actionSiderVeh,
-				// 			text: '新增',
-				// 			icon: 'el-icon-circle-plus'
-				// 		}
-				// 		]
-				// 	},{
-				// 		anchor: 'wuwuwu',
-				// 		text: '物',
-				// 		icon: 'el-icon-car-back',
-				// 		list: [
-				// 		{
-				// 			anchor: 'wuwuwu',
-				// 			text: '物B123545',
-				// 			icon: 'el-icon-car-back',
-				// 		}
-				// 		]
-				// 	},
-				// 	{
-				// 		anchor: 'human',
-				// 		text: '人',
-				// 		icon: 'el-icon-somebody',
-				// 		list: [
-				// 		{
-				// 			anchor: 'human',
-				// 			text: '李四',
-				// 			icon: 'el-icon-somebody'
-				// 		}
-				// 		],
-				// 		operations:[
-				// 		{
-				// 			action: this.actionSiderMan,
-				// 			text: '新增',
-				// 			icon: 'el-icon-circle-plus'
-				// 		},
-				// 		{
-				// 			action: this.editSiderMan,
-				// 			text: '修改',
-				// 			icon: 'el-icon-vwedit'
-				// 		},
-				// 		{
-				// 			action: this.deleteSiderMan,
-				// 			text: '删除',
-				// 			icon: 'el-icon-circle-cross'
-				// 		}
-				// 		]
-				// 	}
-				// ]},
-				// sideGuideStore: null,
+				sideGuideData: null,
+				sideGuideStore: null,
 
 				range_time: ['2017-02-12', '2017-02-16'],
 				select_date: '',
@@ -565,10 +498,81 @@ debugger
       },
       addressChanged(cn){
         console.log('地址改变，返回文字：', cn)
-      }
-    },
+			},
+			guiderInit() {
+				this.sideGuideData = {
+					//  width: '110px',           // 菜单宽度
+					//  align: 'let',            // 文字对齐   left | center | right
+					//  displaySide: 'left',     // 菜单显示位置  left | right
+						setGuider: this.setGuider,
+						sideStore: this.siderStore,
+						data: [{
+							anchor: 'vehicle',
+							text: '车',
+							icon: 'el-icon-car-back',
+							hidden: true,  
+							list: [
+							{
+								anchor: 'vehicle',
+								text: '粤B123545',
+								icon: 'el-icon-car-back',
+							}
+							],
+							operations:[
+							{
+								action: this.actionSiderVeh,
+								text: '新增',
+								icon: 'el-icon-circle-plus'
+							}
+							]
+						},{
+							anchor: 'wuwuwu',
+							text: '物',
+							icon: 'el-icon-car-back',
+							list: [
+							{
+								anchor: 'wuwuwu',
+								text: '物B123545',
+								icon: 'el-icon-car-back',
+							}
+							]
+						},
+						{
+							anchor: 'human',
+							text: '人',
+							icon: 'el-icon-somebody',
+							list: [
+							{
+								anchor: 'human',
+								text: '李四',
+								icon: 'el-icon-somebody'
+							}
+							],
+							operations:[
+							{
+								action: this.actionSiderMan,
+								text: '新增',
+								icon: 'el-icon-circle-plus'
+							},
+							{
+								action: this.editSiderMan,
+								text: '修改',
+								icon: 'el-icon-vwedit'
+							},
+							{
+								action: this.deleteSiderMan,
+								text: '删除',
+								icon: 'el-icon-circle-cross'
+							}
+							]
+						}
+					]};
+			}
+		},
+		created(){
+			this.guiderInit();
+		},
     mounted(){
-      // this.pathData = this.$store.state.modA.indicatorPath
       this.$nextTick(function(){
         window.homeFormTable = this.$refs.homeFormTable
       })
