@@ -7,11 +7,8 @@ define([
   /**
    * 数据字典vuex模块
    */
-  import Vue from 'vue'
-  import util from 'src/utils/util'
-  import * as cacheUtil from './cache-util' // 缓存工具类 
-
-  const state = _dict_local || {
+ 
+  var state = _dict_local || {
     dict: {}
   };
   if (_dict_cache && _dict_cache.dict) {
@@ -20,18 +17,15 @@ define([
     }
   }
 
-  const isFunction = function (value) {
+  var isFunction = function (value) {
     return Object.prototype.toString.call(value) === '[object Function]'
   }
 
-  const actions = {
+  var actions = {
     /**
      * 从后台加载数据字典
      */
-    loadDict({
-      commit,
-      state
-    }, payload) {
+    loadDict: function(commit, state, payload) {
       let dictId = payload.dictId;
       let dictParams = payload.dictParams;
       let cacheable = payload.cacheable === undefined ? true : payload.cacheable;
@@ -48,7 +42,7 @@ define([
         param: dictParams
       }];
       //请求远程数据字典    
-      util.request({
+      utilExt.request({
         serviceId: "SYS00002",
         tranCode: "SYS0000002",
         pageNo: 1,
@@ -70,7 +64,7 @@ define([
                 tmp.push(item.c_code);
               });
               if (dictParams.filter_codes) {
-                dictParams.filter_codes.forEach((code) => {
+                dictParams.filter_codes.forEach(function(code) {
                   if (tmp.indexOf(code) == -1) { //没有取得翻译结果，原值返回
                     cacheUtil.setDictText(dictId, code, code, 10); //没查询到的只缓存10秒，防止表格翻译时进入死循环，防止长期缓存导致取不到正常结果
                     console.warn('无法翻译下拉框，dictId=' + dictId + '，code=' + code);
@@ -90,26 +84,26 @@ define([
     }
   }
 
-  const mutations = {
+  var mutations = {
     /**
      * 通知vuex更新数据字典
      */
-    updateDict(state, payload) {
+    updateDict: function(state, payload) {
       Vue.set(state.dict, payload.dictId, payload.dictData) //动态追加属性
     }
-  }
+  };
 
-  const getters = {
+  var getters = {
     //数据字典
-    getDict: (state, getters) => {
+    getDict: function(state, getters) {
       return state.dict;
     }
-  }
+  };
 
-  export default {
-    state,
-    actions,
-    mutations,
-    getters
-  }
+  return {
+    state: state,
+    actions: actions,
+    mutations: mutations,
+    getters: getters
+  };
 });
