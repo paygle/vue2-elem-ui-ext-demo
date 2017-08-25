@@ -74,6 +74,7 @@ require.config({
 		"ELEMENT" : JSPATH + "/elem-ui-ext",
 		"dictStore" : JSPATH + "/utils/dictStore",
 		"util" : JSPATH + "/utils/util",
+		"funcs" : JSPATH + "/utils/funcs",
 		"utilExt" : JSPATH + "/utils/util-ext",
 		"cacheUtil" : JSPATH + "/utils/cache-util",
 	}

@@ -5,7 +5,7 @@ define([
 ], function(Vue, tpl, emitter) {
   'use strict';
 
-var component = Vue.component('Panel', {
+return Vue.component('Panel', {
   template: tpl,
   componentName: 'Panel',
   mixins: [emitter],
@@ -91,5 +91,4 @@ var component = Vue.component('Panel', {
   }
 });
 
-return component;
 });

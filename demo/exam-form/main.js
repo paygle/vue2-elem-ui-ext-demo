@@ -4,15 +4,33 @@ define([
   'ELEMENT',
   "vuex",
   "vueRouter",
-  "dictStore"
-], function(Vue, ELEMENT, Vuex, VueRouter, dictStore) {
+  "dictStore",
+  'demo/exam-form/case-tracking/case-tracking/main',
+  'demo/exam-form/edit-form-exam/index',
+  'demo/exam-form/edit-form-exam/add-row/main',
+  'demo/exam-form/edit-form-exam/edit-row/main',
+  'demo/exam-form/edit-form-exam/query-form/main',
+], function(
+  Vue, 
+  ELEMENT, 
+  Vuex, 
+  VueRouter, 
+  dictStore,
+  CaseTracking,
+  EditFormExam,
+  AddRow,
+  EditRow,
+  QueryForm
+) {
   'use strict';
+
 Vue.use(ELEMENT); //使用框架组件
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
-/********  数据管理  ********/
+console.log('Exam-Form load!  使用 debugger 断点容易导致加载错误或失败，请改用 console.log。');
 
+/********  数据管理  ********/
 var store = new Vuex.Store({
     modules: {
       dictStore,
@@ -49,10 +67,10 @@ var store = new Vuex.Store({
 /********  路由配置管理  ********/
 var router = new VueRouter({
   routes: [
-    // {
-    //   path: '/',
-    //   redirect:'/el-form'
-    // },
+    {
+      path: '/',
+      redirect:'/case-tracking'
+    },
     // {
     //   path: '/el-form',
     //   name: 'common-pay',
@@ -69,29 +87,29 @@ var router = new VueRouter({
     //   component: WaterfallView,
     //   children: []
     // },
-    // {
-    //   path: '/case-tracking',
-    //   name: 'case-tracking',
-    //   component: CaseTracking,
-    //   children: []
-    // },
-    // {
-    //   path: '/edit-form-exam',
-    //   component: EditFormExam,
-    //   children: [{
-    //     path: '/query-form',
-    //     name: 'query-form',
-    //     component: QueryForm
-    //   },{
-    //     path: '/add-row',
-    //     name: 'add-row',
-    //     component: AddRow
-    //   },{
-    //     path: '/edit-row',
-    //     name: 'edit-row',
-    //     component: EditRow
-    //   }]
-    // }
+    {
+      path: '/case-tracking',
+      name: 'case-tracking',
+      component: CaseTracking,
+      children: []
+    },
+    {
+      path: '/edit-form-exam',
+      component: EditFormExam,
+      children: [{
+        path: '/query-form',
+        name: 'query-form',
+        component: QueryForm
+      },{
+        path: '/add-row',
+        name: 'add-row',
+        component: AddRow
+      },{
+        path: '/edit-row',
+        name: 'edit-row',
+        component: EditRow
+      }]
+    }
   ]
 });
  

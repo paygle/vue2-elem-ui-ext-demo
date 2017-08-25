@@ -8,10 +8,10 @@ define([
    * 数据字典vuex模块
    */
  
-  var state = _dict_local || {
+  var state = window._dict_local || {
     dict: {}
   };
-  if (_dict_cache && _dict_cache.dict) {
+  if (window._dict_cache && window._dict_cache.dict) {
     for (var key in _dict_cache.dict) {
       state.dict[key] = _dict_cache.dict[key]
     }
