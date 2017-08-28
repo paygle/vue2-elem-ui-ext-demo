@@ -1,21 +1,22 @@
-import WaterFall from 'components/water-fall'
-import { listdata } from './data.js'
+/** El-Form-Exam */
+define([
+  'vue',
+  'text!demo/exam-form/waterfall-view/index.tpl',
+  'text!demo/exam-form/waterfall-view/data.json'
+], function(Vue, tpl, data) {
+  'use strict';
+ 
+return Vue.component("WaterfallView", {
 
-export default {
-
-  name: "WaterfallView",
-
-  components:{
-    WaterFall
-  },
-
+  template: tpl,
+ 
   data(){
 
     return {
       fieldsName: {
 
       },
-      listdata: listdata
+      listdata: JSON.parse(data)
     }
   },
 
@@ -27,4 +28,6 @@ export default {
       return "javascript:void(0);"
     }
   }
-}
+});
+
+});

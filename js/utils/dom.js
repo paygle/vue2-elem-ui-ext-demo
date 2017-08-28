@@ -8,6 +8,8 @@ define([
   var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
   var MOZ_HACK_REGEXP = /^moz([A-Z])/;
   var ieVersion = isServer ? 0 : Number(document.documentMode);
+
+  function DomUtils(){}
   
   /* istanbul ignore next */
   var trim = function(string) {
@@ -92,7 +94,7 @@ define([
   };
   
   /* 返回对象 */
-  return {
+  DomUtils.prototype = {
 
     on: on,
 
@@ -108,80 +110,81 @@ define([
         off(el, event, listener);
       };
       on(el, event, listener);
-    },
+    }
+  };
 
-    hasClass: function (el, cls) {
-      if (!el || !cls) return false;
-      if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
+  var setStyle = DomUtils.prototype.setStyle = function (element, styleName, value) {
+    if (!element || !styleName) return;
+
+    if (typeof styleName === 'object') {
+      for (var prop in styleName) {
+        if (styleName.hasOwnProperty(prop)) {
+          setStyle(element, prop, styleName[prop]);
+        }
+      }
+    } else {
+      styleName = camelCase(styleName);
+      if (styleName === 'opacity' && ieVersion < 9) {
+        element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')';
+      } else {
+        element.style[styleName] = value;
+      }
+    }
+  }
+
+  var hasClass = DomUtils.prototype.hasClass = function (el, cls) {
+    if (!el || !cls) return false;
+    if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
+    if (el.classList) {
+      return el.classList.contains(cls);
+    } else {
+      return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+  }
+
+  DomUtils.prototype.addClass = function (el, cls) {
+    if (!el) return;
+    var curClass = el.className;
+    var classes = (cls || '').split(' ');
+
+    for (var i = 0, j = classes.length; i < j; i++) {
+      var clsName = classes[i];
+      if (!clsName) continue;
+
       if (el.classList) {
-        return el.classList.contains(cls);
+        el.classList.add(clsName);
       } else {
-        return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
-      }
-    },
-
-    addClass: function (el, cls) {
-      if (!el) return;
-      var curClass = el.className;
-      var classes = (cls || '').split(' ');
-
-      for (var i = 0, j = classes.length; i < j; i++) {
-        var clsName = classes[i];
-        if (!clsName) continue;
-
-        if (el.classList) {
-          el.classList.add(clsName);
-        } else {
-          if (!hasClass(el, clsName)) {
-            curClass += ' ' + clsName;
-          }
-        }
-      }
-      if (!el.classList) {
-        el.className = curClass;
-      }
-    },
-
-    removeClass: function (el, cls) {
-      if (!el || !cls) return;
-      var classes = cls.split(' ');
-      var curClass = ' ' + el.className + ' ';
-
-      for (var i = 0, j = classes.length; i < j; i++) {
-        var clsName = classes[i];
-        if (!clsName) continue;
-
-        if (el.classList) {
-          el.classList.remove(clsName);
-        } else {
-          if (hasClass(el, clsName)) {
-            curClass = curClass.replace(' ' + clsName + ' ', ' ');
-          }
-        }
-      }
-      if (!el.classList) {
-        el.className = trim(curClass);
-      }
-    },
-
-    setStyle: function (element, styleName, value) {
-      if (!element || !styleName) return;
-
-      if (typeof styleName === 'object') {
-        for (var prop in styleName) {
-          if (styleName.hasOwnProperty(prop)) {
-            setStyle(element, prop, styleName[prop]);
-          }
-        }
-      } else {
-        styleName = camelCase(styleName);
-        if (styleName === 'opacity' && ieVersion < 9) {
-          element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')';
-        } else {
-          element.style[styleName] = value;
+        if (!hasClass(el, clsName)) {
+          curClass += ' ' + clsName;
         }
       }
     }
-  };
+    if (!el.classList) {
+      el.className = curClass;
+    }
+  }
+
+  DomUtils.prototype.removeClass = function (el, cls) {
+    if (!el || !cls) return;
+    var classes = cls.split(' ');
+    var curClass = ' ' + el.className + ' ';
+
+    for (var i = 0, j = classes.length; i < j; i++) {
+      var clsName = classes[i];
+      if (!clsName) continue;
+
+      if (el.classList) {
+        el.classList.remove(clsName);
+      } else {
+        if (hasClass(el, clsName)) {
+          curClass = curClass.replace(' ' + clsName + ' ', ' ');
+        }
+      }
+    }
+    if (!el.classList) {
+      el.className = trim(curClass);
+    }
+  }
   
+  return new DomUtils();
 });

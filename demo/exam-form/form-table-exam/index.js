@@ -1,62 +1,18 @@
-import GuideSteps from 'components/guide-steps'
-import GuideStep from 'components/guide-step'
-import ElForm from 'components/form'
-import ElFormItem from 'components/form-item'
-import ElInput from 'components/input'
-import ElButton from 'components/button'
-import ElSelect from 'components/select'
-import ElOption from 'components/option'
-import CustomSwitch from 'components/custom-switch'
-import RichCheckbox from 'components/rich-checkbox'                // 自定义 checkbox
-import RichCheckboxGroup from 'components/rich-checkbox-group'
-import RichRadio from 'components/rich-radio'                      // 自定义 Radio
-import RichRadioButton from 'components/rich-radio-button'
-import RichRadioGroup from 'components/rich-radio-group'
-import RichButton from 'components/rich-button'
-import ElDatePicker from 'components/date-picker'
-import ElTimePicker from 'components/time-picker'
-import FormTable from 'components/form-table'
-import FormTableColumn from 'components/form-table-column'
-import ElPagination from 'components/pagination'
-import AddressBox from 'components/address-box'
-import RateNumber from 'components/rate-number'
-import FormatNumber from 'components/format-number'
-import Icollapse from 'components/icollapse'
-import IcollapseItem from 'components/icollapse-item'
-import { TypeOf, ToPlainObject, JsonToObject, ObjectPlainIsEqual, Browser } from 'src/utils/funcs'  //引入类型判断
-
-export default {
-  name: 'FormTableExam',
-  components:{
-    GuideStep,
-    GuideSteps,
-    ElForm,
-    ElFormItem,
-    ElInput,
-    ElButton,
-    ElSelect,
-    ElOption,
-    RateNumber,
-    FormatNumber,
-    CustomSwitch,
-    RichCheckbox,
-    RichCheckboxGroup,
-    RichRadio,
-    RichRadioGroup,
-    RichRadioButton,
-    RichButton,
-    ElDatePicker,
-    ElTimePicker,
-    FormTable,
-    FormTableColumn,
-    ElPagination,
-    Icollapse,
-    IcollapseItem,
-    AddressBox
-  },
-  props:{
-
-  },
+/** El-Form-Exam */
+define([
+  'vue',
+  'text!demo/exam-form/form-table-exam/index.tpl',
+  'funcs'
+], function(Vue, tpl, funcs) {
+  'use strict';
+  var TypeOf = funcs.TypeOf,
+  Browser = funcs.Browser, 
+  JsonToObject = funcs.JsonToObject, 
+  ObjectPlainIsEqual = funcs.ObjectPlainIsEqual,
+  ToPlainObject = funcs.ToPlainObject; //引入类型判断
+ 
+return Vue.component('FormTableExam', {
+  template: tpl,
   data () {
     const validInput = function(rule, value, callback){
  
@@ -77,7 +33,7 @@ export default {
     }
 
     return { 
-      browser: new Browser(),
+      browser: Browser,
       labelBtnOption: {
 
       },
@@ -263,7 +219,7 @@ export default {
       console.log('Step:', step)
     },
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(function(valid){
         if (valid) {
           alert('submit!');
         } else {
@@ -327,4 +283,6 @@ export default {
   mounted(){
     console.log("重新加载中...");
   }
-}
+});
+
+});

@@ -1,82 +1,27 @@
-import ElSteps from 'components/steps'
-import ElStep from 'components/step'
-import ElForm from 'components/form'
-import ElFormItem from 'components/form-item'
-import ElInput from 'components/input'
-import ElButton from 'components/button'
-import ElSelect from 'components/select'
-import ElOption from 'components/option'
-import ElDatePicker from 'components/date-picker'
-import ElTimePicker from 'components/time-picker'
-import ElSwitch from 'components/switch'
-import ElCheckboxGroup from 'components/checkbox-group'
-import ElCheckbox from 'components/checkbox'
-import ElRadioGroup from 'components/radio-group'
-import ElRadio from 'components/radio'
-import ElTable from 'components/table'
-import ElTableColumn from 'components/table-column'
-import ElDialog from 'components/dialog'
-import ElPagination from 'components/pagination'
-import ValidItem from 'components/valid-item'
-import {randomChar, TypeOf, ToPlainObject, ObjectPlainIsEqual } from 'src/utils/funcs';  //引入类型判断
-import emitter from 'src/mixins/emitter';
-import filters from 'src/mixins/filters'
-import ElPopover from 'components/popover'
-import RichRadio from 'components/rich-radio'                // 自定义 checkbox
-import RichRadioGroup from 'components/rich-radio-group'
-import SeasonSelect from 'components/season-select'
-import RateNumber from 'components/rate-number'
-import Message from 'components/message'
-import ElDropdown from 'components/dropdown'
-import ElDropdownMenu from 'components/dropdown-menu'
-import ElDropdownItem from 'components/dropdown-item'
-import ElRow from 'components/row'
-import ElCol from 'components/col'
+/** El-Form-Exam */
+define([
+  'vue',
+  'text!demo/exam-form/el-form-exam/index.tpl',
+  'funcs',
+  'mixins/emitter',
+  'mixins/filters'
+], function(Vue, tpl, funcs, emitter, filters) {
+  'use strict';
+  var TypeOf = funcs.TypeOf,
+  randomChar = funcs.randomChar, 
+  ObjectPlainIsEqual = funcs.ObjectPlainIsEqual,
+  ToPlainObject = funcs.ToPlainObject; //引入类型判断
 
-export default {
-  name: 'ElFormExam',
+  console.log('ElForm:', emitter, filters)
+   
+return Vue.component('ElFormExam', {
+  template: tpl,
   mixins: [emitter, filters],
-  components:{
-    ElRow,
-    ElCol,
-    RateNumber,
-    ElSteps,
-    ElStep,
-    ElForm,
-    ElFormItem,
-    ElInput,
-    ElButton,
-    ElSelect,
-    ElOption,
-    ElDatePicker,
-    ElTimePicker,
-    ElSwitch,
-    RichRadio,
-    RichRadioGroup,
-    ElCheckbox,
-    ElCheckboxGroup,
-    ElRadioGroup,
-    ElRadio,
-    ElTable,
-    ElTableColumn,
-    ElDialog,
-    ElPagination,
-    ValidItem,
-    ElPopover,
-    SeasonSelect,
-    ElDropdown,
-    ElDropdownMenu,
-    ElDropdownItem
-  },
-  props:{
-
-  },
   data () {
-    const validDate = ()=>{
- 
-    }
-
     return { 
+      currentPage: 1,
+      pageSize: 5,
+      itemCount: 20,
       fieldset:{               // 返回字段名称设置
         kindCode: 'kindCode',
         periodType: 'periodType',
@@ -278,7 +223,7 @@ export default {
       if (this.active++ > 2) this.active = 0;
     },
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(function(valid){
         if (valid) {
           alert('submit!');
         } else {
@@ -368,4 +313,6 @@ export default {
     console.log("重新加载中...");
 
   }
-}
+});
+
+});

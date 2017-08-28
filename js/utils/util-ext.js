@@ -7,11 +7,13 @@ define([
   var $ = jQuery;
   var API_URL = window.API_URL || "";
 
+  function UtilExt(){}
+
 /**
  * Created by wangjingl@sunline.cn on 2016/12/1.
  */
 //框架通用工具类
-return {
+var Proto = {
     consts: {
       STATUS_SUCCESS: "0",
       STATUS_ERROR: "error",
@@ -84,7 +86,7 @@ return {
     /**
      * 与后台通信的ajax请求封装
      */
-    request: function request(options) {
+    request: function (options) {
       var self = this;
       /**
        * 请求成功回调方法 (内部方法)
@@ -304,4 +306,7 @@ return {
     }
   };
 
+  UtilExt.prototype = Proto;
+
+  return new UtilExt();
 });

@@ -10,6 +10,9 @@ define([
   'demo/exam-form/edit-form-exam/add-row/main',
   'demo/exam-form/edit-form-exam/edit-row/main',
   'demo/exam-form/edit-form-exam/query-form/main',
+  'demo/exam-form/el-form-exam/index',
+  'demo/exam-form/form-table-exam/index',
+  'demo/exam-form/waterfall-view/index'
 ], function(
   Vue, 
   ELEMENT, 
@@ -20,7 +23,10 @@ define([
   EditFormExam,
   AddRow,
   EditRow,
-  QueryForm
+  QueryForm,
+  ElFormExam,
+  FormTableExam,
+  WaterfallView
 ) {
   'use strict';
 
@@ -69,24 +75,24 @@ var router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect:'/case-tracking'
+      redirect:'/el-form'
     },
-    // {
-    //   path: '/el-form',
-    //   name: 'common-pay',
-    //   component: ElFormExam,
-    //   children: []
-    // },
-    // {
-    //   path: '/form-table',
-    //   component: FormTableExam,
-    //   children: []
-    // },
-    // {
-    //   path: '/water-fall',
-    //   component: WaterfallView,
-    //   children: []
-    // },
+    {
+      path: '/el-form',
+      name: 'el-form',
+      component: ElFormExam,
+      children: []
+    },
+    {
+      path: '/form-table',
+      component: FormTableExam,
+      children: []
+    },
+    {
+      path: '/water-fall',
+      component: WaterfallView,
+      children: []
+    },
     {
       path: '/case-tracking',
       name: 'case-tracking',
