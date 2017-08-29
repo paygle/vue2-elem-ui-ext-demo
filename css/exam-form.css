@@ -17,3 +17,11 @@
   margin: 10px;
   border: 1px dashed #ccc;
 }
+.season-box{
+  width: 780px;
+  margin: 0 auto;
+}
+
+.season-box .confirm-btn{
+  float: right;
+}

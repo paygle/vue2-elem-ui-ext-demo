@@ -19,7 +19,7 @@ window.COMPONENTS_CONFIG = {
 			"subMenu" : [
 				{
 					"label" : "字体图标",
-					"url": "../public/index.html",
+					"url": "~/public/index.html",
 					"icon" : "el-icon-camera",  
 					"subMenu" : []
 				}
