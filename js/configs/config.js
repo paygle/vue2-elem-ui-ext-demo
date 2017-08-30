@@ -22,6 +22,12 @@ window.COMPONENTS_CONFIG = {
 					"url": "~/public/index.html",
 					"icon" : "el-icon-camera",  
 					"subMenu" : []
+				},
+				{
+					"label" : "拖拽",
+					"url": "dragger.html",
+					"icon" : "el-icon-move",  
+					"subMenu" : []
 				}
 			]
 		},
