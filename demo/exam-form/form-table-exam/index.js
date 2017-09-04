@@ -14,7 +14,7 @@ define([
 return Vue.component('FormTableExam', {
   template: tpl,
   data: function() {
-    const validInput = function(rule, value, callback){
+    var validInput = function(rule, value, callback){
  
       if (value === '') {
         callback(new Error('请输入用户名'));
@@ -23,12 +23,12 @@ return Vue.component('FormTableExam', {
       }
     };
     // 比率验证
-    const vadlidateRate = function(rule, value, callback, source, options){
+    var vadlidateRate = function(rule, value, callback, source, options){
       console.log("vadlidateRate value: ", value)
     }
 
     // 数值验证
-    const vadlidateNumber = function(rule, value, callback, source, options){
+    var vadlidateNumber = function(rule, value, callback, source, options){
       console.log("vadlidateNumber value: ", value)
     }
 
@@ -174,7 +174,7 @@ return Vue.component('FormTableExam', {
     }
   },
   watch:{
-    "ruleForm.radioGVal"(n, o){
+    "ruleForm.radioGVal":function(n, o){
       if(n == 43){
         this.rules = this.rules1;
       }else{
@@ -182,7 +182,7 @@ return Vue.component('FormTableExam', {
       }
     }
   },
-  created(){
+  created:function(){
     this.rules = this.rules1;
   },
   methods: {
@@ -205,7 +205,7 @@ return Vue.component('FormTableExam', {
       console.log('nodeClick:', index)
     },
     labelBtnformatter: function(row, column){   // 手动翻译
-      let v = row[column['property']]
+      var v = row[column['property']]
       if( v == 1) {
         return '正确的手动翻译点击标签'
       }
@@ -245,9 +245,9 @@ return Vue.component('FormTableExam', {
       this.popEdit = true
     },
     deleteRow: function(row){
-      let x = JsonToObject(row) // 删除数据中必需转换为纯对象类型，再保存到新的对象
+      var x = JsonToObject(row) // 删除数据中必需转换为纯对象类型，再保存到新的对象
       if(TypeOf(x) === 'Array'){
-        for(let i=0; i<x.length; i++){
+        for(var i=0; i<x.length; i++){
           this.removeRows.push(x[i])     //已经删除的行
         }
       }

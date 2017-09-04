@@ -19,7 +19,7 @@ return Vue.component('Panel', {
       }
     }
   },
-  data(){
+  data:function(){
     return {
       validInput1: '',
       validInput2: '',
@@ -69,24 +69,24 @@ return Vue.component('Panel', {
     }
   },
   methods:{
-    validateTest(valid){
+    validateTest:function(valid){
       console.log('validateTest', valid.state, valid.msg, valid.prop)
     },
-    submitValidItems(e){
+    submitValidItems:function(e){
       this.broadcast('ValidItem', 'valid.item.change')
     },
-    resetValidItems(e){
+    resetValidItems:function(e){
       this.broadcast('ValidItem', 'valid.item.reset')
     },
-    routeParams(route){ // 获取路由参数
-      let params = route.params
+    routeParams:function(route){ // 获取路由参数
+      var params = route.params
       this.localTableData = params.tableData ? params.tableData : [];
     },
-    handleSelectionChange(val) {
+    handleSelectionChange:function(val) {
       this.multipleSelection = val;
     }
   },
-  mounted(){ 
+  mounted:function(){ 
     if(this.args) this.localTableData = this.args
   }
 });

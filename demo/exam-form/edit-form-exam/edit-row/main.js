@@ -74,9 +74,9 @@ define([
   
     methods: {
       submit: function(){
-        let tableData = this.$store.state.editForm.tableData
-        let currentRow = this.$store.state.editForm.currentRow
-        let index = tableData.indexOf(currentRow)
+        var tableData = this.$store.state.editForm.tableData
+        var currentRow = this.$store.state.editForm.currentRow
+        var index = tableData.indexOf(currentRow)
         tableData.splice(index, 1, ToPlainObject(this.ruleForm))
         this.$router.push('/query-form')
       },

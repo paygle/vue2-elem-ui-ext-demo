@@ -65,7 +65,7 @@ define([
 				falseLabel: "空空的"
 			},
 			pickerOptions0: {
-				disabledDate(time) {
+				disabledDate: function(time) {
 					return time.getTime() < Date.now() - 8.64e7;
 				}
 			},
@@ -150,7 +150,7 @@ define([
 			findText: 'Hei Hei !',
 			activeName: 'pan31',
 			tabsComponents:{
-				Panel                     // 引入 mesh-tabs 需要使用的组件
+				Panel: Panel                     // 引入 mesh-tabs 需要使用的组件
 			},
 			meshTabsData:[             // mesh-tabs 初始化数据
 				{
@@ -320,21 +320,21 @@ define([
       }
     },
     watch: {
-      value1(newval) {
+      value1: function(newval) {
         console.log('Date Type: ', typeof newval);
       },
-      range_time(n) {
+      range_time: function(n) {
         console.log('Range Time', n)
       }
     },
     methods: {
-      setGuider(store){
+      setGuider: function(store){
         this.sideGuideStore = store
       },
-      selectChange(){
+      selectChange: function(){
         console.log('selectChange')
       },
-      AddFormData(){
+      AddFormData: function(){
         this.tableData.push({
           date: '2016-05-03',
           name: '王虎',
@@ -346,12 +346,12 @@ define([
         })
       },
       // 侧菜初始化数据对象
-      siderStore(store){
+      siderStore: function(store){
         console.log('siderStore:', store)
       },
       // 侧菜单点击回调函数
-      actionSiderVeh(store){
-         const newVeh = {
+      actionSiderVeh: function(store){
+         var newVeh = {
                 anchor: 'vehicle',
                 text: '粤B123545',
                 icon: 'el-icon-car-back'
@@ -360,8 +360,8 @@ define([
         store.commit('addCell', 0, newVeh) // 在第一类中增加1个
       },
       // 新增
-      actionSiderMan(store){
-        const newMan = {
+      actionSiderMan: function(store){
+        var newMan = {
                 anchor: 'human',
                 text: '张三',
                 icon: 'el-icon-somebody'
@@ -370,8 +370,8 @@ define([
         store.commit('addCell', 1, newMan);  // 在第二类中增加1个
       },
       // 编辑
-      editSiderMan(store){
-        const newMan = {
+      editSiderMan: function(store){
+        var newMan = {
                 anchor: 'human',
                 text: '张三丰',
                 icon: 'el-icon-somebody'
@@ -380,21 +380,21 @@ define([
         store.commit('editCell', 1,0, newMan); // 编辑第二类第1个
       },
       // 删除
-      deleteSiderMan(store){
+      deleteSiderMan: function(store){
         store.commit('deleteCell', 1, 0);   // 删除第二类第1个
       },
-      titleClick(){
+      titleClick: function(){
         this.changeTitle = '效率 Efficiency 语言表达清晰且表意明确'
       },
-      chgAddress(e){
-        let n = parseInt(Math.random()*4);
-        let ch = ['12-1201-120101','35-3501-350101','52-5202-520201','44-4402-440201'];
+      chgAddress: function(e){
+        var n = parseInt(Math.random()*4);
+        var ch = ['12-1201-120101','35-3501-350101','52-5202-520201','44-4402-440201'];
         this.address= ch[n];
       },
-      handleNodeClick(node) {
+      handleNodeClick: function(node) {
         console.log('Architecture点击：', node);
       },
-      addNewTabs(){
+      addNewTabs: function(){
         this.meshTabsData.push(
            {
             label:'第3个',
@@ -442,64 +442,65 @@ define([
         })
          
       },
-      tabClick(tab, event){
+      tabClick: function(tab, event){
         console.log('tabClick', tab, event)
       },
-      closeCall(delTarget, targetName, filterData){// 注意下面两条语句的顺序不能颠倒
+      closeCall: function(delTarget, targetName, filterData){// 注意下面两条语句的顺序不能颠倒
         delTarget(targetName);                     // 顺序1. 必须删除对应的tab
         this.meshTabsData = filterData             // 顺序2. tabs 删除功能必须配置这条语句
         console.log('tabRemoveCall', filterData, targetName);
       },
-      tabRemove(filterData, name){
+      tabRemove: function(filterData, name){
         this.meshTabsData = filterData              // tabs 删除功能必须配置这条语句
         this.activeName = "pan1"
         console.log('tabRemove', filterData, name)
       },
-      btnClick(e){
+      btnClick: function(e){
         console.log('Capsule Button click!')
       },
-      handleClick22(tab, event) {
+      handleClick22: function(tab, event) {
         console.log(tab, event);
       },
-      checkedSelection(states, row, column, val) {
+      checkedSelection: function(states, row, column, val) {
         console.log('checkedSelection:', states, row, column, val);
         return true; // 返回true则表明选择本行
       },
       // 在 checkbox 类型中点击头部 checkbox时的回调函数
-      checkboxAllToggle(tableData, fieldName){
+      checkboxAllToggle: function(tableData, fieldName){
         console.log('checkboxAllToggle:', tableData, fieldName);
       },
-      openFullScreen() {
+      openFullScreen: function() {
+				var self = this;
         this.fullscreenLoading = true;
-        setTimeout(() => {
-          this.fullscreenLoading = false;
+        setTimeout(function(){
+          self.fullscreenLoading = false;
         }, 3000);
       },
-      handleSelectionChange(val) {
+      handleSelectionChange: function(val) {
         this.multipleSelection = val;
         console.log("selectionChange:", arguments)
       },
-      inputEditable(row, index) { //设置单元格是否禁用
-        let Editable = false;
+      inputEditable: function(row, index) { //设置单元格是否禁用
+        var Editable = false;
         if (row['date'] == '2016-05-03') {
           Editable = true;
         }
         return Editable;
       },
-      selectEditable(row, index) { //设置单元格是否禁用
-        let Editable = false;
+      selectEditable: function(row, index) { //设置单元格是否禁用
+        var Editable = false;
         if (row['choose'] == '1') {
           Editable = true;
         }
         return Editable;
       },
-      handleRemove(tab) {
+      handleRemove: function(tab) {
         console.log(tab);
       },
-      addressChanged(cn){
+      addressChanged: function(cn){
         console.log('地址改变，返回文字：', cn)
 			},
-			guiderInit() {
+			guiderInit: function() {
 				this.sideGuideData = {
 					//  width: '110px',           // 菜单宽度
 					//  align: 'let',            // 文字对齐   left | center | right
@@ -569,10 +570,10 @@ define([
 					]};
 			}
 		},
-		created(){
+		created: function(){
 			this.guiderInit();
 		},
-    mounted(){
+    mounted: function(){
       this.$nextTick(function(){
         window.homeFormTable = this.$refs.homeFormTable
       })

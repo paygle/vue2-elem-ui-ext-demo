@@ -121,7 +121,8 @@ require.config({
 		"util" : JSPATH + "/utils/util",
 		"funcs" : JSPATH + "/utils/funcs",
 		"utilExt" : JSPATH + "/utils/util-ext",
-		"cacheUtil" : JSPATH + "/utils/cache-util",
+		"storageCache":  JSPATH + "/utils/web-storage-cache",
+		"cacheUtil" : JSPATH + "/utils/cache-util"
 	}
 });
 

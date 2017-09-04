@@ -1,5 +1,7 @@
 /** cache-uitl lib utils*/
-define(function(require, exports, module){
+define([
+  'storageCache'
+],function(WebStorageCache){
 
 /**
  *  H5本地存储工具类 localStorage/sessionStorage
@@ -7,7 +9,7 @@ define(function(require, exports, module){
  *  也可用于其他数据的存储
  *  Created by wangjingl@sunline.cn on 2016/12/23.
  */
-var WebStorageCache = require('utils/web-storage-cache'),
+var exports = {},
     localCache = new WebStorageCache({ storage: 'localStorage' }),
     sessionCache  = new WebStorageCache({ storage: 'sessionStorage' });
 
@@ -140,5 +142,7 @@ exports.setSessionOper = function(oper) {
   sessionCache.set('oper', oper);
   return sessionCache;
 };
+
+  return exports;
 
 }); // End cache-util

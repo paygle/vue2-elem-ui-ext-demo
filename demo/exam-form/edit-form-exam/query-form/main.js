@@ -102,7 +102,7 @@ return Vue.component('QueryForm', {
     }, 
     methods: {
       submitForm: function(formName) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs[formName].validate(function(valid){
           if (valid) {
             alert('submit!');
           } else {
@@ -121,9 +121,9 @@ return Vue.component('QueryForm', {
       },
       deleteRow: function(row){ 
         
-        let x = ToPlainObject(row)     // 删除数据中必需转换为纯对象类型，再保存到新的对象
+        var x = ToPlainObject(row)     // 删除数据中必需转换为纯对象类型，再保存到新的对象
         if(TypeOf(x) === 'Array'){
-          for(let i=0; i<x.length; i++){
+          for(var i=0; i<x.length; i++){
             this.removeRows.push(x[i])     //已经删除的行
           }
         }

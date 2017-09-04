@@ -14,7 +14,7 @@ return Vue.component('CaseTracking', {
       // 结点状态:  已处理 complete  处理中 processing  未接收 unreceived  已终止 terminated  未触发 untriggered
       return{
         templComponents:{
-          Templ
+          Templ:Templ
         },
         mapData: [
           {
@@ -320,7 +320,7 @@ return Vue.component('CaseTracking', {
       // 返回组件数据
       getComponetData: function(args){
         console.log('getComponetData', args)
-        let yy = [{cop:'AA', dat: 'BB'}, {cop:'xx', dat: 'yy'}]
+        var yy = [{cop:'AA', dat: 'BB'}, {cop:'xx', dat: 'yy'}]
         if(Math.random()> 0.5){
           return yy[0]
         }

@@ -244,9 +244,8 @@ return Vue.component('ElFormExam', {
       this.dialogVisible = false                               // 关闭弹出窗口
     },
     EditRow: function(scope){
-      let { $index, row, store, expand } = scope;
-      this.currentRowData = row;
-      store.commit('toggleRowExpanded', row);
+      this.currentRowData = scope.row;
+      store.commit('toggleRowExpanded', scope.row);
       
     },
     DeleteRow: function(index, row){
@@ -258,7 +257,7 @@ return Vue.component('ElFormExam', {
    * 本函数主要是重新做整个组件数据的初始化
    */
   activated: function(){
-    let that=this, tableData = [
+    var that=this, tableData = [
         {
           date1: '2016-05-03',
           name: '王虎',
@@ -305,7 +304,7 @@ return Vue.component('ElFormExam', {
   },
  
   mounted: function() {
-    // let ta = this
+    // var ta = this
     // setInterval(function(){
     //   ta.validInput1= Math.random()
     // }, 1000)

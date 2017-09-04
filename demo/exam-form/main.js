@@ -39,7 +39,7 @@ console.log('Exam-Form load!  使用 debugger 断点容易导致加载错误或�
 /********  数据管理  ********/
 var store = new Vuex.Store({
     modules: {
-      dictStore,
+      dictStore: dictStore,
       editForm:{
         state:{
           tableData: [                    // store 数据共享

@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-  cfg = require('./config.js'),
   del = require('del'),
   pump = require('pump'),
   path = require('path'),
@@ -8,9 +7,26 @@ var gulp = require('gulp'),
   imagemin = require('gulp-imagemin'),
   autoprefixer = require('gulp-autoprefixer'),
   notify =  require('gulp-notify');
- 
-  // console.log('\x1B[36m%s\x1B[0m', 'color font')
 
+// 任务名称
+var tasks = 
+[
+  'js-jsc',
+  'public-jsc',
+  'demo-jsc',
+  'js-cssc',
+  'css-cssc',
+  'js-imgc',  
+  'img-imgc',
+  'js-copy',  
+  'index-copy',  
+  'data-copy',  
+  'public-copy',  
+  'demo-copy'
+],
+
+colorerr = '\x1B[31m%s\x1B[39m';
+ 
 function getPath(ph){
   return path.resolve(__dirname, ph);
 }
@@ -21,68 +37,115 @@ function msglog(prew, file){
   );
 }
 
-gulp.task('del', function (cb) {
-  del.sync([getPath('../dist/**'), '!'+getPath('../dist')]).then(paths => {
-    console.log('\x1B[33m%s\x1B[39m','Deleted files and folders:\n' + paths.join('\n'));
-    cb();
-  });
+// JS 压缩
+gulp.task('js-jsc', function (cb) {
+  return gulp.src('../js/**/*.js')
+    .pipe(uglify().on('error', function(err){
+      console.log(colorerr, 'Compress Error! ' + err.message);
+      this.end();
+      }))
+    .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
+    .pipe(gulp.dest('../dist/js'));
+});
+gulp.task('public-jsc', function (cb) {
+  return gulp.src('../public/**/*.js')
+    .pipe(uglify().on('error', function(err){
+      console.log(colorerr, 'Compress Error! ' + err.message);
+      this.end();
+    }))
+    .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
+    .pipe(gulp.dest('../dist/public'));
 });
 
-gulp.task('js-compress', ['del'], function (cb) {
+gulp.task('demo-jsc', function (cb) {
+  return gulp.src('../demo/**/*.js')
+    .pipe(uglify().on('error', function(err){
+      console.log(colorerr, 'Compress Error! ' + err.message);
+      this.end();
+    }))
+    .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
+    .pipe(gulp.dest('../dist/demo'));
+});
  
-  pump([
-      gulp.src('../js/**/*.js'),
-      uglify(),
-      notify(function(file){ msglog('JSCompress: ', file); }),
-      gulp.dest('../dist/js')
-    ],
-    cb
-  );
+
+// css 压缩
+gulp.task('js-cssc', function (cb) {
+  return gulp.src('../js/**/*.css')
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions'],
+      cascade: false
+    }))
+    .pipe(cleanCss({compatibility:'ie9'}))
+    .pipe(notify(function(file){ msglog('Compress-CSS: ', file); }))
+    .pipe(gulp.dest('../dist/js'));
 });
 
-gulp.task('css-compress', ['del'],  function (cb) {
-  
-   pump([
-      gulp.src('../js/**/*.css'),
-      autoprefixer({
-        browsers: ['last 3 versions'],
-        cascade: false
-      }),
-      cleanCss({compatibility:'ie9'}),
-      notify(function(file){ msglog('CSSCompress: ', file); }),
-      gulp.dest('../dist/js')
-     ],
-     cb
-   );
- });
+gulp.task('css-cssc', function (cb) {
+  return gulp.src('../css/**/*.css')
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions'],
+      cascade: false
+    }))
+    .pipe(cleanCss({compatibility:'ie9'}))
+    .pipe(notify(function(file){ msglog('Compress-CSS: ', file); }))
+    .pipe(gulp.dest('../dist/css'));
+});
  
- gulp.task('img-compress', ['del'],  function (cb) {
-  
-   pump([
-      gulp.src(['../js/**/*.gif', '../js/**/*.png', '../js/**/*.jpg', '../js/**/*.svg']),
-      imagemin([
-        imagemin.gifsicle({interlaced: true}),
-        imagemin.jpegtran({progressive: true}),
-        imagemin.optipng({optimizationLevel: 7}),
-        imagemin.svgo({plugins: [{removeViewBox: true}]})
-      ]),
-      notify(function(file){ msglog('IMGCompress: ', file); }),
-      gulp.dest('../dist/js')
-     ],
-     cb
-   );
- });
 
- gulp.task('copy', ['del'], function (cb) {
-  
-   pump([
-       gulp.src(['../js/**/*.tpl', '../js/**/*.ttf', '../js/**/*.woff', '../js/**/*.json']),
-       notify(function(file){ msglog('Copy: ', file); }),
-       gulp.dest('../dist/js')
-     ],
-     cb
-   );
- });
+// img 压缩
+gulp.task('js-imgc', function (cb) {
+  return gulp.src(['../js/**/*.gif', '../js/**/*.png', '../js/**/*.jpg'])
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 7})
+    ]))
+    .pipe(notify(function(file){ msglog('Compress-IMG: ', file); }))
+    .pipe(gulp.dest('../dist/js'))
+});
+gulp.task('img-imgc', function (cb) {
+  return gulp.src(['../img/**/*.gif', '../img/**/*.png', '../img/**/*.jpg'])
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 7})
+    ]))
+    .pipe(notify(function(file){ msglog('Compress-IMG: ', file); }))
+    .pipe(gulp.dest('../dist/img'))
+});
 
-//  gulp.task('default',['img-compress']);
-gulp.task('default',['del', 'js-compress', 'css-compress', 'img-compress', 'copy']);
+ 
+// 复制文件到dist文件夹
+gulp.task('js-copy', function (cb) {
+  return gulp.src([ 
+      '../js/**/*.tpl', '../js/**/*.ttf', '../js/**/*.woff', '../js/**/*.json', '../js/**/*.svg'
+    ])
+    .pipe(notify(function(file){ msglog('Copied-File: ', file); }))
+    .pipe(gulp.dest('../dist/js'))
+});
+// index 入口文件
+gulp.task('index-copy', function (cb) {
+  return gulp.src([ '../index.html', '../main.js' ])
+    .pipe(notify(function(file){ msglog('Copied-File: ', file); }))
+    .pipe(gulp.dest('../dist'))
+});
+// data 目录
+gulp.task('data-copy', function (cb) {
+  return gulp.src([ '../data/**/*.json' ])
+    .pipe(notify(function(file){ msglog('Copied-File: ', file); }))
+    .pipe(gulp.dest('../dist/data'))
+});
+// public 目录
+gulp.task('public-copy', function (cb) {
+  return gulp.src([ '../public/**/*.html',  '../public/**/*.tpl' ])
+    .pipe(notify(function(file){ msglog('Copied-File: ', file); }))
+    .pipe(gulp.dest('../dist/public'))
+});
+// demo 目录
+gulp.task('demo-copy', function (cb) {
+  return gulp.src([  '../demo/**/*.tpl','../demo/**/*.html' ,'../demo/**/*.json' ])
+    .pipe(notify(function(file){ msglog('Copied-File: ', file); }))
+    .pipe(gulp.dest('../dist/demo'))
+});
+ 
+gulp.task('default', tasks);
