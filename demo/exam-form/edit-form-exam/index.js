@@ -8,7 +8,7 @@ define([
 
   return Vue.component('EditFormExam', {
     template: tpl,
-    data(){
+    data: function(){
       return{
 
       }

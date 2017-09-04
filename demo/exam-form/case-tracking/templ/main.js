@@ -13,26 +13,26 @@ return Vue.component('Templ', {
   props: {
     tmplData: [Object, Array]    // 查询返回数据
   },
-  data(){
+  data: function(){
     return {
     
     }
   },
   computed:{
-    data1(){
+    data1: function(){
       if(this.tmplData){
         return this.tmplData.cop
       }
       return ""
     },
-    data2(){
+    data2: function(){
       if(this.tmplData){
         return this.tmplData.dat
       }
       return ""
     }
   },
-  mounted(){
+  mounted: function(){
     console.log("Templ Data", this.tmplData)
   },
   methods: {

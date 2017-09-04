@@ -1,0 +1,37 @@
+{
+  "name": "vue2-elem-ui-ext-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/server.js",
+  "scripts": {
+    "serve": "node build/server.js",
+    "test": "node build/server.js --test",
+    "build": "node build/build-all.js"
+  },
+  "author": "paygle",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "event-stream": "^3.3.4",
+    "express": "^4.15.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-clone": "^1.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.0.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "minimist": "^1.2.0",
+    "opn": "^5.1.0",
+    "pump": "^1.0.2",
+    "shelljs": "^0.7.8"
+  }
+}

@@ -27,7 +27,8 @@ define([
   return {
     bind: function(el, binding, vnode) {
       var id = nodeList.push(el) - 1;
-      var documentHandler = function(mouseup = {}, mousedown = {}) {
+      var documentHandler = function(mouseup, mousedown) {
+        var mouseup = mouseup|| {}, mousedown = mousedown || {};
         if (!vnode.context ||
           !mouseup.target ||
           !mousedown.target ||
@@ -47,8 +48,8 @@ define([
         }
       };
       el[ctx] = {
-        id,
-        documentHandler,
+        id: id,
+        documentHandler: documentHandler,
         methodName: binding.expression,
         bindingFn: binding.value
       };

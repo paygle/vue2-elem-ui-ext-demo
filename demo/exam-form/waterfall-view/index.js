@@ -10,7 +10,7 @@ return Vue.component("WaterfallView", {
 
   template: tpl,
  
-  data(){
+  data: function(){
 
     return {
       fieldsName: {
@@ -21,10 +21,10 @@ return Vue.component("WaterfallView", {
   },
 
   methods: {
-    CellClick(val){
+    CellClick: function(val){
       console.log('cell-click:', val)
     },
-    urltmplFun(code, pcode){
+    urltmplFun: function(code, pcode){
       return "javascript:void(0);"
     }
   }

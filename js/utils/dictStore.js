@@ -26,10 +26,10 @@ define([
      * 从后台加载数据字典
      */
     loadDict: function(commit, state, payload) {
-      let dictId = payload.dictId;
-      let dictParams = payload.dictParams;
-      let cacheable = payload.cacheable === undefined ? true : payload.cacheable;
-      let dictData = cacheUtil.getDict(dictId, dictParams);
+      var dictId = payload.dictId;
+      var dictParams = payload.dictParams;
+      var cacheable = payload.cacheable === undefined ? true : payload.cacheable;
+      var dictData = cacheUtil.getDict(dictId, dictParams);
       if (dictData && dictData.length > 0 && cacheable) { //字典已存在cache中，且允许缓存
         payload['dictData'] = dictData;
         commit('updateDict', payload); //commit提交数据
@@ -58,7 +58,7 @@ define([
               cacheable && cacheUtil.setDict(dictId, dictParams, data.sysCodelist[dictId]);
               commit('updateDict', payload); //commit提交数据
             } else { //机构等大数据量翻译 提交到localstorage缓存
-              let tmp = [];
+              var tmp = [];
               payload['dictData'].forEach(function (item) {
                 cacheUtil.setDictText(dictId, item.c_code, item.c_cname);
                 tmp.push(item.c_code);

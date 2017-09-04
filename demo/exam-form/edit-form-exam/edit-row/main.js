@@ -10,7 +10,7 @@ define([
  
   return Vue.component('EditRow', {
     template: tpl,
-    data(){
+    data: function(){
       return{
         ruleForm:{
           date: '',
@@ -73,18 +73,18 @@ define([
     },
   
     methods: {
-      submit(){
+      submit: function(){
         let tableData = this.$store.state.editForm.tableData
         let currentRow = this.$store.state.editForm.currentRow
         let index = tableData.indexOf(currentRow)
         tableData.splice(index, 1, ToPlainObject(this.ruleForm))
         this.$router.push('/query-form')
       },
-      resetForm(){
+      resetForm: function(){
         this.$refs['ruleForm'].resetFields();  // 初始化清空
       }
     },
-    mounted(){
+    mounted: function(){
       this.ruleForm = this.$store.state.editForm.currentRow  // 初始化需要修改的内容
     }
   });

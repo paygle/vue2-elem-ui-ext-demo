@@ -12,7 +12,7 @@ define([
 
 return Vue.component('QueryForm', {
     template: tpl,
-    data(){
+    data: function(){
       return{
         switchAttrs:{
           onValue: 1,
@@ -93,15 +93,15 @@ return Vue.component('QueryForm', {
       }
     },
     watch:{
-      '$store.state.editForm.tableData'(val){  // 监控更新最新数据
+      '$store.state.editForm.tableData': function(val){  // 监控更新最新数据
         this.tableData = val
       }
     },
-    mounted(){
+    mounted: function(){
       this.tableData = this.$store.state.editForm.tableData
     }, 
     methods: {
-      submitForm(formName) {
+      submitForm: function(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -111,15 +111,15 @@ return Vue.component('QueryForm', {
           }
         });
       },
-      resetForm(formName) {
+      resetForm: function(formName) {
         this.$refs[formName].resetFields();
       },
       
-      editRow(row){  
+      editRow: function(row){  
         this.$store.state.editForm.currentRow = row
         this.$router.push('/edit-row')
       },
-      deleteRow(row){ 
+      deleteRow: function(row){ 
         
         let x = ToPlainObject(row)     // 删除数据中必需转换为纯对象类型，再保存到新的对象
         if(TypeOf(x) === 'Array'){
@@ -131,14 +131,14 @@ return Vue.component('QueryForm', {
         console.log('Delete Row: ', x)
       },
 
-      addNewRow(){ // 转入到新增行数据界面
+      addNewRow: function(){ // 转入到新增行数据界面
         this.$router.push('/add-row')
       },
 
-      hiddenBtn(data, row, rowIndex){  // 隐藏功能区按钮
+      hiddenBtn: function(data, row, rowIndex){  // 隐藏功能区按钮
         return false
       },
-      hiddenTopBtn(data, row, rowIndex){  // 隐藏功能区头部按钮
+      hiddenTopBtn: function(data, row, rowIndex){  // 隐藏功能区头部按钮
         if(row){
           return true
         } 

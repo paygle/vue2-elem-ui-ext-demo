@@ -3,7 +3,7 @@ define(function(require, exports, module) {
   'use strict';
 
   function broadcast(componentName, eventName, params) {
-    this.$children.forEach(child => {
+    this.$children.forEach(function(child) {
       var name = child.$options.componentName;
   
       if (name === componentName) {
@@ -16,7 +16,7 @@ define(function(require, exports, module) {
   
   module.exports = {
     methods: {
-        dispatch(componentName, eventName, params) {
+        dispatch: function(componentName, eventName, params) {
           var parent = this.$parent || this.$root;
           var name = parent.$options.componentName;
 
@@ -31,7 +31,7 @@ define(function(require, exports, module) {
             parent.$emit.apply(parent, [eventName].concat(params));
           }
         },
-        broadcast(componentName, eventName, params) {
+        broadcast: function(componentName, eventName, params) {
           broadcast.call(this, componentName, eventName, params);
         }
     }

@@ -17,7 +17,7 @@ define([
 return Vue.component('ElFormExam', {
   template: tpl,
   mixins: [emitter, filters],
-  data () {
+  data: function() {
     return { 
       currentPage: 1,
       pageSize: 5,
@@ -167,34 +167,34 @@ return Vue.component('ElFormExam', {
     }
   },
   watch:{
-    seasonResult(n){
+    seasonResult: function(n){
       console.log('Season Watch:', n)
     }
   },
   methods: {
-    dropCommand(v){
+    dropCommand: function(v){
       console.log('dropCommand', v)
     },
     // 季节类型同步
-    typeChange(val){
+    typeChange: function(val){
       this.reasonChose = parseInt(val)
       console.log('reasonChose Result:', this.reasonChose)
     },
     // 验证回调
-    validateSeason(isValid){
+    validateSeason: function(isValid){
       console.log('validateSeason:', isValid)
     },
     // 发送验证
-    submitSeason(){
+    submitSeason: function(){
       this.$refs.seasonRef.validateSelected()
       console.log('Season submit Valid:', this.seasonResult)
     },
     // 重置选择结果
-    resetSeason(){
+    resetSeason: function(){
       this.$refs.seasonRef.resetSelected()
     },
     
-    filterMethod(v){
+    filterMethod: function(v){
       // 改变自己的数据内容
       this.optionsData = [
         {label: '选1', value: '1624'},
@@ -202,27 +202,27 @@ return Vue.component('ElFormExam', {
         {label: '选3', value: '45673'},
       ]
     },
-    anyChange(val){
+    anyChange: function(val){
       console.log('anyChange:', val)
     },
-    validateTest(valid){
+    validateTest: function(valid){
       console.log('validateTest', valid.state, valid.msg, valid.prop)
     },
-    submitValidItems(e){
+    submitValidItems: function(e){
       this.broadcast('ValidItem', 'valid.item.change')
     },
-    resetValidItems(e){
+    resetValidItems: function(e){
       this.ruleForm.date = '2018-5-1'
       this.broadcast('ValidItem', 'valid.item.reset')
       Message({ message: '当前步骤回调, 改变自己的数据内容,<br>加湿器肖霄爱不释手汪珠后年的', type:'warning'});
     },
-    currentStep(step){              // 当前步骤回调
+    currentStep: function(step){              // 当前步骤回调
       console.log('Step:', step)
     },
-    next() {
+    next: function() {
       if (this.active++ > 2) this.active = 0;
     },
-    submitForm(formName) {
+    submitForm: function(formName) {
       this.$refs[formName].validate(function(valid){
         if (valid) {
           alert('submit!');
@@ -232,24 +232,24 @@ return Vue.component('ElFormExam', {
         }
       });
     },
-    resetForm(formName) {
+    resetForm: function(formName) {
       this.$refs[formName].resetFields();
     },
-    addNewRow(){
+    addNewRow: function(){
       this.dialogVisible = true
     },
-    addNewFormData(){
+    addNewFormData: function(){
       this.tableData.push(ToPlainObject(this.currentRowData))  // 新增一行
       this.$refs.addNewRowForm.resetFields()                   // 重置表单
       this.dialogVisible = false                               // 关闭弹出窗口
     },
-    EditRow(scope){
+    EditRow: function(scope){
       let { $index, row, store, expand } = scope;
       this.currentRowData = row;
       store.commit('toggleRowExpanded', row);
       
     },
-    DeleteRow(index, row){
+    DeleteRow: function(index, row){
       this.tableData.splice(index, 1);
     }
   },
@@ -257,7 +257,7 @@ return Vue.component('ElFormExam', {
    * 在路由中使用 keep-alive 组件激活时调用 
    * 本函数主要是重新做整个组件数据的初始化
    */
-  activated(){
+  activated: function(){
     let that=this, tableData = [
         {
           date1: '2016-05-03',
@@ -299,12 +299,12 @@ return Vue.component('ElFormExam', {
   /**
    * 在路由中使用 keep-alive 组件停用时调用
    */ 
-  deactivated() {
+  deactivated: function() {
      this.tableData = []
      console.log('table deactivated')
   },
  
-  mounted() {
+  mounted: function() {
     // let ta = this
     // setInterval(function(){
     //   ta.validInput1= Math.random()

@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     },
     
     extend: function(to, _from) {
-      for (let key in _from) {
+      for (var key in _from) {
         to[key] = _from[key];
       }
       return to;
@@ -18,7 +18,7 @@ define(function(require, exports, module) {
     
     toObject: function(arr) {
       var res = {};
-      for (let i = 0; i < arr.length; i++) {
+      for (var i = 0; i < arr.length; i++) {
         if (arr[i]) {
           extend(res, arr[i]);
         }
@@ -29,9 +29,9 @@ define(function(require, exports, module) {
     getValueByPath: function(object, prop) {
       prop = prop || '';
       var paths = prop.split('.');
-      let current = object;
-      let result = null;
-      for (let i = 0, j = paths.length; i < j; i++) {
+      var current = object;
+      var result = null;
+      for (var i = 0, j = paths.length; i < j; i++) {
         var path = paths[i];
         if (!current) break;
     

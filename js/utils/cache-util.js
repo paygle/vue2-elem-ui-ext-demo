@@ -27,7 +27,7 @@ exports.localCache = localCache;
  * 拼装数据字典缓存的key
  */
 function getCacheKey(dictId, dictParams) {
-  let cacheKey = CACHE_PREFIX + dictId;
+  var cacheKey = CACHE_PREFIX + dictId;
   if (dictParams) {
     cacheKey += '_' + JSON.stringify(dictParams);
   }
@@ -38,7 +38,7 @@ function getCacheKey(dictId, dictParams) {
  * 拼装数据字典过滤翻译缓存的key
  */
 function getCacheFilterKey(dictId, code) {
-  let cacheKey = CACHE_FILTER_PREFIX + dictId + '__' + code;
+  var cacheKey = CACHE_FILTER_PREFIX + dictId + '__' + code;
   return cacheKey;
 };
 
@@ -46,7 +46,7 @@ function getCacheFilterKey(dictId, code) {
  * 从sessionStorage中获取下拉框缓存数据
  */
 exports.getDict = function(dictId, dictParams) {
-  let cacheKey = getCacheKey(dictId, dictParams);
+  var cacheKey = getCacheKey(dictId, dictParams);
   return sessionCache.get(cacheKey);
 };
 
@@ -54,7 +54,7 @@ exports.getDict = function(dictId, dictParams) {
  * 将数据字典缓存到sessionStorage
  */
 exports.setDict = function(dictId, dictParams, dictData) {
-  let cacheKey = getCacheKey(dictId, dictParams);
+  var cacheKey = getCacheKey(dictId, dictParams);
   sessionCache.set(cacheKey, dictData);
 };
 
@@ -65,7 +65,7 @@ exports.setDict = function(dictId, dictParams, dictData) {
  * @return 选项中文
  */
 exports.getDictText = function(dictId, c_code) {
-  let cacheKey = getCacheFilterKey(dictId, c_code);
+  var cacheKey = getCacheFilterKey(dictId, c_code);
   return localCache.get(cacheKey);
 };
 
@@ -76,8 +76,9 @@ exports.getDictText = function(dictId, c_code) {
  * @param c_cname 选项中文
  * @param exp 缓存超时时间（秒），默认为12小时
  */
-exports.setDictText = function(dictId, c_code, c_cname, exp = DEFAULT_EXP) {
-  let cacheKey = getCacheFilterKey(dictId, c_code);
+exports.setDictText = function(dictId, c_code, c_cname, exp) {
+  var cacheKey = getCacheFilterKey(dictId, c_code);
+  exp = exp || DEFAULT_EXP;
   localCache.set(cacheKey, c_cname, {
     exp: exp
   });

@@ -10,7 +10,7 @@ define([
 
 return Vue.component('CaseTracking', {
     template: tpl,
-    data(){
+    data: function(){
       // 结点状态:  已处理 complete  处理中 processing  未接收 unreceived  已终止 terminated  未触发 untriggered
       return{
         templComponents:{
@@ -296,21 +296,21 @@ return Vue.component('CaseTracking', {
       }
     },
     methods:{
-      loadingData(){
+      loadingData: function(){
         this.mapData  = this.caseMapData
         //  this.caseMapData = this.mapData
       },
       // 节点点击事件
-      itemClick(data){
+      itemClick: function(data){
         console.log('Item click:', data)
       },
       // 节点图标点击事件
-      iconClick(data){
+      iconClick: function(data){
         console.log('icon click:', data)
       },
 
       // 返回组件名称
-      getComponetName(args){
+      getComponetName: function(args){
         console.log('getComponetName', args)
         if(Math.random()> 0.5){
           return "Templ"
@@ -318,7 +318,7 @@ return Vue.component('CaseTracking', {
         return ""
       },
       // 返回组件数据
-      getComponetData(args){
+      getComponetData: function(args){
         console.log('getComponetData', args)
         let yy = [{cop:'AA', dat: 'BB'}, {cop:'xx', dat: 'yy'}]
         if(Math.random()> 0.5){
@@ -328,7 +328,7 @@ return Vue.component('CaseTracking', {
       }
     },
 
-    mounted(){
+    mounted: function(){
       console.log("重新加载中...");
     }
   });

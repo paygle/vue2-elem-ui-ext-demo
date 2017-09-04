@@ -9,7 +9,7 @@ var TypeOf = funcs.TypeOf, ToPlainObject = funcs.ToPlainObject;
 
 return Vue.component('AddRow', {
     template: tpl,
-    data(){
+    data: function(){
       return{
         ruleForm:{
           date: '',
@@ -71,20 +71,20 @@ return Vue.component('AddRow', {
       }
     },
     computed:{
-      tableData(){
+      tableData: function(){
         return this.$store.state.editForm.tableData
       }
     },
     methods: {
-      submit(){
+      submit: function(){
         this.tableData.push(ToPlainObject(this.ruleForm))
         this.$router.push('/query-form')
       },
-      resetForm(){
+      resetForm: function(){
         this.$refs['ruleForm'].resetFields();  // 初始化清空
       }
     },
-    mounted(){
+    mounted: function(){
       this.$refs['ruleForm'].resetFields();  // 初始化清空
     }
   });

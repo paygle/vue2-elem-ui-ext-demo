@@ -13,7 +13,7 @@ define([
  
 return Vue.component('FormTableExam', {
   template: tpl,
-  data () {
+  data: function() {
     const validInput = function(rule, value, callback){
  
       if (value === '') {
@@ -186,39 +186,39 @@ return Vue.component('FormTableExam', {
     this.rules = this.rules1;
   },
   methods: {
-    tableFormChange(row, property, rowIndex, val, data) {
+    tableFormChange: function(row, property, rowIndex, val, data) {
       console.log('Table Changed', row, property, rowIndex, val, data);
     },
-    tableAddressChange(row, property, rowIndex, val, data){
+    tableAddressChange: function(row, property, rowIndex, val, data){
       console.log('FormTable地址改变：', row, property, rowIndex, val, data);
     },
-    addressChanged(data){
+    addressChanged: function(data){
       console.log('地址改变，返回文字：', data, data.cn, data.param);
     },
-    editableFun(v){
+    editableFun: function(v){
       if(v.choose==5){
         return false
       }
       return true
     },
-    nodeClick(index){
+    nodeClick: function(index){
       console.log('nodeClick:', index)
     },
-    labelBtnformatter(row, column){   // 手动翻译
+    labelBtnformatter: function(row, column){   // 手动翻译
       let v = row[column['property']]
       if( v == 1) {
         return '正确的手动翻译点击标签'
       }
       return '错误的手动翻译'
     },
-    labelBtnClicked(row, property, store){  // 点击标签边上的按钮回调
+    labelBtnClicked: function(row, property, store){  // 点击标签边上的按钮回调
       row[property] = 2
       console.log('labelBtnClicked', row[property], row, property, store)
     },
-    currentStep(step){              // 当前步骤回调
+    currentStep: function(step){              // 当前步骤回调
       console.log('Step:', step)
     },
-    submitForm(formName) {
+    submitForm: function(formName) {
       this.$refs[formName].validate(function(valid){
         if (valid) {
           alert('submit!');
@@ -228,23 +228,23 @@ return Vue.component('FormTableExam', {
         }
       });
     },
-    resetForm(formName) {
+    resetForm: function(formName) {
       this.$refs[formName].resetFields();
     },
-    deletBtn(data, row, rowIndex){
+    deletBtn: function(data, row, rowIndex){
       if(row){
         return true
       }
       window.validatorForm = this.$refs.validaForm
       return true
     },
-    editRow(row){
+    editRow: function(row){
       console.log('Edit Row: ', row)
       this.currentRow = row
       this.editRows.push(row)   //编辑过的行属于原列表引用，不要转换为新对象，如果转换则得不到最新修改的值
       this.popEdit = true
     },
-    deleteRow(row){
+    deleteRow: function(row){
       let x = JsonToObject(row) // 删除数据中必需转换为纯对象类型，再保存到新的对象
       if(TypeOf(x) === 'Array'){
         for(let i=0; i<x.length; i++){
@@ -255,7 +255,7 @@ return Vue.component('FormTableExam', {
       console.log('Delete Row: ', x)
     },
 
-    addRowPre(currbtn){ // 增加一行数据之前处理 参数为当前编辑组件用于提交通知
+    addRowPre: function(currbtn){ // 增加一行数据之前处理 参数为当前编辑组件用于提交通知
       this.currentAddBtn = currbtn
       this.currentRow = this.newRow
       console.log('add Row Pre')
@@ -264,11 +264,11 @@ return Vue.component('FormTableExam', {
         console.log('submit New  Row')
       } 
     },
-    setColOption(row, column, $index){ // 动态选项
+    setColOption: function(row, column, $index){ // 动态选项
       console.log("setColOption:",  row, column, $index)
       return {}
     },
-    addNewRow(){ //返回新增行数据
+    addNewRow: function(){ //返回新增行数据
       console.log('add Row')
       this.newAddRows.push(ToPlainObject(this.currentRow))    //添加的新行必需转换为纯数据对象，再保存
       return this.currentRow;
@@ -280,7 +280,7 @@ return Vue.component('FormTableExam', {
   //   // $(this.$el).remove();
   // },
   
-  mounted(){
+  mounted: function(){
     console.log("重新加载中...");
   }
 });

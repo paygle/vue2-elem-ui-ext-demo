@@ -563,16 +563,20 @@ define([
   funcs.prototype.isAuthorizedUrl = function(url) {
     var reg = new RegExp(url + "$"); //endWith 
     var menusData = window.userMenus || [];
-    for (var menu of menusData) {
-      if (reg.test(menu.url)) {
+    var menuVal, sMenuVal, ssMenuVal;
+    for (var menu in menusData) {
+      menuVal = menusData[menu];
+      if (reg.test(menuVal.url)) {
         return true;
-      } else if (menu.subMenu && menu.subMenu.length > 0) {
-        for (var sMenu of menu.subMenu) {
-          if (reg.test(sMenu.url)) {
+      } else if (menuVal.subMenu && menuVal.subMenu.length > 0) {
+        for (var sMenu in menuVal.subMenu) {
+          sMenuVal = menuVal[sMenu];
+          if (reg.test(sMenuVal.url)) {
             return true;
-          } else if (sMenu.subMenu && sMenu.subMenu.length > 0) {
-            for (var ssMenu of sMenu.subMenu) {
-              if (reg.test(ssMenu.url)) {
+          } else if (sMenuVal.subMenu && sMenuVal.subMenu.length > 0) {
+            for (var ssMenu in sMenuVal.subMenu) {
+              ssMenuVal = sMenuVal[ssMenu];
+              if (reg.test(ssMenuVal.url)) {
                 return true;
               }
             }

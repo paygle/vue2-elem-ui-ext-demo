@@ -12,7 +12,7 @@ var captchaServletUrl = APP_CONFIG.API_URL + 'core/captcha', //验证码地址
 
 Vue.component('login', {
   template: tpl,
-  data() {
+  data: function() {
     return {
       formData: {
         operCode: '',
@@ -64,9 +64,9 @@ Vue.component('login', {
   },
 
   methods: {
-    submitForm() {
-      this.$refs.formData.validate((valid) => {
-        let _this = this;
+    submitForm: function() {
+      this.$refs.formData.validate(function(valid) {
+        var _this = this;
         if (valid) {
           _this.loading = true;
           _this.message='';
@@ -87,7 +87,7 @@ Vue.component('login', {
               if(data.statusCode > 0){
                   _this.message=data.message;
               }else if(data.statusCode === 0){
-                  let oper=data.oper;
+                  var oper=data.oper;
                   cacheUtil.setSessionOper(oper); //放到sessionCache中
                   window.location.href='./';
               }
@@ -102,10 +102,10 @@ Vue.component('login', {
         }
       });
     },
-    resetForm() {
+    resetForm: function() {
       this.$refs.formData.resetFields();
     },
-    refreashCaptcha() {
+    refreashCaptcha: function() {
       this.captchaImgUrl = captchaServletUrl + "?v=" + new Date().getTime();
     }
   }
