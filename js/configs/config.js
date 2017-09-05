@@ -86,6 +86,7 @@ var COMPONENTS = window.APP_CONFIG.APP_PATH + "js/components",
 
 // 第三方库配置
 require.config({
+	// 第三方库依赖关系配置
 	shim: {
 		'ELEMENT':{
 			deps: ['jquery', 'vue', 'snap'],
@@ -95,14 +96,14 @@ require.config({
 		'bootstrap':{ deps: ['jquery'] },
 	},
 	paths : {
-		// 常用路径配置
+		// 常用路径别名配置
 		"js": JSPATH,
 		"utils": JSPATH + "/utils",
 		"mixins": JSPATH + "/mixins",
 		"libs": JSPATH + "/libs",
 		"components": COMPONENTS,
 		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
-		// 常用库配置
+		// 常用库和工具文件配置
 		"text" : JSPATH + "/libs/require-text",
 		"jquery" : JSPATH + "/libs/jquery",
 		"jquery.ztree" : JSPATH + "/libs/jquery.ztree.all",
