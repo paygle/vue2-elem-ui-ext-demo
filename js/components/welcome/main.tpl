@@ -262,5 +262,6 @@
     <li><span class="icon"><i class="el-icon-move"></i> el-icon-move </span></li>
     <li><span class="icon"><i class="el-icon-ntsearch"></i> el-icon-ntsearch </span></li>
     <li><span class="icon"><i class="el-icon-msgbell"></i> el-icon-msgbell </span></li>
+    <li><span class="icon"><i class="el-icon-send-back"></i> el-icon-send-back </span></li>
   </ul>
 </div>

@@ -8,7 +8,7 @@
     "test": "node build/server.js --test",
     "build": "node build/build-all.js"
   },
-  "author": "paygle",
+  "author": "liuxp",
   "license": "ISC",
   "devDependencies": {
     "del": "^3.0.0",
