@@ -82,7 +82,7 @@ window.COMPONENTS_CONFIG = {
 // 常用变量声明
 var COMPONENTS = window.APP_CONFIG.APP_PATH + "js/components",
 		JSPATH = window.APP_CONFIG.APP_PATH + "js",
-		DEMO_EXAM  = window.APP_CONFIG.APP_PATH + "demo"; 
+		DEMO_EXAM  = window.APP_CONFIG.APP_PATH + "demo";   // demo 业务主目录配置
 
 // 第三方库配置
 require.config({
@@ -95,13 +95,13 @@ require.config({
 		'bootstrap':{ deps: ['jquery'] },
 	},
 	paths : {
-		// 路径配置
+		// 常用路径配置
 		"js": JSPATH,
 		"utils": JSPATH + "/utils",
 		"mixins": JSPATH + "/mixins",
 		"libs": JSPATH + "/libs",
 		"components": COMPONENTS,
-		"demo": DEMO_EXAM,          
+		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
 		// 常用库配置
 		"text" : JSPATH + "/libs/require-text",
 		"jquery" : JSPATH + "/libs/jquery",

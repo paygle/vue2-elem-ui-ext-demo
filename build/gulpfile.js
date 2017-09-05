@@ -8,7 +8,7 @@ var gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   notify =  require('gulp-notify');
 
-// 任务名称
+//1. 配置任务名称，可参考下面实例命名规范 “ 目录名称-类型名称 ”
 var tasks = 
 [
   'js-jsc',
@@ -37,7 +37,7 @@ function msglog(prew, file){
   );
 }
 
-// JS 压缩
+//2. 配置JS 压缩范围，可参考下面实例
 gulp.task('js-jsc', function (cb) {
   return gulp.src('../js/**/*.js')
     .pipe(uglify().on('error', function(err){
@@ -68,7 +68,7 @@ gulp.task('demo-jsc', function (cb) {
 });
  
 
-// css 压缩
+//3. 配置css 压缩范围， 一般无需配置，使用公共目录即可，可参考下面实例
 gulp.task('js-cssc', function (cb) {
   return gulp.src('../js/**/*.css')
     .pipe(autoprefixer({
@@ -92,7 +92,7 @@ gulp.task('css-cssc', function (cb) {
 });
  
 
-// img 压缩
+//4. 配置 img 压缩范围， 一般无需配置，使用公共目录即可，可参考下面实例
 gulp.task('js-imgc', function (cb) {
   return gulp.src(['../js/**/*.gif', '../js/**/*.png', '../js/**/*.jpg'])
     .pipe(imagemin([
@@ -115,7 +115,7 @@ gulp.task('img-imgc', function (cb) {
 });
 
  
-// 复制文件到dist文件夹
+//5. 配置需要复制到dist文件夹的文件，根据你所新增的目录进行配置，可参考下面实例
 gulp.task('js-copy', function (cb) {
   return gulp.src([ 
       '../js/**/*.tpl', '../js/**/*.ttf', '../js/**/*.woff', '../js/**/*.json', '../js/**/*.svg'
