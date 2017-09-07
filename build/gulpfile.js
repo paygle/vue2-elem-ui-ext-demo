@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
   del = require('del'),
-  pump = require('pump'),
   path = require('path'),
   uglify = require('gulp-uglify'),
   cleanCss = require('gulp-clean-css'),
@@ -42,6 +41,7 @@ gulp.task('js-jsc', function (cb) {
   return gulp.src('../js/**/*.js')
     .pipe(uglify().on('error', function(err){
       console.log(colorerr, 'Compress Error! ' + err.message);
+      console.dir(err);
       this.end();
       }))
     .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
@@ -51,6 +51,7 @@ gulp.task('public-jsc', function (cb) {
   return gulp.src('../public/**/*.js')
     .pipe(uglify().on('error', function(err){
       console.log(colorerr, 'Compress Error! ' + err.message);
+      console.dir(err);
       this.end();
     }))
     .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
@@ -61,6 +62,7 @@ gulp.task('demo-jsc', function (cb) {
   return gulp.src('../demo/**/*.js')
     .pipe(uglify().on('error', function(err){
       console.log(colorerr, 'Compress Error! ' + err.message);
+      console.dir(err);
       this.end();
     }))
     .pipe(notify(function(file){ msglog('Compress-JS: ', file); }))
