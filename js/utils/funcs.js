@@ -198,7 +198,7 @@ define([
     if (operator && typeof unitA !== 'undefined' && typeof unitB !== 'undefined') {
 
       var regxNum = /^\-?\d+/g;
-      var regxUnit = /[A-Za-z\-]+$/gi;
+      var regxUnit = /[A-Za-z\-%]+$/gi;
       var a_num = String(unitA).replace(regxUnit, '');
       var a_unit = String(unitA).replace(regxNum, '');
       var b_num = String(unitB).replace(regxUnit, '');

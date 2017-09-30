@@ -263,5 +263,7 @@
     <li><span class="icon"><i class="el-icon-ntsearch"></i> el-icon-ntsearch </span></li>
     <li><span class="icon"><i class="el-icon-msgbell"></i> el-icon-msgbell </span></li>
     <li><span class="icon"><i class="el-icon-send-back"></i> el-icon-send-back </span></li>
+    <li><span class="icon"><i class="el-icon-shield-ok"></i> el-icon-shield-ok </span></li>
+    <li><span class="icon"><i class="el-icon-shield-err"></i> el-icon-shield-err </span></li>
   </ul>
 </div>
