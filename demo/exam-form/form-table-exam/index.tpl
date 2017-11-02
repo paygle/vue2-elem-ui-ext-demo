@@ -211,7 +211,7 @@
               <address-box 
                 v-model="ruleForm.address" 
                 params="123" 
-                @address-change="addressChanged">
+                @address-change="addressChanged" city-end>
               </address-box>
           </el-form-item>
         </div>
