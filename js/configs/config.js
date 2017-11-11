@@ -14,24 +14,23 @@ window.COMPONENTS_CONFIG = {
 	// 默认主菜单数据
 	MAIN_MENUS: [    
 		{ "label" : "Home页面",
-			"url" : "home.html",    
+			"url" : "home.html",
 			"icon" : "",
 			"subMenu" : [
 				{
 					"label" : "字体图标",
 					"url": "~/public/index.html",
-					"icon" : "el-icon-camera",  
+					"icon" : "el-icon-camera",
 					"subMenu" : []
 				},
 				{
 					"label" : "拖拽",
 					"url": "dragger.html",
-					"icon" : "el-icon-move",  
+					"icon" : "el-icon-move",
 					"subMenu" : []
 				}
 			]
-		},
-    {
+		},{
       "label" : "表单实例",
       "url" : "exam-form.html",
       "icon" : "",
@@ -76,7 +75,31 @@ window.COMPONENTS_CONFIG = {
           "subMenu" : []
         }]
       }]
-    }
+		},{
+			"label" : "表单着色",
+			"url" : "color-form.html",
+			"icon" : "",
+			"subMenu" : [
+				{
+					"label" : "Form 着色",
+					"url": "color-form.html/form",
+					"icon" : "el-icon-paper-list",
+					"subMenu" : []
+				},
+				{
+					"label" : "Table 着色",
+					"url": "color-form.html/table",
+					"icon" : "el-icon-paper-list",
+					"subMenu" : []
+				},
+				{
+					"label" : "Form-Table 着色",
+					"url": "color-form.html/form-table",
+					"icon" : "el-icon-paper-list",
+					"subMenu" : []
+				}
+			]
+		}
 	]
 };
 // 常用变量声明
@@ -89,9 +112,10 @@ require.config({
 	// 第三方库依赖关系配置
 	shim: {
 		'ELEMENT':{
-			deps: ['jquery', 'vue', 'snap'],
+			deps: ['jquery', 'vue'],
 			exports: 'ELEMENT'
 		},
+		'vuex':{ deps: ['promise'] },
 		'jquery.ztree':{ deps: ['jquery'] },
 		'bootstrap':{ deps: ['jquery'] },
 	},
@@ -104,6 +128,7 @@ require.config({
 		"components": COMPONENTS,
 		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
 		// 常用库和工具文件配置
+		"promise" : JSPATH + "/libs/es6-promise",
 		"text" : JSPATH + "/libs/require-text",
 		"jquery" : JSPATH + "/libs/jquery",
 		"jquery.ztree" : JSPATH + "/libs/jquery.ztree.all",
@@ -112,7 +137,6 @@ require.config({
 		"easypiechart" : JSPATH + "/libs/easypiechart",
 		"md5" : JSPATH + "/libs/md5",
 		"websocket" : JSPATH + "/libs/re-websocket",
-		"snap" : JSPATH + "/libs/snap",
 		"tether" : JSPATH + "/libs/tether",
 		"vue" : JSPATH + "/libs/vue",
 		"vuex" : JSPATH + "/libs/vuex",

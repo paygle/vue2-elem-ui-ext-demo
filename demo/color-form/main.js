@@ -6,29 +6,19 @@ define([
   "vueRouter",
   "promise",
   "dictStore",
-  'demo/exam-form/case-tracking/case-tracking/main',
-  'demo/exam-form/edit-form-exam/index',
-  'demo/exam-form/edit-form-exam/add-row/main',
-  'demo/exam-form/edit-form-exam/edit-row/main',
-  'demo/exam-form/edit-form-exam/query-form/main',
-  'demo/exam-form/el-form-exam/index',
-  'demo/exam-form/form-table-exam/index',
-  'demo/exam-form/waterfall-view/index'
+  'demo/color-form/form-exam/main',
+  'demo/color-form/form-table/main',
+  'demo/color-form/table-exam/main'
 ], function(
-  Vue, 
-  ELEMENT, 
-  Vuex, 
+  Vue,
+  ELEMENT,
+  Vuex,
   VueRouter,
   Promise,
   dictStore,
-  CaseTracking,
-  EditFormExam,
-  AddRow,
-  EditRow,
-  QueryForm,
-  ElFormExam,
+  FormExam,
   FormTableExam,
-  WaterfallView
+  TableExam
 ) {
   'use strict';
 window.Promise = Promise;      // 这个必须想入否则无法在IE浏览器里面使用 vuex
@@ -77,46 +67,23 @@ var router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect:'/el-form'
+      redirect:'/form'
     },
     {
-      path: '/el-form',
-      name: 'el-form',
-      component: ElFormExam,
+      path: '/form',
+      name: 'form',
+      component: FormExam,
+      children: []
+    },
+    {
+      path: '/table',
+      component: TableExam,
       children: []
     },
     {
       path: '/form-table',
       component: FormTableExam,
       children: []
-    },
-    {
-      path: '/water-fall',
-      component: WaterfallView,
-      children: []
-    },
-    {
-      path: '/case-tracking',
-      name: 'case-tracking',
-      component: CaseTracking,
-      children: []
-    },
-    {
-      path: '/edit-form-exam',
-      component: EditFormExam,
-      children: [{
-        path: '/query-form',
-        name: 'query-form',
-        component: QueryForm
-      },{
-        path: '/add-row',
-        name: 'add-row',
-        component: AddRow
-      },{
-        path: '/edit-row',
-        name: 'edit-row',
-        component: EditRow
-      }]
     }
   ]
 });

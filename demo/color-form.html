@@ -18,42 +18,16 @@
     <link rel="icon" href="/img/favicon.ico"/>
     <link href="/js/css/bootstrap.css" rel="stylesheet"/>
     <link href="/js/elem-ui-ext.css" rel="stylesheet"/>
-    <link href="/css/dragger.css" rel="stylesheet"/>
-    <title>拖拽 - 展示 </title>
-    <style type="text/css">
-      .dragger-content{
-        position: relative;
-        width: 60%;
-        margin: 50px auto;
-        min-height: 500px;
-      }
-      .dragger-content .box{
-        float: left;
-        width: 100px;
-        height: 120px;
-      }
-      .color-red{
-        background-color: red;
-      }
-      .color-yellow{
-        background-color: yellow;
-      }
-      .color-green{
-        background-color: green;
-      }
-    </style>
+    <link href="/css/exam-form.css" rel="stylesheet"/>
+    <title>表单着色实例 - 展示 </title>
   </head>
   <body>
     <div id="main-body" v-cloak>
       <main-header logo-link="../img/logo.png" nowuser="admin" nowdate="2016-11-18 星期四"></main-header>
       <main-nav :home-hide="true"></main-nav>
-      <div class="dragger-content">
-        <div class="box color-red"></div>
-        <div class="box color-yellow" draggable></div>
-        <div class="box color-green" draggable></div>
-      </div>
+      <router-view></router-view>
     </div>
   </body>
-  <script src="/js/libs/require.js" data-main="./dragger/main.js"></script>
+  <script src="/js/libs/require.js" data-main="./color-form/main.js"></script>
   <script src="/js/configs/config.js"></script>
 </html>
