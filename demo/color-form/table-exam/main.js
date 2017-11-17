@@ -444,9 +444,9 @@ return Vue.component('TableExam', {
   },
 
   mounted: function(){
-    let tempData = [];
+    var tempData = [];
     // 填充数据
-    for (let i = 0; i < 20; i++) {
+    for (var i = 0; i < 20; i++) {
       tempData.push({
         name: 'deda',
         region: 'beijing',

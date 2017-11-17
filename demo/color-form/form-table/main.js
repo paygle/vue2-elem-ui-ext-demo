@@ -297,9 +297,9 @@ return Vue.component('FormTableExam', {
     };
   },
   created: function() {
-    let tempData = [];
+    var tempData = [];
     // 填充数据
-    for (let i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       tempData.push({
         disabled: '0',
         name: 'aaa',
@@ -468,7 +468,7 @@ return Vue.component('FormTableExam', {
       return true
     },
     labelBtnformatter: function(row, column){   // 手动翻译
-      let v = row[column['property']]
+      var v = row[column['property']]
       if( v == 1) {
         return '正确的手动翻译点击标签'
       }
@@ -492,7 +492,7 @@ return Vue.component('FormTableExam', {
       this.popEdit = true
     },
     deleteRow: function(row){
-      let x = JsonToObject(row) // 删除数据中必需转换为纯对象类型，再保存到新的对象
+      var x = JsonToObject(row) // 删除数据中必需转换为纯对象类型，再保存到新的对象
       console.log('Delete Row: ', x)
     },
 

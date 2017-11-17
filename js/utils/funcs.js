@@ -91,7 +91,7 @@ define([
 funcs.prototype.focusInput = function(el) {
 
   function focus(elm) {
-    let inputEl = null;
+    var inputEl = null;
     if (elm.tagName === 'INPUT') {
       inputEl = elm;
     } else if (elm.querySelector) {
@@ -104,7 +104,7 @@ funcs.prototype.focusInput = function(el) {
   }
 
   if (typeof el === 'string') {
-    let dom = document.body.querySelector(el);
+    var dom = document.body.querySelector(el);
     if (dom !== null && typeof dom === 'object') focus(dom);
   } else if (typeof el === 'object' && el !== null) {
     el.$el ? focus(el.$el) : focus(el);
@@ -123,8 +123,8 @@ funcs.prototype.isOwnEmpty = function(obj) {
  funcs.prototype.compatDateStr = function(date){
   function getZerov(v) { return v < 10 ? '0' + parseInt(v, 10) : v; }
   if (typeof date === 'string') {
-    let t = date.split(':');
-    let dt = new Date(), Y = dt.getFullYear(), M = dt.getMonth() + 1, D = dt.getDate();
+    var t = date.split(':');
+    var dt = new Date(), Y = dt.getFullYear(), M = dt.getMonth() + 1, D = dt.getDate();
     if (/^\d{1,2}(:\d{1,2}){0,2}$/.test(date)) {
       if (t.length === 1) {
         return Y + '/' + M + '/' + D + ' ' + getZerov(t[0]) + ':00:00';
