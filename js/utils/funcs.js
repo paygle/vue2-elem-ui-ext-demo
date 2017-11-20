@@ -111,6 +111,99 @@ funcs.prototype.focusInput = function(el) {
   }
 };
 
+
+function DateCompute(init) {
+  function getDateTimes(Dstr) {
+    if (!/^\d+((\s+\d+)?(\:\d+){0,2})?/g.test(Dstr)) return 0;
+    var DDT,TIME, dt = { DD:0, hh:0, mm: 0, ss: 0 };
+    if (/^\d+\s+\d+/g.test(Dstr)) {
+      DDT = Dstr.split(/\s+/);
+      dt.DD = DDT[0];
+      TIME = String(DDT[1]).split(':');
+
+    } else if (/^\d+((\:\d+){0,2})?/g.test(Dstr)) {
+      TIME = String(Dstr).split(':');
+    }
+    dt.hh = TIME[0] || 0;
+    dt.mm = TIME[1] || 0;
+    dt.ss = TIME[2] || 0
+    dt.DD = dt.DD * 24 * 60 * 60 * 1000;
+    dt.hh = dt.hh * 60 * 60 * 1000;
+    dt.mm = dt.mm * 60 * 1000;
+    dt.ss = dt.ss * 1000;
+    return dt.DD + dt.hh + dt.mm + dt.ss;
+  }
+
+  function getStrDate(date) {
+    var YY, MM, DD, hh, mm, ss;
+    function getf(n) {
+      if (n < 10) return '0' + n;
+      return n;
+    }
+    YY = date.getFullYear();
+    MM = date.getMonth() + 1;
+    DD = date.getDate();
+    hh = date.getHours();
+    mm = date.getMinutes();
+    ss = date.getSeconds();
+
+    return YY + '-' +
+      getf(MM) + '-' +
+      getf(DD) + ' ' +
+      getf(hh) + ':' +
+      getf(mm) + ':' +
+      getf(ss);
+  }
+
+  // 加法
+  this.add = function(dt) {
+    this.ntime += getDateTimes(dt);
+    this.date = new Date(this.ntime);
+    return {
+      add: this.add,
+      sub: this.sub,
+      ntime: this.ntime,
+      date: this.date,
+      val: getStrDate(this.date)
+    };
+  }
+  // 减法
+  this.sub = function(dt) {
+    this.ntime -= getDateTimes(dt);
+    this.date = new Date(this.ntime);
+    return {
+      add: this.add,
+      sub: this.sub,
+      ntime: this.ntime,
+      date: this.date,
+      val: getStrDate(this.date)
+    };
+  }
+
+  var ntime, cpdt;
+  if (init instanceof Date) {
+    cpdt = init;
+    ntime = init.valueOf();
+  } if (typeof init === 'string' && /\d/g.test(init)) {
+    cpdt = new Date(String(init).replace(/\-/g, '/'));
+    ntime = cpdt.valueOf();
+  }
+  return {
+    add: this.add,
+    sub: this.sub,
+    ntime: ntime,
+    date: cpdt,
+    val: getStrDate(cpdt)
+  };
+}
+
+/**
+ * 日期时间加减运算
+ * 支持的初始格式:  2017-01-11 19:20、 2018-01-11 和  Date 对象
+ * 支持的加减数格式： 12 18:12:15、 18、 12 18、 18:12、 18:12:15
+ */
+funcs.prototype.dateCalc = DateCompute;
+
 /**
  * 判断对象是否为空对象
  */

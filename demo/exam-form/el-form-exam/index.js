@@ -214,7 +214,7 @@ return Vue.component('ElFormExam', {
     resetValidItems: function(e){
       this.ruleForm.date = '2018-5-1'
       this.broadcast('ValidItem', 'valid.item.reset')
-      Message({ message: '当前步骤回调, 改变自己的数据内容,<br>加湿器肖霄爱不释手汪珠后年的', type:'warning'});
+      this.$Message({ message: '当前步骤回调, 改变自己的数据内容,<br>加湿器肖霄爱不释手汪珠后年的', type:'warning'});
     },
     currentStep: function(step){              // 当前步骤回调
       console.log('Step:', step)
