@@ -194,12 +194,12 @@
     </el-form-item>
   </el-form>
 
-  <!-- valid-items-form -->
-  <h3 style="margin: 10px; background:#789dcc;color:#fff; padding: 5px;"> Valid-Items form 着色</h3>
-  <div class="valid-items-form" style="margin:10px;">
+  <!-- valid-fields-form -->
+  <h3 style="margin: 10px; background:#789dcc;color:#fff; padding: 5px;"> valid-fields form 着色</h3>
+  <div class="valid-fields-form" style="margin:10px;">
     <div class="row">
       
-      <valid-item 
+      <valid-field 
         class="col-md-3" 
         label="活动名称" 
         :err-styl="errStyl"
@@ -210,9 +210,9 @@
         :rules="rules" 
         label-width="60px">
         <el-input v-model="itemForm.name" :get-fill-styl="getFillStyl" placeholder="单个输入验证"></el-input>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field 
           class="col-md-3" 
           label="活动区域" 
           :err-styl="errStyl"
@@ -229,9 +229,9 @@
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field 
           class="col-md-3" 
           label="选择日期" 
           :err-styl="errStyl"
@@ -249,9 +249,9 @@
             v-model="itemForm.date1" 
             style="width: 100%;">
           </el-date-picker>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field 
           class="col-md-3" 
           label="即时配送" 
           :err-styl="errStyl"
@@ -262,9 +262,9 @@
           :rules="rules" 
           label-width="60px">
           <el-switch v-model="itemForm.delivery"></el-switch>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field 
           class="col-md-6" 
           label="活动性质" 
           :err-styl="errStyl"
@@ -280,8 +280,8 @@
             <el-checkbox label="线下主题活动" name="type"></el-checkbox>
             <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
           </el-checkbox-group>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-6" 
           label="特殊资源" 
           :err-styl="errStyl"
@@ -295,8 +295,8 @@
             <el-radio label="线上品牌商赞助"></el-radio>
             <el-radio label="线下场地免费"></el-radio>
           </el-radio-group>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-10" 
           label="活动形式" 
           :err-styl="errStyl"
@@ -307,8 +307,8 @@
           :rules="rules" 
           label-width="60px">
           <el-input type="textarea" v-model="itemForm.desc"></el-input>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-3" 
           label="地址选择" 
           :err-styl="errStyl"
@@ -324,9 +324,9 @@
             :get-fill-styl="getFillStylAddr"
             @address-change="addressChanged">
           </address-box>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field 
           class="col-md-3" 
           label="活动绑定" 
           :err-styl="errStyl"
@@ -337,8 +337,8 @@
           :rules="rules" 
           label-width="60px">
           <el-input v-model="itemForm.actbind" :get-fill-styl="getFillStyl"></el-input>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-3" 
           label="活动主题" 
           :err-styl="errStyl"
@@ -349,8 +349,8 @@
           :rules="rules" 
           label-width="60px">
           <el-input v-model="itemForm.tips" :get-fill-styl="getFillStyl"></el-input>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-3" 
           label="数值验证" 
           :err-styl="errStyl"
@@ -361,8 +361,8 @@
           :rules="rules" 
           label-width="60px">
           <el-input-number v-model="itemForm.num" :get-fill-styl="getFillStylNum"></el-input-number>
-      </valid-item>
-      <valid-item
+      </valid-field>
+      <valid-field
           ref="focusItem"
           class="col-md-3"
           label="比率验证" 
@@ -378,8 +378,8 @@
             :get-fill-styl="getFillStylRate" 
             rate="percent">
           </rate-number>
-      </valid-item>
-      <valid-item
+      </valid-field>
+      <valid-field
           class="col-md-3"
           label="格式化" 
           :err-styl="errStyl"
@@ -394,8 +394,8 @@
             :get-fill-styl="getFillStylFNum" 
             is-empty>
           </format-number>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-3" 
           label="自动建议" 
           :err-styl="errStyl"
@@ -421,16 +421,16 @@
                 </el-table>
               </template>
           </list-complete>
-      </valid-item>
+      </valid-field>
       
-      <valid-item 
+      <valid-field
           class="col-md-5" 
           label="选择了我" 
           :err-styl="errStyl"
           :compare-styl="compareStyl"
           :model="itemForm"
           @validate="validateTest" 
-          prop="checklist" 
+          prop="checklist"
           :rules="rules" 
           label-width="60px">
           <rich-checkbox-group v-model="itemForm.checklist">
@@ -439,8 +439,8 @@
             <rich-checkbox label="你选了我"></rich-checkbox>
             <rich-checkbox label="啥没有"></rich-checkbox>
           </rich-checkbox-group>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-5" 
           label="组选项切换" 
           :err-styl="errStyl"
@@ -456,8 +456,8 @@
             <rich-radio canceled label="72">组选项C</rich-radio>
             <rich-radio canceled label="76">组选项C</rich-radio>
           </rich-radio-group>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-5" 
           label="我选择了" 
           :err-styl="errStyl"
@@ -471,8 +471,8 @@
             v-model="itemForm.acheck"
             true-label="你选择了我"
             false-label="啥都没有">选择框U</rich-checkbox>
-      </valid-item>
-      <valid-item 
+      </valid-field>
+      <valid-field 
           class="col-md-2" 
           label="即时配送" 
           :err-styl="errStyl"
@@ -489,7 +489,7 @@
             :on-text="switchAttrs.onText"
             :off-text="switchAttrs.offText">
           </custom-switch>
-      </valid-item>
+      </valid-field>
      </div>
     <el-button @click="submitValidItems">验证</el-button>
     <el-button @click="resetValidItems">重置</el-button>

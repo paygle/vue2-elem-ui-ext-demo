@@ -264,9 +264,9 @@
       </el-table-column>
     </el-table>
 
-    <!-- valid-item 表格-->
+    <!-- valid-field 表格-->
 
-    <h3 style="background:#5d9cec; color: #fff;padding: 5px 10px;"> ValidItem 表格</h3>
+    <h3 style="background:#5d9cec; color: #fff;padding: 5px 10px;"> ValidField 表格</h3>
     <el-table
     :data="tableDatax"
     style="width: 100%"
@@ -288,16 +288,16 @@
             ref="ruleForm"
             class="demo-validForm">
             <div class="row">
-              <valid-item
+              <valid-field
                 class="col-md-3"
                 label="活动名称"
                 :model="data.row"
                 @validate="validateTest"
                 prop="name">
                 <el-input v-model="data.row.name" :get-fill-styl="getFillStyl" placeholder="单个输入验证"></el-input>
-              </valid-item>
+              </valid-field>
 
-              <valid-item 
+              <valid-field 
                   class="col-md-3" 
                   label="活动区域"
                   :model="data.row"
@@ -310,9 +310,9 @@
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                   </el-select>
-              </valid-item>
+              </valid-field>
               
-              <valid-item 
+              <valid-field 
                   class="col-md-3" 
                   label="选择日期"
                   :model="data.row"
@@ -326,18 +326,18 @@
                     v-model="data.row.date1"
                     style="width: 100%;">
                   </el-date-picker>
-              </valid-item>
+              </valid-field>
               
-              <valid-item 
+              <valid-field 
                   class="col-md-3" 
                   label="即时配送"
                   :model="data.row"
                   @validate="validateTest" 
                   prop="delivery">
                   <el-switch v-model="data.row.delivery"></el-switch>
-              </valid-item>
+              </valid-field>
               
-              <valid-item 
+              <valid-field 
                   class="col-md-6" 
                   label="活动性质"
                   :model="data.row"
@@ -349,8 +349,8 @@
                     <el-checkbox label="线下主题活动" name="type"></el-checkbox>
                     <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
                   </el-checkbox-group>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-6" 
                   label="特殊资源"
                   :model="data.row"
@@ -360,16 +360,16 @@
                     <el-radio label="线上品牌商赞助"></el-radio>
                     <el-radio label="线下场地免费"></el-radio>
                   </el-radio-group>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-10" 
                   label="活动形式"
                   :model="data.row"
                   @validate="validateTest" 
                   prop="desc">
                   <el-input type="textarea" v-model="data.row.desc"></el-input>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="地址选择"
                   :model="data.row"
@@ -381,33 +381,33 @@
                     :get-fill-styl="getFillStylAddr"
                     @address-change="addressChanged">
                   </address-box>
-              </valid-item>
+              </valid-field>
 
-              <valid-item 
+              <valid-field 
                   class="col-md-3"
                   label="活动绑定"
                   :model="data.row"
                   @validate="validateTest" 
                   prop="actbind">
                   <el-input v-model="data.row.actbind" :get-fill-styl="getFillStyl"></el-input>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="活动主题"
                   :model="data.row"
                   @validate="validateTest" 
                   prop="tips">
                   <el-input v-model="data.row.tips" :get-fill-styl="getFillStyl"></el-input>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="数值验证"
                   :model="data.row"
                   @validate="validateTest" 
                   prop="num">
                   <el-input-number v-model="data.row.num" :get-fill-styl="getFillStylNum"></el-input-number>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="比率验证"
                   :model="data.row"
@@ -418,8 +418,8 @@
                     :get-fill-styl="getFillStylRate" 
                     rate="percent">
                   </rate-number>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="格式化"
                   :model="data.row"
@@ -430,8 +430,8 @@
                     :get-fill-styl="getFillStylFNum" 
                     is-empty>
                   </format-number>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-3" 
                   label="自动建议"
                   :model="data.row"
@@ -453,9 +453,9 @@
                         </el-table>
                       </template>
                   </list-complete>
-              </valid-item>
+              </valid-field>
               
-              <valid-item 
+              <valid-field 
                   class="col-md-5" 
                   label="选择了我"
                   :model="data.row"
@@ -467,8 +467,8 @@
                     <rich-checkbox label="你选了我"></rich-checkbox>
                     <rich-checkbox label="啥没有"></rich-checkbox>
                   </rich-checkbox-group>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-5" 
                   label="组选项切换"
                   :model="data.row"
@@ -481,8 +481,8 @@
                     <rich-radio canceled label="72">组选项C</rich-radio>
                     <rich-radio canceled label="76">组选项C</rich-radio>
                   </rich-radio-group>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-5" 
                   label="我选择了"
                   :model="data.row"
@@ -492,8 +492,8 @@
                     v-model="data.row.acheck"
                     true-label="你选择了我"
                     false-label="啥都没有">选择框U</rich-checkbox>
-              </valid-item>
-              <valid-item 
+              </valid-field>
+              <valid-field 
                   class="col-md-2" 
                   label="即时配送"
                   :model="data.row"
@@ -506,7 +506,7 @@
                     :on-text="switchAttrs.onText"
                     :off-text="switchAttrs.offText">
                   </custom-switch>
-              </valid-item>
+              </valid-field>
             </div>
           </valid-form>
         </template>
