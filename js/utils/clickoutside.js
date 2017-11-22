@@ -69,6 +69,7 @@ define([
           break;
         }
       }
+      delete el[ctx];
     }
   };
   

@@ -147,7 +147,8 @@ require.config({
 		"funcs" : JSPATH + "/utils/funcs",
 		"utilExt" : JSPATH + "/utils/util-ext",
 		"storageCache":  JSPATH + "/utils/web-storage-cache",
-		"cacheUtil" : JSPATH + "/utils/cache-util"
+		"cacheUtil" : JSPATH + "/utils/cache-util",
+		"pako" : JSPATH + "/libs/pako"
 	}
 });
 

@@ -4,86 +4,7 @@ define([
 ], function(dateUtil) {
   'use strict';
 
-  function funcs() {};
-
-  /** Browser Detect */
-  function Browser() {
-    this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
-    this.version = this.searchVersion(navigator.userAgent) ||
-      this.searchVersion(navigator.appVersion) || "an unknown version";
-    this.OS = this.searchString(this.dataOS) || "an unknown OS";
-  };
-
-  Browser.prototype = {
-
-    searchString: function (data) {
-      for (var i = 0; i < data.length; i++) {
-        var dataString = data[i].string;
-        var dataProp = data[i].prop;
-        this.versionSearchString = data[i].versionSearch || data[i].identity;
-        if (dataString) {
-          if (dataString.indexOf(data[i].subString) !== -1) return data[i].identity;
-        } else if (dataProp) return data[i].identity;
-      }
-    },
-    searchVersion: function (dataString) {
-      var index = dataString.indexOf(this.versionSearchString);
-      if (index === -1) return;
-      return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
-    },
-    dataBrowser: [{
-      string: navigator.userAgent,
-      subString: "Chrome",
-      identity: "Chrome"
-    },
-    {
-      string: navigator.vendor,
-      subString: "Apple",
-      identity: "Safari",
-      versionSearch: "Version"
-    },
-    {
-      prop: window.opera,
-      identity: "Opera"
-    },
-    {
-      string: navigator.userAgent,
-      subString: "Firefox",
-      identity: "Firefox"
-    },
-    {
-      string: navigator.userAgent,
-      subString: "MSIE",
-      identity: "IE",
-      versionSearch: "MSIE"
-    },
-    {
-      string: navigator.userAgent,
-      subString: "Gecko",
-      identity: "Mozilla",
-      versionSearch: "rv"
-    }],
-    dataOS: [{
-      string: navigator.platform,
-      subString: "Win",
-      identity: "Windows"
-    },
-    {
-      string: navigator.platform,
-      subString: "Mac",
-      identity: "Mac"
-    },
-    {
-      string: navigator.userAgent,
-      subString: "iPhone",
-      identity: "iPhone/iPod"
-    },
-    {
-      string: navigator.platform,
-      subString: "Linux",
-      identity: "Linux"
-    }]
-  };
+function funcs() {};
 
 /**
  * @param { Object, String } el   对象选择符或结点对象
@@ -111,7 +32,6 @@ funcs.prototype.focusInput = function(el) {
   }
 };
 
-
 function DateCompute(init) {
   function getDateTimes(Dstr) {
     if (!/^\d+((\s+\d+)?(\:\d+){0,2})?/g.test(Dstr)) return 0;
@@ -126,7 +46,7 @@ function DateCompute(init) {
     }
     dt.hh = TIME[0] || 0;
     dt.mm = TIME[1] || 0;
-    dt.ss = TIME[2] || 0
+    dt.ss = TIME[2] || 0;
     dt.DD = dt.DD * 24 * 60 * 60 * 1000;
     dt.hh = dt.hh * 60 * 60 * 1000;
     dt.mm = dt.mm * 60 * 1000;
@@ -166,7 +86,7 @@ function DateCompute(init) {
       date: this.date,
       val: getStrDate(this.date)
     };
-  }
+  };
   // 减法
   this.sub = function(dt) {
     this.ntime -= getDateTimes(dt);
@@ -178,7 +98,7 @@ function DateCompute(init) {
       date: this.date,
       val: getStrDate(this.date)
     };
-  }
+  };
 
   var ntime, cpdt;
   if (init instanceof Date) {
@@ -236,30 +156,6 @@ funcs.prototype.isOwnEmpty = function(obj) {
   }
 };
 
-  /** 导出方法 */
-  funcs.prototype.Browser = new Browser();
-
-    /** 判断是否定义 */
-  funcs.prototype.isDef = function(val) {
-    return val !== undefined && val !== null;
-  }
-
-    /** 合并对象 */
-  funcs.prototype.merge = function(target) {
-    for (var i = 1, j = arguments.length; i < j; i++) {
-      var source = arguments[i] || {};
-      for (var prop in source) {
-        if (source.hasOwnProperty(prop)) {
-          var value = source[prop];
-          if (value !== undefined) {
-            target[prop] = value;
-          }
-        }
-      }
-    }
-    return target;
-  }
-
     /**
      * 
      * @param tag 标签名
@@ -279,7 +175,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       }
     }
     return el;
-  }
+  };
 
     /**获取本地数据
      * @param  {} feild       数据字段名称
@@ -304,7 +200,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       }
     }
     return out;
-  }
+  };
 
     /**存储为本地数据
      * @param  {} field          数据字段名称
@@ -337,7 +233,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       };
       localStorage.setItem(dat, JSON.stringify(defd));
     }
-  }
+  };
 
     /**
      * CSS样式计算器
@@ -349,7 +245,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
 
     if (operator && typeof unitA !== 'undefined' && typeof unitB !== 'undefined') {
 
-      var regxNum = /^\-?\d+/g;
+      var regxNum = /^\-?\d+(\.\d+)?/g;
       var regxUnit = /[A-Za-z\-%]+$/gi;
       var a_num = String(unitA).replace(regxUnit, '');
       var a_unit = String(unitA).replace(regxNum, '');
@@ -377,7 +273,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       }
     }
     return '';
-  }
+  };
     /**
      * @author liuxp
      * 获取浮点数据值
@@ -417,7 +313,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       return strNums.join('.');
     }
     return value;
-  }
+  };
 
     /**
      * @author liuxp
@@ -483,7 +379,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       result = result.substring(result.length - ulen, result.length);
     }
     return upre + result;
-  }
+  };
 
     /**
      * @author liuxp
@@ -498,7 +394,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       }).replace(/[\[\]]*/g, '');
     }
     return type;
-  }
+  };
     /**
      * @author liuxp
      * 将复杂数据对象，转换成简单数据类型
@@ -531,7 +427,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       }
     }
     return undefined;
-  }
+  };
 
     /**
      * @author liuxp
@@ -545,7 +441,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
       return JSON.parse(JSON.stringify(o));
     }
     return null;
-  }
+  };
 
     /**
      * @author liuxp
@@ -571,7 +467,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
     } else {
       return [];
     }
-  }
+  };
 
     /**
      * @author liuxp
@@ -677,7 +573,7 @@ funcs.prototype.isOwnEmpty = function(obj) {
     } else {
       return false;
     }
-  }
+  };
 
     /**
      * @author liuxp
@@ -738,6 +634,110 @@ funcs.prototype.isOwnEmpty = function(obj) {
     }
     return false;
   }
- 
+
+
+  /** Browser Detect */
+  function Browser() {
+    this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+    this.version = this.searchVersion(navigator.userAgent) ||
+      this.searchVersion(navigator.appVersion) || "an unknown version";
+    this.OS = this.searchString(this.dataOS) || "an unknown OS";
+  };
+
+  Browser.prototype = {
+
+    searchString: function (data) {
+      for (var i = 0; i < data.length; i++) {
+        var dataString = data[i].string;
+        var dataProp = data[i].prop;
+        this.versionSearchString = data[i].versionSearch || data[i].identity;
+        if (dataString) {
+          if (dataString.indexOf(data[i].subString) !== -1) return data[i].identity;
+        } else if (dataProp) return data[i].identity;
+      }
+    },
+    searchVersion: function (dataString) {
+      var index = dataString.indexOf(this.versionSearchString);
+      if (index === -1) return;
+      return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+    },
+    dataBrowser: [{
+      string: navigator.userAgent,
+      subString: "Chrome",
+      identity: "Chrome"
+    },
+    {
+      string: navigator.vendor,
+      subString: "Apple",
+      identity: "Safari",
+      versionSearch: "Version"
+    },
+    {
+      prop: window.opera,
+      identity: "Opera"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Firefox",
+      identity: "Firefox"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "MSIE",
+      identity: "IE",
+      versionSearch: "MSIE"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Gecko",
+      identity: "Mozilla",
+      versionSearch: "rv"
+    }],
+    dataOS: [{
+      string: navigator.platform,
+      subString: "Win",
+      identity: "Windows"
+    },
+    {
+      string: navigator.platform,
+      subString: "Mac",
+      identity: "Mac"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "iPhone",
+      identity: "iPhone/iPod"
+    },
+    {
+      string: navigator.platform,
+      subString: "Linux",
+      identity: "Linux"
+    }]
+  };
+
+  /** 导出方法 */
+  funcs.prototype.Browser = new Browser();
+
+    /** 判断是否定义 */
+  funcs.prototype.isDef = function(val) {
+    return val !== undefined && val !== null;
+  };
+
+    /** 合并对象 */
+  funcs.prototype.merge = function(target) {
+    for (var i = 1, j = arguments.length; i < j; i++) {
+      var source = arguments[i] || {};
+      for (var prop in source) {
+        if (source.hasOwnProperty(prop)) {
+          var value = source[prop];
+          if (value !== undefined) {
+            target[prop] = value;
+          }
+        }
+      }
+    }
+    return target;
+  };
+
   return new funcs();
 });

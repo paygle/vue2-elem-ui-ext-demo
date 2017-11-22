@@ -1,9 +1,13 @@
 /** util-ext utils */
 define([
   'jquery',
-  'cacheUtil'
-], function(jQuery, cacheUtil) {
+  'cacheUtil',
+  'pako'
+], function(jQuery, cacheUtil, pako) {
   'use strict';
+
+  //是否启用请求报文gzip压缩
+  var GZIP_ENABLE= typeof window.GZIP_ENABLE !== 'undefined'? Boolean(window.GZIP_ENABLE):true;
   var $ = jQuery;
   var API_URL = window.API_URL || "";
 
@@ -170,10 +174,16 @@ var Proto = {
         "codelistIds": options.codelistIds,
         "model": options.model
       };
+      _model=JSON.stringify(_model);
+      var compressAble = GZIP_ENABLE && _model.length>1000 ; //仅对大于1k的报文进行压缩
+
+      if(compressAble){ 
+        _model=pako.gzip(_model, {to: "string"});
+      }
       return $.ajax(options.url, {
         async: options.async,
         type: "POST",
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8;gzip="+compressAble,
         dataType: options.dataType,
         xhrFields: { //跨域发送Ajax时，Request header中便会带上 Cookie 信息
           withCredentials: true
@@ -181,7 +191,7 @@ var Proto = {
         headers: {
           "X-Custom-Header": "Ajax"
         },
-        data: JSON.stringify(_model),
+        data: _model,
         success: function (data, textStatus, jqXHR) {
           var outputModel = null;
           try {

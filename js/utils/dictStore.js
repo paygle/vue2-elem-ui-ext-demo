@@ -8,9 +8,7 @@ define([
    * 数据字典vuex模块
    */
  
-  var state = window._dict_local || {
-    dict: {}
-  };
+  var state = window._dict_local || { dict: {} };
   if (window._dict_cache && window._dict_cache.dict) {
     for (var key in _dict_cache.dict) {
       state.dict[key] = _dict_cache.dict[key]
@@ -25,7 +23,8 @@ define([
     /**
      * 从后台加载数据字典
      */
-    loadDict: function(commit, state, payload) {
+    loadDict: function(opts, payload) {
+      var commit = opts.commit, state = opts.state;
       var dictId = payload.dictId;
       var dictParams = payload.dictParams;
       var cacheable = payload.cacheable === undefined ? true : payload.cacheable;
