@@ -16,8 +16,7 @@ funcs.prototype.focusInput = function(el) {
     if (elm.tagName === 'INPUT') {
       inputEl = elm;
     } else if (elm.querySelector) {
-      inputEl = elm.querySelector('input');
-      if (!inputEl) inputEl = elm.querySelector('textarea');
+      inputEl = elm.querySelector('input') || elm.querySelector('textarea');
     }
     if (inputEl) {
       inputEl.focus();
