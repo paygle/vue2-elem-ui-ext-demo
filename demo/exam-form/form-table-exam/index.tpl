@@ -75,12 +75,12 @@
         </div>
         <div class="col-md-3">
           <el-form-item label="格式化" prop="fnumber">
-            <format-number v-model="ruleForm.fnumber"></format-number>
+            <format-number v-model="ruleForm.fnumber" is-empty></format-number>
           </el-form-item>
         </div>
         <div class="col-md-3">
           <el-form-item label="比率" prop="rate">
-            <rate-number v-model.number="ruleForm.rate"></rate-number>
+            <rate-number rate="permillage" v-model.number="ruleForm.rate" is-empty></rate-number>
           </el-form-item>
         </div>
       </div>
@@ -168,7 +168,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <el-form-item label="选择了我" prop="checklist">
+          <el-form-item label="Checkbox组选择" prop="checklist">
             <rich-checkbox-group v-model="ruleForm.checklist">
               <rich-checkbox label="你选择了我" disabled></rich-checkbox>
               <rich-checkbox label="啥都没有" icon="hammer"></rich-checkbox>
@@ -178,7 +178,7 @@
           </el-form-item>
         </div>
         <div class="col-md-3">
-          <el-form-item label="我选择了" prop="acheck">
+          <el-form-item label="Checkbox选择" prop="acheck">
             <rich-checkbox
               v-model="ruleForm.acheck"
               true-label="你选择了我"
@@ -197,7 +197,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <el-form-item label="组选项切换" prop="radioGVal">
+          <el-form-item label="Radio组切换" prop="radioGVal">
             <rich-radio-group v-model="ruleForm.radioGVal">
               <rich-radio canceled icon="edit" label="43">组选项A</rich-radio>
               <rich-radio canceled label="54" disabled>组选项B</rich-radio>
@@ -208,16 +208,16 @@
         </div>
         <div class="col-md-3">
           <el-form-item label="地址选择" prop="address">
-              <address-box 
-                v-model="ruleForm.address" 
-                params="123" 
-                @address-change="addressChanged" city-end>
+              <address-box
+                v-model="ruleForm.address"
+                params="123"
+                @address-change="addressChanged">
               </address-box>
           </el-form-item>
         </div>
         <div class="col-md-3">
-          <el-form-item label="备选项" prop="radiox">
-            <rich-radio v-model="ruleForm.radiox" label="12">备选项1</rich-radio>
+          <el-form-item label="Radio备选项" prop="radiox">
+            <rich-radio v-model="ruleForm.radiox" canceled label="12">备选项1</rich-radio>
             <rich-radio v-model="ruleForm.radiox" label="32">备选项2</rich-radio>
             <rich-radio v-model="ruleForm.radiox" label="35" disabled>备选项3</rich-radio>
           </el-form-item>
@@ -239,11 +239,15 @@
     </div>
 
     <div class="tbl-content">
-
+      <el-button @click="chgColShow">change col show</el-button>
+      <input v-for="(v, k) in tableData" v-model="v.disabled" :key="k">
       <form-table
         :rules="tableRules"
         :data="tableData"
         :new-row="newRow"
+        disable-field="disabled"
+        @row-click="RowClick"
+        @switch-change="switchChange"
         @address-change="tableAddressChange"
         @table-change="tableFormChange"
         borderstyle="width: 100%">
@@ -257,12 +261,13 @@
         <form-table-column type="selection" width="50" label="选择"></form-table-column>
         <form-table-column type="date" prop="date" label="日期"></form-table-column>
         <form-table-column type="input" prop="name" label="姓名" width="120"></form-table-column>
+        <form-table-column type="input" prop="numb" label="数字" :input-option="inputOption"></form-table-column>
         <form-table-column type="fnumber" prop="numtest" label="格式化数字" width="120"></form-table-column>
-        <form-table-column type="rate" prop="rate" label="比率" width="120"></form-table-column>
-        <form-table-column 
-          :editable="editableFun" 
-          type="select" 
-          :options-data="options" 
+        <form-table-column v-if="colshow" type="rate" prop="rate" label="比率" width="150"></form-table-column>
+        <form-table-column
+          :editable="editableFun"
+          type="select"
+          :options-data="options"
           :select-option="{filterable:true}"
           :set-col-option="setColOption"
           prop="choose" 
@@ -273,11 +278,16 @@
           :formatter="labelBtnformatter"
           :label-option="labelBtnOption"
           :label-btn-clicked="labelBtnClicked"
-          prop="choose"
+          prop="name"
           label="图标输入">
         </form-table-column>
-        <form-table-column type="switch" prop="switch" :switch-option="{onValue:1, offValue:0}" label="切换"></form-table-column>
-        <form-table-column type="address" prop="address" label="省市区"></form-table-column>
+        <form-table-column
+          type="switch"
+          prop="switch"
+          :switch-option="{onValue:1, offValue:0}"
+          label="切换">
+        </form-table-column>
+        <form-table-column type="address" prop="address" label="省市区" translated="address"></form-table-column>
         <form-table-column label="地址合并">
           <form-table-column prop="addressDetail" label="详细地址" show-overflow-tooltip></form-table-column>
           <form-table-column type="checkbox" prop="schecked" label="可选"></form-table-column>

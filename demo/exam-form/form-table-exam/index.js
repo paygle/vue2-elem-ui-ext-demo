@@ -45,10 +45,10 @@ return Vue.component('FormTableExam', {
       },
       ruleForm: {
         name: '',
-        rate: 0.2,
-        fnumber: 12345678987788,
+        rate: 0.2234567812,
+        fnumber: -345678987788,
         region: '',
-        date1: '',
+        date1: '2017-01-01',
         date2: '',
         delivery: 1,
         checklist: [],
@@ -57,7 +57,7 @@ return Vue.component('FormTableExam', {
         radioGVal: '43',
         radiox: '',
         desc: '',
-        address: '11-1101'
+        address: '11-1101-110101'
       },
       tableRules: {
         rate: [{ validator: vadlidateRate, trigger: 'blur' }],
@@ -103,8 +103,10 @@ return Vue.component('FormTableExam', {
       },
       tableData: [
         {
+          disabled: '1',
           date: '2016-05-03',
           name: 'GGG',
+          numb: 1,
           numtest : 18123456,
           address: '11-1101-110101',
           addressDetail: '上海市普陀区请填写活动形式',
@@ -114,8 +116,23 @@ return Vue.component('FormTableExam', {
           choose: '1'
         },
         {
+          disabled: '0',
           date: '2016-05-03',
           name: 'HHH',
+          numb: 2,
+          numtest : 12345654.78,
+          address: '11-1101-110101',
+          addressDetail: '上海市请填写活动',
+          schecked: '空空的',
+          rate: 0.2,
+          switch: 0,
+          choose: '1'
+        },
+        {
+          disabled: '0',
+          date: '2016-05-03',
+          name: 'HHH',
+          numb: 3,
           numtest : 12345654.78,
           address: '11-1101-110101',
           addressDetail: '上海市请填写活动',
@@ -166,6 +183,7 @@ return Vue.component('FormTableExam', {
       inputBtnOption:{
         btnIcon: 'el-icon-menu'      // 按钮图标名称
       },
+      colshow: false,
       currentRow: {},
       currentAddBtn:null,
       removeRows:[],      //已经删除的行
@@ -186,8 +204,14 @@ return Vue.component('FormTableExam', {
     this.rules = this.rules1;
   },
   methods: {
+    chgColShow: function(e) {
+      this.colshow = !this.colshow;
+    },
     tableFormChange: function(row, property, rowIndex, val, data) {
       console.log('Table Changed', row, property, rowIndex, val, data);
+    },
+    switchChange: function(row, property, rowIndex, val, data) {
+      console.log('Switch Changed', row, property, rowIndex, val, data);
     },
     tableAddressChange: function(row, property, rowIndex, val, data){
       console.log('FormTable地址改变：', row, property, rowIndex, val, data);
@@ -272,6 +296,9 @@ return Vue.component('FormTableExam', {
       console.log('add Row')
       this.newAddRows.push(ToPlainObject(this.currentRow))    //添加的新行必需转换为纯数据对象，再保存
       return this.currentRow;
+    },
+    RowClick: function(row) {
+      console.log("Row Click:", row);
     }
   },
 
@@ -279,8 +306,16 @@ return Vue.component('FormTableExam', {
   //   // this.$children = null;
   //   // $(this.$el).remove();
   // },
-  
+
+  // 获取路由参数
+  beforeRouteEnter: function (to, from, next) {
+    console.log('formtable Router query: ', to.query);
+    window.routerParams = to.query;
+    next(true);
+  },
+
   mounted: function(){
+    console.log('formtable Window PARAM:', window.routerParams);
     console.log("重新加载中...");
   }
 });

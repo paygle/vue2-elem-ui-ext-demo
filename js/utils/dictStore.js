@@ -23,8 +23,8 @@ define([
     /**
      * 从后台加载数据字典
      */
-    loadDict: function(opts, payload) {
-      var commit = opts.commit, state = opts.state;
+    loadDict: function(ctx, payload) {
+      var commit=ctx.commit, state=ctx.state;
       var dictId = payload.dictId;
       var dictParams = payload.dictParams;
       var cacheable = payload.cacheable === undefined ? true : payload.cacheable;
