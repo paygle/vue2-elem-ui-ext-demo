@@ -93,7 +93,7 @@
           </el-form-item>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-md-3">
           <el-form-item label="活动名称" prop="name">
