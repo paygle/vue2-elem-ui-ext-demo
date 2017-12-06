@@ -45,6 +45,9 @@ return Vue.component('FormTableExam', {
       },
       ruleForm: {
         name: '',
+        mdl: true,
+        start: '',
+        end: '',
         rate: 0.2234567812,
         fnumber: -345678987788,
         region: '',

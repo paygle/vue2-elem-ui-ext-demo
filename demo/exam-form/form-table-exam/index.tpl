@@ -54,7 +54,46 @@
       <span class="label">Form-Table 表单</span>
     </h3>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
-
+      <div class="row">
+        <div class="col-md-3">
+          <el-form-item label="切换模式" prop="delivery">
+            <custom-switch
+              v-model="ruleForm.mdl"
+              :on-value="true"
+              :off-value="false"
+              :on-text="switchAttrs.onText"
+              :off-text="switchAttrs.offText">
+            </custom-switch>
+          </el-form-item>
+        </div>
+        <div class="col-md-3">
+          <el-form-item label="开始时间" prop="start">
+            <el-date-picker
+              type="datetime"
+              data-type="string"
+              placeholder="选择日期"
+              v-model="ruleForm.start"
+              lock-time="3:0:0"
+              :disabled-time="ruleForm.mdl"
+              style="width: 100%;">
+            </el-date-picker>
+          </el-form-item>
+        </div>
+        <div class="col-md-3">
+          <el-form-item label="结束时间" prop="end">
+            <el-date-picker
+              type="datetimerange"
+              date-type="string"
+              placeholder="选择日期"
+              v-model="ruleForm.end"
+              lock-time="-"
+              :disabled-time="ruleForm.mdl"
+              style="width: 100%;">
+            </el-date-picker>
+          </el-form-item>
+        </div>
+      </div>
+      
       <div class="row">
         <div class="col-md-3">
           <el-form-item label="活动名称" prop="name">
