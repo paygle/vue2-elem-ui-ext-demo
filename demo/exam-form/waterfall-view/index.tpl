@@ -5,6 +5,7 @@
     <span class="label-angle"></span>
     <span class="label">WaterFall 瀑布流</span>
   </h3>
+  <doc-upload :args="fileInfo" :server="file_server" :view-server="file_view_server"></doc-upload>
   <water-fall
     :fields="fieldsName"
     :data="listdata"

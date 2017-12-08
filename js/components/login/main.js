@@ -10,7 +10,7 @@ define([
 var captchaServletUrl = APP_CONFIG.API_URL + 'core/captcha', //验证码地址
     loginServletUrl = APP_CONFIG.API_URL + 'core/login'; //登录地址
 
-Vue.component('login', {
+return Vue.component('login', {
   template: tpl,
   data: function() {
     return {

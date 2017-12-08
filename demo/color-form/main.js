@@ -1,5 +1,6 @@
 /** home 入口模块JS处理 */
 define([
+  'jquery',
   'vue',
   'ELEMENT',
   "vuex",
@@ -10,6 +11,7 @@ define([
   'demo/color-form/form-table/main',
   'demo/color-form/table-exam/main'
 ], function(
+  jQuery,
   Vue,
   ELEMENT,
   Vuex,
@@ -21,6 +23,9 @@ define([
   TableExam
 ) {
   'use strict';
+window.$ = window.jQuery = jQuery;
+window.Vue = Vue;           // 作为全局使用
+window.ELEMENT = ELEMENT;   // 作为全局使用
 window.Promise = Promise;      // 这个必须想入否则无法在IE浏览器里面使用 vuex
 Vue.use(ELEMENT); //使用框架组件
 Vue.use(Vuex);

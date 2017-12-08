@@ -1,10 +1,14 @@
 /** home 入口模块JS处理 */
 define([
+	'jquery',
   'vue',
 	'ELEMENT',
 	'demo/home/panel/main'
-], function(Vue, ELEMENT, Panel) {
-  'use strict';
+], function(jQuery, Vue, ELEMENT, Panel) {
+	'use strict';
+	window.$ = window.jQuery = jQuery;
+	window.Vue = Vue;           // 作为全局使用
+	window.ELEMENT = ELEMENT;   // 作为全局使用
   Vue.use(ELEMENT); //使用框架组件
 
   new Vue({

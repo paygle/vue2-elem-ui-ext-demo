@@ -1,5 +1,7 @@
 /** home 入口模块JS处理 */
 define([
+  'jquery',
+  'jquery.ztree',
   'vue',
   'ELEMENT',
   "vuex",
@@ -13,11 +15,14 @@ define([
   'demo/exam-form/edit-form-exam/query-form/main',
   'demo/exam-form/el-form-exam/index',
   'demo/exam-form/form-table-exam/index',
-  'demo/exam-form/waterfall-view/index'
+  'demo/exam-form/waterfall-view/index',
+  'uploader/doc-upload/main'
 ], function(
+  jQuery,
+  ztree,
   Vue, 
-  ELEMENT, 
-  Vuex, 
+  ELEMENT,
+  Vuex,
   VueRouter,
   Promise,
   dictStore,
@@ -28,16 +33,20 @@ define([
   QueryForm,
   ElFormExam,
   FormTableExam,
-  WaterfallView
+  WaterfallView,
+  DocUpload
 ) {
   'use strict';
+  console.log('Exam-Form start! ', Vue);
+window.Vue = Vue;           // 作为全局使用
+window.$ = window.jQuery = jQuery;
+window.ELEMENT = ELEMENT;   // 作为全局使用
 window.Promise = Promise;      // 这个必须想入否则无法在IE浏览器里面使用 vuex
 Vue.use(ELEMENT); //使用框架组件
 Vue.use(Vuex);
 Vue.use(VueRouter);
-
 console.log('Exam-Form load!  使用 debugger 断点容易导致加载错误或失败，请改用 console.log。');
-
+console.log('Exam-Form load! ', Vue);
 /********  数据管理  ********/
 var store = new Vuex.Store({
     modules: {
@@ -125,7 +134,10 @@ var router = new VueRouter({
 new Vue({
   el: '#main-body',
   store: store,
-  router: router
+  router: router,
+  mounted:function() {
+
+  }
 });
  
 });

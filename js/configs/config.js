@@ -2,6 +2,7 @@
 // 应用内基础配置
 window.APP_CONFIG = {
 	API_URL: "http://192.168.18.76:8080/demo-web/",
+	IMG_URL:'http://dev.gzdev.tk:3980',
 	APP_PATH: "/"        // 配置自己的域名
 };
  
@@ -126,6 +127,7 @@ require.config({
 		"mixins": JSPATH + "/mixins",
 		"libs": JSPATH + "/libs",
 		"components": COMPONENTS,
+		"uploader": COMPONENTS + "/img-components", // 上传组件
 		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
 		// 常用库和工具文件配置
 		"promise" : JSPATH + "/libs/es6-promise",
@@ -138,6 +140,7 @@ require.config({
 		"md5" : JSPATH + "/libs/md5",
 		"websocket" : JSPATH + "/libs/re-websocket",
 		"tether" : JSPATH + "/libs/tether",
+		"lodash" : JSPATH + "/libs/lodash",
 		"vue" : JSPATH + "/libs/vue",
 		"vuex" : JSPATH + "/libs/vuex",
 		"vueRouter" : JSPATH + "/libs/vue-router",
