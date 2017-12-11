@@ -19,7 +19,6 @@ define([
   'use strict';
 var merge = lodash.merge;
 var CONSTANTS = CONSTS.CONSTANTS;
-console.log('imgComm1 ---> ', imgComm);
 return Vue.component('doc-classify', {
   template: tpl,
   cName : '单证分类',

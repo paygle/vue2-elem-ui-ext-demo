@@ -3,6 +3,7 @@ define([
   "vue",
   "utilExt",
   "lodash",
+  "webuploader",
   'mixins/emitter',
   'text!uploader/doc-upload/components/doc-upload-dialog/main.tpl',
   'uploader/constants/img-constants',
@@ -11,6 +12,7 @@ define([
   Vue,
   util,
   lodash,
+  Webuploader,
   emitter,
   tpl,
   CONSTS
@@ -19,6 +21,7 @@ define([
 
 var merge = lodash.merge;
 var CONSTANTS = CONSTS.CONSTANTS;
+window.WebUploader = Webuploader;
 
 return Vue.component('doc-upload-dialog', {
   template: tpl,
@@ -92,16 +95,7 @@ return Vue.component('doc-upload-dialog', {
           ELEMENT.Message.error(data.message);
         }
       });
-    },
-    loadJScript: function() {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "/js/libs/uploader/webuploader.js" ;
-      document.body.appendChild(script);
     }
-  },
-  mounted: function(){
-    this.loadJScript();
   }
 });
 

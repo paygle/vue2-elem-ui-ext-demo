@@ -49,7 +49,7 @@
           <doc-preview ref='docPreview' :server='viewServer' :upload-server="server" :notece='notece' @checkLen='handlerCheckLen'></doc-preview>
       </div>
   </div>
-  <div class='hidden'>
+  <div class='hidden-dialog'>
       <doc-upload-dialog
         ref='uploadDialog'
         :server="server" :notece='notece'

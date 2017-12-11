@@ -1,6 +1,7 @@
 (function(){
 // 应用内基础配置
 window.APP_CONFIG = {
+	DEBUG: true,         // 是否为调试模式
 	API_URL: "http://192.168.18.76:8080/demo-web/",
 	IMG_URL:'http://dev.gzdev.tk:3980',
 	APP_PATH: "/"        // 配置自己的域名
@@ -127,6 +128,7 @@ require.config({
 		"mixins": JSPATH + "/mixins",
 		"libs": JSPATH + "/libs",
 		"components": COMPONENTS,
+    "webuploader": JSPATH + "/libs/uploader/webuploader",
 		"uploader": COMPONENTS + "/img-components", // 上传组件
 		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
 		// 常用库和工具文件配置

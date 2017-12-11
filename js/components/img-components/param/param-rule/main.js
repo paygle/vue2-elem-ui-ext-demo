@@ -7,7 +7,7 @@ define([
   "uploader/constants/img-comm"
 ], function(Vue, util, emitter, tpl, imgComm){
 'use strict';
-console.log('imgComm 3---> ', imgComm);
+
 return Vue.component('doc-rules', {
   template: tpl,
   mixins: [emitter,imgComm],

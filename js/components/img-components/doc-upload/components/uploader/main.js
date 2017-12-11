@@ -4,7 +4,7 @@ define([
   "utilExt",
   "lodash",
   'mixins/emitter',
-  'text!uploader/doc-upload/components/doc-upload-dialog/main.tpl'
+  'text!uploader/doc-upload/components/uploader/main.tpl'
 ], function(
   Vue,
   util,

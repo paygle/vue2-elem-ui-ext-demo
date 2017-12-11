@@ -1,4 +1,4 @@
-/** login component */
+/** param-doc component */
 define([
   'vue',
   "funcs",
@@ -20,7 +20,7 @@ var EMPTY = {
     "c_doc_name": "", //单证名称
     "c_remark": "", //备注
 };
-console.log('imgComm2 ---> ', imgComm);
+
 return Vue.component('param-doc', {
   template: tpl,
   cName : '单证规则',
@@ -185,4 +185,4 @@ return Vue.component('param-doc', {
   }
 });
 
-}); //End login
+}); //End param-doc

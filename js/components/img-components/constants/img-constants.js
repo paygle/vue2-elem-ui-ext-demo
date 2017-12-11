@@ -8,7 +8,5 @@ define(function(require, exports, module) {
     }
   };
 
-  module.exports = {
-    CONSTANTS:IMG_CONSTANTS
-  };
+  exports.CONSTANTS = IMG_CONSTANTS;
 });

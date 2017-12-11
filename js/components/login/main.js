@@ -65,8 +65,8 @@ return Vue.component('login', {
 
   methods: {
     submitForm: function() {
+      var _this = this;
       this.$refs.formData.validate(function(valid) {
-        var _this = this;
         if (valid) {
           _this.loading = true;
           _this.message='';

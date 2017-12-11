@@ -1,27 +1,31 @@
 /** doc-upload component */
 define([
+  'jquery.ztree',
   "vue",
   "utilExt",
   "lodash",
   'mixins/emitter',
   'text!uploader/doc-upload/main.tpl',
+  'uploader/constants/img-constants',
   "uploader/doc-upload/components/imgcompare/index",       //图片比较组件
   "uploader/doc-upload/components/doc-upload-dialog/main", //影像上传弹出框
   "uploader/doc-upload/components/doc-preview/main",       //影像预览组件
 ], function(
+    Ztree,
     Vue,
     util,
     lodash,
     emitter,
     tpl,
+    CONSTS,
     Imgcompare,
     DocUploadDialog,
     DocPreview
   ){
-console.log('DOC-UPLOAD --------- ')
 
 var debounce = lodash.debounce;
 var merge = lodash.merge;
+var CONSTANTS = CONSTS.CONSTANTS;
 Vue.use(Imgcompare.directive);
 
 return Vue.component('doc-upload', {

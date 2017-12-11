@@ -174,16 +174,20 @@ var Proto = {
         "codelistIds": options.codelistIds,
         "model": options.model
       };
+
       _model=JSON.stringify(_model);
+      var contentType = "application/x-www-form-urlencoded;charset=UTF-8";
       var compressAble = GZIP_ENABLE && _model.length>1000 ; //仅对大于1k的报文进行压缩
 
-      if(compressAble){ 
+      if(!APP_CONFIG.DEBUG && compressAble){
+        contentType = contentType + ";gzip="+compressAble;
         _model=pako.gzip(_model, {to: "string"});
       }
+
       return $.ajax(options.url, {
         async: options.async,
         type: "POST",
-        contentType: "application/x-www-form-urlencoded;charset=UTF-8;gzip="+compressAble,
+        contentType: contentType,
         dataType: options.dataType,
         xhrFields: { //跨域发送Ajax时，Request header中便会带上 Cookie 信息
           withCredentials: true

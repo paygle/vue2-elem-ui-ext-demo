@@ -24,8 +24,6 @@ var EDITORPATH = location.origin + (
   location.pathname.substring(0, location.pathname.indexOf('/', 1))
 ) + '/static/editor/';
 
-console.log('Doc Preview Step ------ !')
-
 function isImage(name) {
   var type = name.substring(name.lastIndexOf('.') + 1).toLowerCase();
   if (type == 'jpg')
