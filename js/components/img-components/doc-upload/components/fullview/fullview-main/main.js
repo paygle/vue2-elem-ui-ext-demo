@@ -33,7 +33,7 @@ return Vue.component('fullview-main', {
       return this.server + "/original/";
     },
     thumb: function() {
-      return this.server + "/thumb/";
+      return this.server + "/thumb/";    // 压缩图片
     },
     nextIndex: function() {
       var i = this.currentIndex * 1 + 1;
@@ -69,7 +69,7 @@ return Vue.component('fullview-main', {
       var src = this.currentEl.src ;
       if(src === this.currentEl.c_new_image_id){
           src = this.currentEl.c_image_id ;
-      }else{
+      }else if (this.currentEl.c_new_image_id) {
           src = this.currentEl.c_new_image_id;
       }
       this.currentEl.src = src;

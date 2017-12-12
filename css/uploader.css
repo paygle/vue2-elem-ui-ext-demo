@@ -832,6 +832,14 @@ uploader .filelist li p.imgWrap {
   opacity: 0.6;
 }
 
+.doc-upload .row{
+  margin-right: 60px;
+}
+
+.doc-upload .row.button {
+  margin-right: 70px;
+}
+
 /* doc-classify css */
 .doc-tree {
   height: auto;

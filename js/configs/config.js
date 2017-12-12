@@ -119,6 +119,7 @@ require.config({
 		},
 		'vuex':{ deps: ['promise'] },
 		'jquery.ztree':{ deps: ['jquery'] },
+		'ztree.exhide':{ deps: ['jquery.ztree'] },
 		'bootstrap':{ deps: ['jquery'] },
 	},
 	paths : {
@@ -136,6 +137,7 @@ require.config({
 		"text" : JSPATH + "/libs/require-text",
 		"jquery" : JSPATH + "/libs/jquery",
 		"jquery.ztree" : JSPATH + "/libs/jquery.ztree.all",
+		"ztree.exhide" : JSPATH + "/libs/jquery.ztree.exhide",
 		"bootstrap" : JSPATH + "/libs/bootstrap",
 		"echarts" : JSPATH + "/libs/echarts",
 		"easypiechart" : JSPATH + "/libs/easypiechart",

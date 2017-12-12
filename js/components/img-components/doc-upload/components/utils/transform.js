@@ -1,7 +1,7 @@
 /** transform utils */
 define(function(require, exports, module) {
 
-function transform(scale, rotate,translateX,translate) {
+function transform(scale, rotate,translateX,translateY) {
     this.scale = scale || 1;
     this.rotate = rotate || 0;
     this.translateX = translateX || 0;

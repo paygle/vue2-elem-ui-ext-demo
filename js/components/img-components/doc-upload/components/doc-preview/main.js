@@ -52,6 +52,7 @@ return Vue.component('doc-preview', {
   data: function() {
     return {
        //nothumb: nothumb ,
+      app_path: APP_CONFIG.APP_PATH,
 			rows:[],
 			orderType:"",
 			c_prt_id : "",
@@ -317,7 +318,7 @@ return Vue.component('doc-preview', {
       var self = this ;
       var instance = fullView({
         visible : true ,
-        rows : self.rows.filter(function(item){ isImage(item.c_name); }),
+        rows : self.rows.filter(function(item){ return isImage(item.c_name); }),
         server : self.server ,
         currentEl : el ,
         onEdit : function(el){

@@ -1,6 +1,7 @@
 /** doc-upload component */
 define([
   'jquery.ztree',
+  'ztree.exhide',
   "vue",
   "utilExt",
   "lodash",
@@ -12,6 +13,7 @@ define([
   "uploader/doc-upload/components/doc-preview/main",       //影像预览组件
 ], function(
     Ztree,
+    ztExhide,
     Vue,
     util,
     lodash,

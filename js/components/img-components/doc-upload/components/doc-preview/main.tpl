@@ -13,11 +13,11 @@
                   <img  :alt="el.c_name" :src="thumb+(el.c_new_image_id || el.c_image_id)" v-if="el.c_is_image"
                       @dblclick="openFullview(el)"
                       class="img-rounded" style="width: 80px; height: 80px;">
-                  <img  :alt="el.c_name" src="static/img/nothumb.png" v-if="!el.c_is_image"
+                  <img  :alt="el.c_name" :src="app_path + 'static/img/nothumb.png'" v-if="!el.c_is_image"
                       class="img-rounded" style="width: 80px; height: 80px;">
               </div>
               <div class="file-name">
-                  <a class="filename" href="javascript:void(0);" :i="original+(el.c_new_image_id || el.c_image_id)"  
+                  <a class="filename" href="javascript:void(0);" :i="original+(el.c_new_image_id || el.c_image_id)"
                       v-show='!el.showName && !el.showRemark'
                       @click="rename(index,$event)" v-if="el.c_is_image">{{el.c_name}}</a>
                   <a class="filename" href="javascript:void(0);"  v-show='!el.showName && !el.showRemark'
