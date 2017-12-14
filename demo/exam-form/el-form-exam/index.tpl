@@ -86,8 +86,15 @@
       <valid-item display label="测试2" :model="vaItems.number1" @validate="validateTest" prop="number1" :rules="inputRule" item-width="200px"  label-width="60px">
       <el-input v-model="vaItems.number1" histype='number' precision="2" placeholder="数字验证"></el-input>
       </valid-item>
-      <valid-item display label="测试3"  item-width="200px" label-align="left" label-width="60px">
-      <el-input v-model="vaItems.number2" placeholder="单个输入验证"></el-input>
+      <valid-item display label="测试3"  item-width="300px" label-align="left" label-width="60px">
+      <el-input v-model="vaItems.number2" placeholder="单个输入验证" prepend-width="120px">
+        <el-select v-model="vaItems.name" slot="prepend" placeholder="请选择">
+          <el-option label="餐厅名" value="1"></el-option>
+          <el-option label="订单号" value="2"></el-option>
+          <el-option label="用户电话" value="3"></el-option>
+        </el-select>
+        <el-button slot="append" icon="search"></el-button>
+      </el-input>
       </valid-item>
       <el-button @click="submitValidItems">验证</el-button>
       <el-button @click="resetValidItems">重置</el-button>
@@ -237,7 +244,7 @@
       border
       style="width: 100%">
       <el-table-column type="expand">
-        <template scope="props">
+        <template slot-scope="props">
           <el-form :model="props.row" label-width="80px">
             <el-row>
               <el-col :span="6">
@@ -306,7 +313,7 @@
         label="区域">
       </el-table-column>
       <el-table-column label="下拉菜单" width="150">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-dropdown trigger="click" @command="dropCommand">
             <span class="el-dropdown-link">
               下拉菜单<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -322,7 +329,7 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" width="120">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-button type="text" @click="EditRow(scope)">{{ scope.expand ? "确认":"编辑"}}</el-button>
           <el-button type="text" @click="DeleteRow(scope.$index, scope.row)">删除</el-button>
         </template>
