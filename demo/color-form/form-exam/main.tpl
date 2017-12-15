@@ -137,7 +137,7 @@
             :get-fill-styl="getFillStylSuggest"
             placeholder="请输入内容，自动建议提示"
             @select="handleSelect">
-              <template scope="props">
+              <template slot-scope="props">
                 <el-table :data="props.data" @row-click="listRowClickA">
                   <el-table-column prop="value" label="数值"></el-table-column>
                   <el-table-column prop="address" label="地址"></el-table-column>
@@ -414,7 +414,7 @@
             :fetch-suggestions="querySearchAsync"
             placeholder="请输入内容，自动建议提示"
             @select="handleSelect">
-              <template scope="props">
+              <template slot-scope="props">
                 <el-table :data="props.data" @row-click="listRowClickB">
                   <el-table-column prop="value" label="数值"></el-table-column>
                   <el-table-column prop="address" label="地址"></el-table-column>

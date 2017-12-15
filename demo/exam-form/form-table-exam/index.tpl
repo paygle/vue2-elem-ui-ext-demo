@@ -106,7 +106,7 @@
               <el-option 
                 v-for="item in options"
                 :key="item.value" 
-                :label="item.label" 
+                :label="item.label"
                 :value="item.value">
               </el-option>
             </el-select>
@@ -291,7 +291,7 @@
         @table-change="tableFormChange"
         borderstyle="width: 100%">
         <form-table-column type="expand">
-          <template scope="props">
+          <template slot-scope="props">
             {{ "名称" + props.row.name }}
             {{ "日期" + props.row.date }}
             {{ "区域" + props.row.address }}

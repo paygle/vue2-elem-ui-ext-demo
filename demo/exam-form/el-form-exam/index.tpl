@@ -117,7 +117,7 @@
             clearable
             placeholder="请选择活动区域">
             <el-option 
-              v-for="(item, index) in optionsData" 
+              v-for="(item, index) in optionsData"
               :key="index" 
               :label="item.label" 
               :value="item.value">

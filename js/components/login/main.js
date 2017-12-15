@@ -86,9 +86,10 @@ return Vue.component('login', {
               _this.loading = false;
               if(data.statusCode > 0){
                   _this.message=data.message;
+                  _this.formData.captcha='';
+                  _this.refreashCaptcha();
               }else if(data.statusCode === 0){
-                  var oper=data.oper;
-                  cacheUtil.setSessionOper(oper); //放到sessionCache中
+                  cacheUtil.setSessionOper(data.oper); //放到sessionCache中
                   window.location.href='./';
               }
             },
