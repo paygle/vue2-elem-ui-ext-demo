@@ -31,6 +31,47 @@ funcs.prototype.focusInput = function(el) {
   }
 };
 
+function mixFields(arr, fo, op) {
+  if (arr.length) {
+    return arr.map(function(item) {
+      var nf = JSON.parse(JSON.stringify(fo));
+      Object.keys(nf).forEach(function(f) {
+        if (op === 'add') {
+          item[f] = nf[f];
+        } else if (op === 'del') {
+          delete item[f];
+        }
+      });
+      return item;
+    });
+  }
+  return arr;
+}
+
+function mixFieldInArray(arr, field, op) {
+  if (!Array.isArray(arr)) return [];
+  var fieldObj = {}, nwarr = JSON.parse(JSON.stringify(arr));
+  if (Array.isArray(field)) {
+    for (let i = 0; i < field.length; i++) fieldObj[field[i]] = '';
+    return mixFields(nwarr, fieldObj, op);
+  } else if (typeof field === 'object') {
+    return mixFields(nwarr, field, op);
+  } else if (typeof field === 'string') {
+    fieldObj[field] = '';
+    return mixFields(nwarr, fieldObj, op);
+  }
+}
+
+/**
+ * 数组添加字段对象
+ * 格式： ['a', 'b', 'c' ...] 内部元素必须都是字段名称，初始化为空字串
+ * 格式： {'a': true, 'b': 'bb', c: 123} 合并到数组内的每一条数据
+ * 格式： 'fieldname'  添加单个字段到数组
+ * @param { Object | String | Array } field
+ */
+funcs.prototype.arrayFieldsAdd = function(arr, field) { return mixFieldInArray(arr, field, 'add') };
+funcs.prototype.arrayFieldsdel = function(arr, field) { return mixFieldInArray(arr, field, 'del') };
+
 function DateCompute(init) {
   function getDateTimes(Dstr) {
     if (!/^\d+((\s+\d+)?(\:\d+){0,2})?/g.test(Dstr)) return 0;

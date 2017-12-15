@@ -8,10 +8,11 @@ define([
 ], function(Vue, tpl, funcs, emitter, filters) {
   'use strict';
   var TypeOf = funcs.TypeOf,
-  randomChar = funcs.randomChar, 
+  randomChar = funcs.randomChar,
   ObjectPlainIsEqual = funcs.ObjectPlainIsEqual,
-  ToPlainObject = funcs.ToPlainObject; //引入类型判断
-
+  ToPlainObject = funcs.ToPlainObject,   //引入类型判断
+  arrayFieldsAdd = funcs.arrayFieldsAdd, //引入数组字段添加
+  arrayFieldsdel = funcs.arrayFieldsdel; //引入数组字段删除
   console.log('ElForm:', emitter, filters)
    
 return Vue.component('ElFormExam', {
@@ -310,7 +311,7 @@ return Vue.component('ElFormExam', {
     // }, 1000)
  
     console.log("重新加载中...");
-
+    console.log('Field Array:', arrayFieldsAdd(this.tableData, ['aaaaa', 'bbbb']));
   }
 });
 
