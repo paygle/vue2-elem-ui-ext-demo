@@ -12,6 +12,9 @@ define([
 
 return Vue.component('QueryForm', {
     template: tpl,
+    props: {
+      wrapRoute: Object
+    },
     data: function(){
       return{
         switchAttrs:{
@@ -144,6 +147,9 @@ return Vue.component('QueryForm', {
         } 
         return false
       }
+    },
+    created: function() {
+       console.log("wrapRoute Call:", this.wrapRoute.params());
     }
   });
 });

@@ -1,14 +1,14 @@
 /** El-Form-Exam */
 define([
   'vue',
-  'text!demo/exam-form/waterfall-view/index.tpl',
-  'text!demo/exam-form/waterfall-view/data.json'
+  'text!demo/exam-form/gridlayer-view/index.tpl',
+  'text!demo/exam-form/gridlayer-view/data.json'
 ], function(Vue, tpl, data) {
   'use strict';
 
-console.log('Uploader: waterfall-view');
+console.log('Uploader: gridlayer-view');
 
-return Vue.component("WaterfallView", {
+return Vue.component("gridlayerView", {
 
   template: tpl,
 
@@ -30,11 +30,14 @@ return Vue.component("WaterfallView", {
   },
 
   methods: {
+    favorClick: function(item){
+      console.log('favor-click:', item);
+    },
     CellClick: function(val){
-      console.log('cell-click:', val)
+      console.log('cell-click:', val);
     },
     urltmplFun: function(code, pcode){
-      return "javascript:void(0);"
+      return "javascript:void(0);";
     }
   }
 });

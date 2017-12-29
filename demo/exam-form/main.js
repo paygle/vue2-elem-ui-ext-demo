@@ -8,14 +8,14 @@ define([
   "vueRouter",
   "promise",
   "dictStore",
-  'demo/exam-form/case-tracking/case-tracking/main',
+  'demo/exam-form/case-tracking/case-track/main',
   'demo/exam-form/edit-form-exam/index',
   'demo/exam-form/edit-form-exam/add-row/main',
   'demo/exam-form/edit-form-exam/edit-row/main',
   'demo/exam-form/edit-form-exam/query-form/main',
   'demo/exam-form/el-form-exam/index',
   'demo/exam-form/form-table-exam/index',
-  'demo/exam-form/waterfall-view/index',
+  'demo/exam-form/gridlayer-view/index',
   'uploader/doc-upload/main'
 ], function(
   jQuery,
@@ -33,11 +33,10 @@ define([
   QueryForm,
   ElFormExam,
   FormTableExam,
-  WaterfallView,
+  GridlayerView,
   DocUpload
 ) {
   'use strict';
-  console.log('Exam-Form start! ', Vue);
 window.Vue = Vue;           // 作为全局使用
 window.$ = window.jQuery = jQuery;
 window.ELEMENT = ELEMENT;   // 作为全局使用
@@ -46,7 +45,7 @@ Vue.use(ELEMENT); //使用框架组件
 Vue.use(Vuex);
 Vue.use(VueRouter);
 console.log('Exam-Form load!  使用 debugger 断点容易导致加载错误或失败，请改用 console.log。');
-console.log('Exam-Form load! ', Vue);
+
 /********  数据管理  ********/
 var store = new Vuex.Store({
     modules: {
@@ -100,8 +99,8 @@ var router = new VueRouter({
       children: []
     },
     {
-      path: '/water-fall',
-      component: WaterfallView,
+      path: '/grid-layer',
+      component: GridlayerView,
       children: []
     },
     {

@@ -25,3 +25,19 @@
 .season-box .confirm-btn{
   float: right;
 }
+
+/* rightFixedPanel 面板菜单样式 */
+.right-fx-Panel li{
+  color:#666;
+  background-color: #fbfbfb;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px;
+}
+
+.right-fx-Panel li:hover{
+  color:#fff;
+  background-color: #adadad;
+}

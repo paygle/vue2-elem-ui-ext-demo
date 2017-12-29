@@ -284,6 +284,7 @@
         :rules="tableRules"
         :data="tableData"
         :new-row="newRow"
+        :start-tabindex="30"
         disable-field="disabled"
         @row-click="RowClick"
         @switch-change="switchChange"
@@ -298,14 +299,15 @@
           </template>
         </form-table-column>
         <form-table-column type="selection" width="50" label="选择"></form-table-column>
-        <form-table-column type="date" prop="date" label="日期"></form-table-column>
-        <form-table-column type="input" prop="name" label="姓名" width="120"></form-table-column>
-        <form-table-column type="input" prop="numb" label="数字" :input-option="inputOption"></form-table-column>
-        <form-table-column type="fnumber" prop="numtest" label="格式化数字" width="120"></form-table-column>
-        <form-table-column v-if="colshow" type="rate" prop="rate" label="比率" width="150"></form-table-column>
+        <form-table-column col-index="1" type="date" prop="date" label="日期"></form-table-column>
+        <form-table-column col-index="2" type="input" prop="name" label="姓名" width="120"></form-table-column>
+        <form-table-column col-index="3" type="input" prop="numb" label="数字" :input-option="inputOption"></form-table-column>
+        <form-table-column col-index="4" type="fnumber" prop="numtest" label="格式化数字" width="120"></form-table-column>
+        <form-table-column col-index="5" v-if="colshow" type="rate" prop="rate" label="比率" width="150"></form-table-column>
         <form-table-column
           :editable="editableFun"
           type="select"
+          col-index="6"
           :options-data="options"
           :select-option="{filterable:true}"
           :set-col-option="setColOption"
@@ -314,6 +316,7 @@
         </form-table-column>
         <form-table-column
           type="labelBtn"
+          col-index="7"
           :formatter="labelBtnformatter"
           :label-option="labelBtnOption"
           :label-btn-clicked="labelBtnClicked"
@@ -331,7 +334,7 @@
           <form-table-column prop="addressDetail" label="详细地址" show-overflow-tooltip></form-table-column>
           <form-table-column type="checkbox" prop="schecked" label="可选"></form-table-column>
         </form-table-column>
-        <form-table-column type="operate" width="110"
+        <form-table-column col-index="12" type="operate" width="110"
           :delete-visiable="deletBtn"
           :edit-row="editRow"
           :delete-row="deleteRow"

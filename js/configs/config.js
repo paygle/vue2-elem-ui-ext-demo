@@ -6,7 +6,7 @@ window.APP_CONFIG = {
 	IMG_URL:'http://dev.gzdev.tk:3980',
 	APP_PATH: "/"        // 配置自己的域名
 };
- 
+
 // 初始化框架组件配置
 window.COMPONENTS_CONFIG = {
 	// 颜色主题类型 [green,  violet], 默认为空或注释掉本行，用于组件内部控制
@@ -47,8 +47,8 @@ window.COMPONENTS_CONFIG = {
         "icon" : "",
         "subMenu" : []
       },{
-        "label" : "Water-Fall 瀑布流",
-        'url': "exam-form.html/water-fall",
+        "label" : "GridLayer 布局流",
+        'url': "exam-form.html/grid-layer",
         "icon" : "",
         "subMenu" : []
       },{

@@ -96,6 +96,9 @@
         <el-button slot="append" icon="search"></el-button>
       </el-input>
       </valid-item>
+      <valid-item display label="选择类型" :model.sync="casade" @validate="validateTest" prop="cas" :rules="inputRule" item-width="200px"  label-width="60px">
+        <el-cascader :options="cascaderOptions" v-model="casade"></el-cascader>
+     </valid-item>
       <el-button @click="submitValidItems">验证</el-button>
       <el-button @click="resetValidItems">重置</el-button>
   </div>

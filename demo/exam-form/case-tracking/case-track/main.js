@@ -1,14 +1,14 @@
 // 案件跟踪组件
 define([
   'vue',
-  'text!demo/exam-form/case-tracking/case-tracking/main.tpl',
+  'text!demo/exam-form/case-tracking/case-track/main.tpl',
   'demo/exam-form/case-tracking/templ/main'
 ], function(Vue, tpl, Templ) {
   'use strict';
 
   console.log('CaseTracking load!');
 
-return Vue.component('CaseTracking', {
+return Vue.component('case-tracking', {
     template: tpl,
     data: function(){
       // 结点状态:  已处理 complete  处理中 processing  未接收 unreceived  已终止 terminated  未触发 untriggered

@@ -13,6 +13,7 @@
       :rules="rules"
       :data="tableData"
       :new-row="newRow"
+      :start-tabindex="30"
       disable-field="disabled"
       :compare-styl="compareStyl"
       :modified-styl="modifiedStyl"
@@ -22,30 +23,31 @@
       @table-change="tableFormChange"
       borderstyle="width: 100%">
       <form-table-column type="selection" width="50" label="选择"></form-table-column>
-      <form-table-column type="input" prop="name" label="活动名称"></form-table-column>
+      <form-table-column col-index="1" type="input" prop="name" label="活动名称"></form-table-column>
       <form-table-column
         :editable="editableFun"
         type="select"
+        col-index="2"
         :options-data="options"
         :select-option="{filterable:true}"
         :set-col-option="setColOption"
         prop="region"
         label="活动区域">
       </form-table-column>
-      <form-table-column type="input" prop="num" label="数字" :input-option="inputOption"></form-table-column>
-      <form-table-column type="date" prop="date1" label="活动时间"></form-table-column>
+      <form-table-column col-index="3" type="input" prop="num" label="数字" :input-option="inputOption"></form-table-column>
+      <form-table-column col-index="4" type="date" prop="date1" label="活动时间"></form-table-column>
       <form-table-column
         type="switch"
         prop="delivery"
         :switch-option="{onValue:'1', offValue:'0'}"
         label="即时配送">
       </form-table-column>
-      <form-table-column type="address" prop="address" label="地址选择"></form-table-column>
-      <form-table-column type="rate" prop="pernum" label="比率验证" width="120"></form-table-column>
-      <form-table-column type="fnumber" prop="fnumber" label="格式化数字" width="120"></form-table-column>
+      <form-table-column col-index="5" type="address" prop="address" label="地址选择"></form-table-column>
+      <form-table-column col-index="6" type="rate" prop="pernum" label="比率验证" width="120"></form-table-column>
+      <form-table-column col-index="7" type="fnumber" prop="fnumber" label="格式化数字" width="120"></form-table-column>
       <form-table-column type="address" prop="address" label="省市区" translated="address"></form-table-column>
       <form-table-column label="合并">
-        <form-table-column type="input" prop="tips" label="主题"></form-table-column>
+        <form-table-column col-index="8" type="input" prop="tips" label="主题"></form-table-column>
         <form-table-column prop="actbind" label="详细地址" show-overflow-tooltip></form-table-column>
       </form-table-column>
       <form-table-column type="operate" width="110"

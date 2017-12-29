@@ -16,4 +16,5 @@
       <router-view></router-view>
     </transition>
   </div>
+  <wrap-route :active-name="activeName" :params="getParams"></wrap-route>
 </div>

@@ -16,7 +16,7 @@
     expand-icon-hidden
     expand-only-one border>
       <el-table-column type="expand">
-        <template scope="data">
+        <template slot-scope="data">
 
           <el-form
             :err-styl="errStyl"
@@ -151,7 +151,7 @@
                     :get-fill-styl="getFillStylSuggest"
                     placeholder="请输入内容，自动建议提示"
                     @select="handleSelect">
-                      <template scope="props">
+                      <template slot-scope="props">
                         <el-table :data="props.data" @row-click="listRowClickA">
                           <el-table-column prop="value" label="数值"></el-table-column>
                           <el-table-column prop="address" label="地址"></el-table-column>
@@ -233,7 +233,7 @@
         label="地址选择"
          width="150px"
         prop="address">
-        <template scope="data">
+        <template slot-scope="data">
           <address-box v-model="data.row.address" :translated="true"></address-box>
         </template>
       </el-table-column>
@@ -258,7 +258,7 @@
         prop="radioGVal">
       </el-table-column>
       <el-table-column label="操作" width="120">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-button type="text" @click="DeleteRow(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -277,7 +277,7 @@
     expand-icon-hidden
     expand-only-one border>
       <el-table-column type="expand">
-        <template scope="data">
+        <template slot-scope="data">
           <valid-form
             :err-styl="errStyl"
             :compare-styl="compareStyl"
@@ -446,7 +446,7 @@
                     :fetch-suggestions="querySearchAsync"
                     placeholder="请输入内容，自动建议提示"
                     @select="handleSelect">
-                      <template scope="props">
+                      <template slot-scope="props">
                         <el-table :data="props.data" @row-click="listRowClickB">
                           <el-table-column prop="value" label="数值"></el-table-column>
                           <el-table-column prop="address" label="地址"></el-table-column>
@@ -539,7 +539,7 @@
         label="地址选择"
          width="150px"
         prop="address">
-        <template scope="data">
+        <template slot-scope="data">
           <address-box v-model="data.row.address" :translated="true"></address-box>
         </template>
       </el-table-column>
@@ -564,7 +564,7 @@
         prop="radioGVal">
       </el-table-column>
       <el-table-column label="操作" width="120">
-        <template scope="scope">
+        <template slot-scope="scope">
           <el-button type="text" @click="DeleteRowx(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>

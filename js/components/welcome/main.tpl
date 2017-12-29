@@ -265,5 +265,7 @@
     <li><span class="icon"><i class="el-icon-send-back"></i> el-icon-send-back </span></li>
     <li><span class="icon"><i class="el-icon-shield-ok"></i> el-icon-shield-ok </span></li>
     <li><span class="icon"><i class="el-icon-shield-err"></i> el-icon-shield-err </span></li>
+    <li><span class="icon"><i class="el-icon-hollow-heart"></i> el-icon-hollow-heart </span></li>
+    <li><span class="icon"><i class="el-icon-solid-heart"></i> el-icon-solid-heart </span></li>
   </ul>
 </div>
