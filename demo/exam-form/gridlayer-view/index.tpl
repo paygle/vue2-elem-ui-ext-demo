@@ -6,6 +6,7 @@
     <span class="label">GridLayer 格子布局</span>
   </h3>
   <grid-layer
+    trigger="hover"
     :fields="fieldsName"
     :data="listdata"
     :urltmpl="urltmplFun"

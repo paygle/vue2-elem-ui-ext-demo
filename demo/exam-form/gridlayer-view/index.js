@@ -31,7 +31,9 @@ return Vue.component("gridlayerView", {
 
   methods: {
     favorClick: function(item){
-      console.log('favor-click:', item);
+      console.log('favor-click:', item.favorite)
+      item.favorite = item.favorite == '1' ? '0' : '1';
+      console.log('favor-clicked:', item.favorite)
     },
     CellClick: function(val){
       console.log('cell-click:', val);
