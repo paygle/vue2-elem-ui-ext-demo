@@ -124,7 +124,7 @@ return Vue.component('doc-preview', {
           c_image_ids.push(c_image_id);
       }
       util.request({
-        serviceId: 'IMG00023',
+        serviceId: '25000023',
         tranCode: 'IMG0000023',
         model: {
             c_busi_no : self.notece.c_busi_no,
@@ -144,7 +144,7 @@ return Vue.component('doc-preview', {
     submitData: function(idx) { //提交更改的内容 
       var image = this.rows[idx];
       util.request({
-        serviceId: 'IMG00025',
+        serviceId: '25000025',
         tranCode: 'IMG0000025',
         model: {
             c_busi_no : image.c_busi_no,
@@ -169,7 +169,7 @@ return Vue.component('doc-preview', {
       self.orderType = order || self.orderType ;
       var include = self.notece.level*1 <= 1 ? CONSTANTS.E_YES_OR_NO.YES.c_code : CONSTANTS.E_YES_OR_NO.NO.c_code;
       util.request({
-        serviceId	:'IMG00026',
+        serviceId	:'25000026',
         tranCode	:'IMG0000026',
         loadingMessage:'正在加载影像',
         model:{

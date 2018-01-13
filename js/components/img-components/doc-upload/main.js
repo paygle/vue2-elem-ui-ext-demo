@@ -206,7 +206,7 @@ return Vue.component('doc-upload', {
           var images = self.$refs.docPreview.getCheckedImages();
           images = images.map(function(item){ return item.c_image_id; });
           util.request({
-            serviceId: 'IMG00023',
+            serviceId: '25000023',
             tranCode: 'IMG0000023',
             model: {
                 c_busi_no : self.args.c_busi_no ,
@@ -229,7 +229,7 @@ return Vue.component('doc-upload', {
       btn.attr('disabled', 'disabled');
       var self = this ;
       util.request({
-        serviceId: 'IMG00022',
+        serviceId: '25000022',
         tranCode: 'IMG0000022',
         model: {
           c_co_busi_no: this.args.c_co_busi_no,
@@ -277,7 +277,7 @@ return Vue.component('doc-upload', {
       var self = this ;
       self.treeLoading = true ;
       util.request({
-        serviceId : 'IMG00021',
+        serviceId : '25000021',
         tranCode  : 'IMG0000021',
         model:{
             c_co_busi_no : self.args.c_co_busi_no , //合并单号
@@ -331,7 +331,7 @@ return Vue.component('doc-upload', {
         var nodes = $.fn.zTree.getZTreeObj(self.ztreeId).getCheckedNodes(true);
         var dtl = nodes.map(function(item){ return { c_pk_id : item.c_pk_id };});
         util.request({
-          serviceId: 'IMG00022',
+          serviceId: '25000022',
           tranCode: 'IMG0000022',
           model: {
             c_co_busi_no: this.args.c_co_busi_no,
@@ -427,7 +427,7 @@ return Vue.component('doc-upload', {
             c_kind_no : this.args.c_kind_no
         },
         "tranCode" :"IMG0000001",
-        "serviceId" :"IMG00001",
+        "serviceId" :"25000001",
         "onSuccess" : function(jqXHR, textStatus, data) {
           self.$set(self,"paramAttchRule", data.model.rule);
         },

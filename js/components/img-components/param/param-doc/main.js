@@ -73,7 +73,7 @@ return Vue.component('param-doc', {
               c_sys_code : self.args.c_sys_code,
               c_kind_no : self.c_kind_no 
           }, self.filter),
-          serviceId : "IMG00003",
+          serviceId : "25000003",
           tranCode :  "IMG0000003",
           pageNo : self.pageNo,
           pageSize : self.pageSize,
@@ -120,7 +120,7 @@ return Vue.component('param-doc', {
         if(valid){
           self.submitLoading = true ;
           util.request({
-              serviceId: "IMG00004",
+              serviceId: "25000004",
               tranCode: "IMG0000004",
               model: {
                 c_sys_code : self.args.c_sys_code,
@@ -153,7 +153,7 @@ return Vue.component('param-doc', {
       }
       var self = this ;
       util.request({
-        serviceId:'IMG00005',
+        serviceId:'25000005',
         tranCode : "IMG0000005",
         model : {
           list : util.getOriginalData(_rows)

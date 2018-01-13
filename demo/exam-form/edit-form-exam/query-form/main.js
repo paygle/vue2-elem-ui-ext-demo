@@ -101,8 +101,11 @@ return Vue.component('QueryForm', {
       }
     },
     mounted: function(){
-      this.tableData = this.$store.state.editForm.tableData
-    }, 
+      this.tableData = this.$store.state.editForm.tableData;
+      if (this.wrapRoute) {
+        console.log("wrapRoute Call:", this.wrapRoute.params());
+      }
+    },
     methods: {
       submitForm: function(formName) {
         this.$refs[formName].validate(function(valid){
@@ -144,12 +147,9 @@ return Vue.component('QueryForm', {
       hiddenTopBtn: function(data, row, rowIndex){  // 隐藏功能区头部按钮
         if(row){
           return true
-        } 
+        }
         return false
       }
-    },
-    created: function() {
-       console.log("wrapRoute Call:", this.wrapRoute.params());
     }
   });
 });

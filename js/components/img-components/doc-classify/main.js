@@ -58,7 +58,7 @@ return Vue.component('doc-classify', {
       }
       var self = this;
       util.request({
-          serviceId : "IMG00012",
+          serviceId : "25000012",
           tranCode : "IMG0000012",
           model: {
               c_sys_code : self.args.c_sys_code,
@@ -87,7 +87,7 @@ return Vue.component('doc-classify', {
       var self = this ;
       self.docTreeLoading = true;
       util.request({
-          serviceId : 'IMG00011',
+          serviceId : '25000011',
           tranCode  : 'IMG0000011',
           model:{
               c_sys_code : self.args.c_sys_code,
@@ -133,7 +133,7 @@ return Vue.component('doc-classify', {
       if (docRows.length != 0) {
         self.relativeLoading = true ; //将按钮置为Loading状态
         util.request({
-            serviceId: 'IMG00013',
+            serviceId: '25000013',
             tranCode: 'IMG0000013',
             model: {
                 doc: docRows,
@@ -220,7 +220,7 @@ return Vue.component('doc-classify', {
               //删除单证分类关联
               ELEMENT.MessageBox.confirm("是否删除" + treeNode.c_cname, '提示' ).then(function() {
                   util.request({
-                      serviceId: 'IMG00014',
+                      serviceId: '25000014',
                       tranCode: 'IMG0000014',
                       model: {
                           c_doc_code: treeNode.c_code,

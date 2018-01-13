@@ -34,7 +34,7 @@ return Vue.component('doc-rules', {
                   rule : self.docRule 
               },
               "tranCode": "IMG0000002",
-              "serviceId": "IMG00002",
+              "serviceId": "25000002",
               "onSuccess": function(jqXHR, textStatus, data) {
                   ELEMENT.Message.success(data.model.message);
                   self.submitLoading = false ;
@@ -53,7 +53,7 @@ return Vue.component('doc-rules', {
                     c_kind_no : this.docRule.c_kind_no
                 },
         "tranCode" :"IMG0000001",
-        "serviceId" :"IMG00001",
+        "serviceId" :"25000001",
         "onSuccess" : function(jqXHR, textStatus, data) {
             self.$set(self,"docRule", data.model.rule);
         },

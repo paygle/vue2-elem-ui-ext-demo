@@ -76,7 +76,7 @@ return Vue.component('doc-upload-dialog', {
       var node = merge({}, self.notece);
       delete node.children;
       util.request({
-        serviceId: 'IMG00024',
+        serviceId: '25000024',
         tranCode: 'IMG0000024',
         model: {
           docDtl: node,
