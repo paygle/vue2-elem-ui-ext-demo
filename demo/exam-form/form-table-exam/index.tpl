@@ -305,13 +305,11 @@
         <form-table-column col-index="4" type="fnumber" prop="numtest" label="格式化数字" width="120"></form-table-column>
         <form-table-column col-index="5" v-if="colshow" type="rate" prop="rate" label="比率" width="150"></form-table-column>
         <form-table-column
-          :editable="editableFun"
           type="select"
           col-index="6"
           :options-data="options"
           :select-option="{filterable:true}"
-          :set-col-option="setColOption"
-          prop="choose" 
+          prop="choose"
           label="下拉选择">
         </form-table-column>
         <form-table-column
@@ -329,7 +327,6 @@
           :switch-option="{onValue:1, offValue:0}"
           label="切换">
         </form-table-column>
-        <form-table-column type="address" prop="address" label="省市区" translated="address"></form-table-column>
         <form-table-column label="地址合并">
           <form-table-column prop="addressDetail" label="详细地址" show-overflow-tooltip></form-table-column>
           <form-table-column type="checkbox" prop="schecked" label="可选"></form-table-column>

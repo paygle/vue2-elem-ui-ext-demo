@@ -291,10 +291,10 @@ return Vue.component('FormTableExam', {
         console.log('submit New  Row')
       } 
     },
-    setColOption: function(row, column, $index){ // 动态选项
-      console.log("setColOption:",  row, column, $index)
-      return {}
-    },
+    // setColOption: function(row, column, $index){ // 动态选项
+    //   console.log("setColOption:",  row, column, $index)
+    //   return {}
+    // },
     addNewRow: function(){ //返回新增行数据
       console.log('add Row')
       this.newAddRows.push(ToPlainObject(this.currentRow))    //添加的新行必需转换为纯数据对象，再保存
