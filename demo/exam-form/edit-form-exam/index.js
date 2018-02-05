@@ -30,9 +30,9 @@ define([
       }
     },
     mounted: function() {
-      setTimeout(_=>{
-        this.activeName = 'AddRow';
-      }, 3000);
+      // setTimeout(_=>{
+      //   this.activeName = 'AddRow';
+      // }, 3000);
     }
   });
 

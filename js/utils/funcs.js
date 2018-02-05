@@ -52,7 +52,7 @@ function mixFieldInArray(arr, field, op) {
   if (!Array.isArray(arr)) return [];
   var fieldObj = {}, nwarr = JSON.parse(JSON.stringify(arr));
   if (Array.isArray(field)) {
-    for (let i = 0; i < field.length; i++) fieldObj[field[i]] = '';
+    for (var i = 0; i < field.length; i++) fieldObj[field[i]] = '';
     return mixFields(nwarr, fieldObj, op);
   } else if (typeof field === 'object') {
     return mixFields(nwarr, field, op);

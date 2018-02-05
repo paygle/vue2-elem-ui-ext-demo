@@ -21,7 +21,7 @@ window.COMPONENTS_CONFIG = {
 			"subMenu" : [
 				{
 					"label" : "字体图标",
-					"url": "~/public/index.html",
+					"url": "exam-form.html/icon-list",
 					"icon" : "el-icon-camera",
 					"subMenu" : []
 				},
@@ -131,10 +131,12 @@ require.config({
 		"components": COMPONENTS,
     "webuploader": JSPATH + "/libs/uploader/webuploader",
 		"uploader": COMPONENTS + "/img-components", // 上传组件
+		"public": window.APP_CONFIG.APP_PATH + "public",  // public 业务主目录配置
 		"demo": DEMO_EXAM,                                   // demo 业务主目录配置
 		// 常用库和工具文件配置
 		"promise" : JSPATH + "/libs/es6-promise",
 		"text" : JSPATH + "/libs/require-text",
+		"axios" : JSPATH + "/libs/axios",
 		"jquery" : JSPATH + "/libs/jquery",
 		"jquery.ztree" : JSPATH + "/libs/jquery.ztree.all",
 		"ztree.exhide" : JSPATH + "/libs/jquery.ztree.exhide",

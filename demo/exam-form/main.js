@@ -8,6 +8,7 @@ define([
   "vueRouter",
   "promise",
   "dictStore",
+  "components/iconlist/main",
   'demo/exam-form/case-tracking/case-track/main',
   'demo/exam-form/edit-form-exam/index',
   'demo/exam-form/edit-form-exam/add-row/main',
@@ -26,6 +27,7 @@ define([
   VueRouter,
   Promise,
   dictStore,
+  iconlist,
   CaseTracking,
   EditFormExam,
   AddRow,
@@ -91,6 +93,11 @@ var router = new VueRouter({
       path: '/el-form',
       name: 'el-form',
       component: ElFormExam,
+      children: []
+    },{
+      path: '/icon-list',
+      name: 'icon-list',
+      component: iconlist,
       children: []
     },
     {
