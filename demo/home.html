@@ -24,7 +24,7 @@
   <body>
     <div id="main-body" v-cloak>
 			<main-header logo-link="../img/logo.png" nowuser="admin" nowdate="2016-11-17 星期四"></main-header>
-			<main-nav></main-nav> 
+			<main-nav></main-nav>
 			<div class="fwidth" v-side-guide="sideGuideData">
 				<h3 class="col-header">
 					<span class="bottom"></span>
@@ -32,6 +32,7 @@
 					<span class="label-angle"></span>
 					<span class="label">产品定义</span>
 				</h3>
+				<sys-msg></sys-msg>
 				<a id="vehicle" class="el-icon-fixed-pos"> 车锚点 </a>
 				<div class="container" style="width: 100%;">
 						<el-steps :active="1">

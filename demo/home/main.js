@@ -3,8 +3,9 @@ define([
 	'jquery',
   'vue',
 	'ELEMENT',
-	'demo/home/panel/main'
-], function(jQuery, Vue, ELEMENT, Panel) {
+	'demo/home/panel/main',
+	'components/sys-msg/main'
+], function(jQuery, Vue, ELEMENT, Panel, SysMsg) {
 	'use strict';
 	window.$ = window.jQuery = jQuery;
 	window.Vue = Vue;           // 作为全局使用

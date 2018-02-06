@@ -2,9 +2,10 @@
 define([
   "vue",
   "text!components/sys-msg/main.tpl",
+  'ELEMENT',
   "utilExt",
   "websocket"
-], function(Vue, tpl, utilExt, websocket){
+], function(Vue, tpl, ELEMENT, utilExt, ReWebsocket){
 
 var Message = ELEMENT.Message;
 var timehdl = null;
@@ -98,15 +99,9 @@ return Vue.component('SysMsg', {
 
       //判断当前浏览器是否支持WebSocket
       if('WebSocket' in window){
-        // if(process.env.NODE_ENV  === "development"){
-        //   url = `${API_URL}`
-        // }else if(process.env.NODE_ENV === "production"){
-        //   url = `${window.location.origin}${API_URL}`
-        // }
-
-        url = window.location.origin + API_URL;
+        url = window.APP_CONFIG.API_URL;
         url = url.substring(url.indexOf('//')+2, url.length);
-        websocket = new ReconnectingWebSocket('ws://' + url + 'websocket');
+        websocket = new ReWebsocket('ws://' + url + 'websocket');
       } else {
         alert('Not support websocket');
       }
