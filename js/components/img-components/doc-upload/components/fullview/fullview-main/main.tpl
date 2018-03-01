@@ -4,8 +4,9 @@
     <div :class='["LookPicture", "animated", "fadeIn", { "Look_Open" : visible }]' :id="id">
       <span class="Look_Close" @click="handleClose"></span>
       <template v-for="(el, index) in rows"  >
-        <img :class='[{ "Look_Open" : currentEl.c_image_id === el.c_image_id},"Look_img","animated","fadeIn"]'
+        <img :class='[{ "Look_Open" : currentEl.c_image_id === el.c_image_id},"Look_img","animated","fadeIn"]' 
             :style='{
+                "bottom" : transformMap[el.c_image_id] && transformMap[el.c_image_id].getBottom(),
                 "transform": transformMap[el.c_image_id] && transformMap[el.c_image_id].toStyle() ,
                 "-ms-transform": transformMap[el.c_image_id] && transformMap[el.c_image_id].toStyle() ,/* IE 9 */
                 "-moz-transform": transformMap[el.c_image_id] && transformMap[el.c_image_id].toStyle() 	,/* Firefox */
@@ -14,6 +15,7 @@
             }'
             @mousewheel="zoom(el.c_image_id, $event)" @DOMMouseScroll="zoom(el.c_image_id, $event)"
             :src="original+el.src"/>
+        <i class="isPS" v-if="el.c_is_ps === E_YES_OR_NO.YES.c_code && currentEl.c_image_id === el.c_image_id"></i>
       </template>
       <span class="Look_before" @click="next(false)"></span>
       <span class="Look_next" @click="next(true)"></span>

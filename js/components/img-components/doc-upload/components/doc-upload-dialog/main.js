@@ -39,7 +39,11 @@ return Vue.component('doc-upload-dialog', {
       default : APP_CONFIG.API_URL+'core/file'
     },
     fileSizeMax : [String, Number] , //文件最大大小
-    fileType : String  //允许上传的文件类型
+    fileType : String,  //允许上传的文件类型
+    chunked : {
+      type : Boolean,
+      default : false , //是否启用分片断点续传，默认为否
+    }
   },
   data: function() {
     return {
@@ -52,14 +56,16 @@ return Vue.component('doc-upload-dialog', {
     params:function(){
       return {
         operate : 'upload',
-        fileSizeMax : this.fileSizeMax || '',
+        fileSizeMax : this.fileSizeMax || '100M',
         fileType : this.fileType || ''
       };
     },
     uploaderOption: function(){
       return {
         formData: this.params,
-        server: this.server
+        server: this.server,
+        chunked : this.chunked , //启用分片
+        chunkSize : 5242880 , //分片大小 5M
       };
     }
   },
@@ -95,7 +101,57 @@ return Vue.component('doc-upload-dialog', {
           ELEMENT.Message.error(data.message);
         }
       });
+    },
+    handleMd5(md5,promise){
+        util.request({
+            serviceId : "25000030",
+            tranCode : "IMG0000030",
+            model:{
+                c_busi_no : this.notece.c_busi_no,
+                c_path : this.notece.c_path,
+                c_md5 : md5
+            },
+            onSuccess:(jqXHR, textStatus, data)=>{
+                let info = data.model.info ;
+                if(!info.c_md5){ //第一次上传
+                    info.c_md5 = md5 ;
+                    info.c_position = undefined;
+                }else{
+                    info.c_position = info.c_position.split("");
+                }
+                promise.resolve(info);
+            },
+            onError:(jqXHR, textStatus, data)=>{
+                promise.reject();
+            }
+        });
+    },
+    handleOffsetChange(file){
+        util.request({
+            serviceId : "25000031",
+            tranCode : "IMG0000031" ,
+            model:{
+                c_busi_no : this.notece.c_busi_no,
+                c_path : this.notece.c_path,
+                c_md5 : file.md5 ,
+                c_position : file._info.c_position.join("") ,
+                c_image_id : file._info.c_image_id,
+                c_doc_code : this.notece.c_doc_code
+            },
+            onSuccess:(jqXHR, textStatus, data)=>{
+            },
+            onError:(jqXHR, textStatus, data)=>{}
+        });
+    },
+    loadJScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "static/js/uploader/webuploader.js" ;
+        document.body.appendChild(script);
     }
+  },
+  mounted(){
+     this.loadJScript();
   }
 });
 

@@ -8,13 +8,14 @@
               &emsp;文件名：{{el.c_name  }}<br/>
           &emsp;&emsp;备注：{{el.c_remark }}<br/>
       </div></template>
-      <div class="file-item open-view"  @click="checked(index,$event)">
+      <div class="file-item open-view"  @click="checked(index,$event)" :class='{ "item-checked" : el.selected === E_YES_OR_NO.YES.c_code }'>
               <div class="file-icon" title="">
                   <img  :alt="el.c_name" :src="thumb+(el.c_new_image_id || el.c_image_id)" v-if="el.c_is_image"
                       @dblclick="openFullview(el)"
                       class="img-rounded" style="width: 80px; height: 80px;">
                   <img  :alt="el.c_name" :src="app_path + 'static/img/nothumb.png'" v-if="!el.c_is_image"
                       class="img-rounded" style="width: 80px; height: 80px;">
+                  <i class="isPS" v-if="el.c_is_ps === E_YES_OR_NO.YES.c_code"></i>
               </div>
               <div class="file-name">
                   <a class="filename" href="javascript:void(0);" :i="original+(el.c_new_image_id || el.c_image_id)"

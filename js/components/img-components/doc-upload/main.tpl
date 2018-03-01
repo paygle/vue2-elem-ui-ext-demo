@@ -56,6 +56,7 @@
         :file-size-max="paramAttchRule.n_one_file_size"
         :file-type="paramAttchRule.c_up_file_type"
         @images='handlerUploadImages'
+        :chunked="chunked"
         :modal="modal">
       </doc-upload-dialog>
       <form class="df" :action="server" method="post">

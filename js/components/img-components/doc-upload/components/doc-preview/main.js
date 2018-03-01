@@ -69,20 +69,20 @@ return Vue.component('doc-preview', {
     edit: function(){
       return this.uploadServer ;
     },
+    E_YES_OR_NO: function(){
+      return CONSTANTS.E_YES_OR_NO ;
+    }
   },
   methods: {
     checked: function(idx, event) {
-      var target = null ;
-      if($(event.target).hasClass('file-item')){
-          target = $(event.target) ;
-      }else{
-          target = $(event.target).parents('.file-item');
-      }
-      target.toggleClass('item-checked');
-      var len = $('.item-checked').length;
+      var selected = this.rows[idx].selected === CONSTANTS.E_YES_OR_NO.YES.c_code 
+                      ? CONSTANTS.E_YES_OR_NO.NO.c_code : CONSTANTS.E_YES_OR_NO.YES.c_code;
+      this.$set(this.rows[idx], "selected", selected) ;
+
+      var len = this.rows.filter(function(item){
+          return item.selected === CONSTANTS.E_YES_OR_NO.YES.c_code;
+      }).length
       this.$emit('checkLen',len);
-      this.rows[idx].selected = this.rows[idx].selected === CONSTANTS.E_YES_OR_NO.YES.c_code ?
-                                          CONSTANTS.E_YES_OR_NO.NO.c_code : CONSTANTS.E_YES_OR_NO.YES.c_code;
     },
     editImage: function(idx, event) { //打开编辑图片页面
       var el = this.rows[idx >> 0];
@@ -141,7 +141,7 @@ return Vue.component('doc-preview', {
         }
       });
     },
-    submitData: function(idx) { //提交更改的内容 
+    submitData: function(idx) { //提交更改的内容
       var image = this.rows[idx];
       util.request({
         serviceId: '25000025',
@@ -195,59 +195,9 @@ return Vue.component('doc-preview', {
           
       });
     },
-    //加载图片后，重新给img绑定查看大图等事件响应
+    //预留刷新接口，现无实现
     refresh: function(){
-        var self = this ;
-        //获取预览图片的对应影像信息
-        // function getImageData($img, iSrc){
-        //     var image_json = $img.data("image_json") ;
-        //     var image = null ;
-        //     if(image_json){
-        //         try{
-        //             image = JSON.parse(image_json);
-        //         }catch(e){
-        //             image = {} ;
-        //         }
-        //     }else{
-        //         image_json = self.findOriginalImage(iSrc.replace(self.original, ""));
-        //         image = JSON.parse(image_json);
-        //         $img.data("image_json",image_json);
-        //     }
-        //     return image ;
-        // }
-        // setTimeout(function(){
-        //     $('.LookPicture_Background').remove();
-        //     $('.LookPicture').remove();
-        //     $('.preview-ctx .filename').simpleSlide({
-        //         "picker"	:".open-view",
-        //         onEdit: function($img){
-        //             var url = $img.attr('src');
-        //             var iSrc = $img.attr('iSrc');
-        //             var image = getImageData($img, iSrc) ;
-        //             var link = self.createEditUrl(url, image.c_image_id) ;
-        //             window.open(link);
-        //         },
-        //         onOriginal: function($img){
-        //             //获取标识，true显示原图
-        //             var f = $img.data('f');
-        //             f = !f ;
-        //             $img.data('f',f) ;
-        //             //获取当前影像信息
-        //             var iSrc = $img.attr('iSrc');
-        //             var image = getImageData($img, iSrc) ;
-        //             var dest = f ? image.c_image_id : (image.c_new_image_id ||image.c_image_id);
-        //             $img.attr('iSrc',self.original+dest);
-        //             $img.attr('src',self.original+dest+"?d="+new Date().getTime());
-        //         },
-        //         onDelete : function($img){
-        //             var url = $img.attr('iSrc');
-        //             var image_json = self.findOriginalImage(url.replace(self.original, ""));
-        //             var image = JSON.parse(image_json);
-        //             var c_image_id = image.c_image_id ;
-        //             self.deleteImage(-1, c_image_id,$img);
-        //         },
-        //     });
-        // },300);
+ 
     },
     setImages: function(images){
       //this.insertRows(images,false) ;   使用此方法会清空原有的行记录

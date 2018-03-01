@@ -53,6 +53,16 @@ return Vue.component('uploader', {
   mixins: [emitter],
   props:{
     options: Object,
+    md5File: {
+        type : Function,
+        default : function(md5,promise){
+            promise.resolve();
+        }
+    },
+    offsetChange: {
+        type : Function,
+        default : function(file){}
+    }
   },
   data: function() {
     return {
@@ -207,24 +217,21 @@ return Vue.component('uploader', {
           return !denied;
       });
 
-      // uploader.on('filesQueued', function() {
-      //     uploader.sort(function( a, b ) {
-      //         if ( a.name < b.name )
-      //           return -1;
-      //         if ( a.name > b.name )
-      //           return 1;
-      //         return 0;
-      //     });
-      // });
+      uploader.on( 'uploadBeforeSend', function( block, data, headers ) {
+        data.md5 = block.file.c_md5 ; // md5编码
+        if(!(block.chunks === 1)){
+            data.chunked = this.options.chunked ; //必传，是否启用分片上传
+            data.groupId = block.file._info ? block.file._info.c_image_id : "" ;
+            data.offset = block.start ;
+        }
+      });
 
       // 添加“添加文件”的按钮，
       uploader.addButton({
           id: '#'+self.filePicker2,
           label: '继续添加'
       });
-      /*uploader.on('ready', function() {
-          window.uploader = uploader;
-      });*/
+
       uploader.onUploadProgress = function(file, percentage) {
           file.progress = (percentage * 100).toFixed(2) * 1;
           self.percentages[file.id].progress = percentage;
@@ -265,16 +272,52 @@ return Vue.component('uploader', {
         }
       });
 
+      //在文件上传后，判断返回报文是否正常上传，返回false触发uploadError事件，否则相反
+        uploader.on("uploadAccept", function(block, ret){
+            var me = this , chunked = me.options.chunked ;
+            if(ret && ret.files && ret.files.length > 0){
+                var file = block.file ;
+                var fileInfo = ret.files[0] ;
+                file._info.c_image_id = fileInfo.fileId ; //影像id
+                if(file._info.c_position) file._info.c_position[block.chunk] = "1" ;
+                chunked && self.offsetChange(block.file);
+                return true ;
+            }else {
+                return false
+            };
+        });
+
       //监听文件上传成功，并接收服务器返回数据
       uploader.on('uploadSuccess', function(file, response) {
+      if(!response) {
+            response = { files: [] } ;
+            response.files.push({
+                fileId: file._info.c_image_id,
+                fileName : file._info.c_name
+            });
+        }
         if(response.files && response.files.length > 0 ){
-          var resp = response.files.map(function(item){
-            return {
-              'c_image_id': item.fileId,
-              'c_name': item.fileName
-            };
-          });
-          Array.prototype.push.apply(self.imageIds, resp);
+           response.files.forEach(function(item) {
+                var _file = {
+                    'c_image_id': item.fileId,
+                    'c_name': item.fileName,
+                    'c_md5' : file.md5,
+                    'c_position' : file._info.c_position ? file._info.c_position.join("") : "1"
+                }
+                for(var i=self.imageIds.length-1;i>=0;i-- ){
+                    if(self.imageIds[i].c_image_id === _file.c_image_id){
+                        self.imageIds[i] = _file ;
+                        break ;
+                    }
+                    if(i==0){
+                        self.imageIds.push(_file);
+                    }
+                }
+                if(self.imageIds.length < 1){
+                    self.imageIds.push(_file);
+                }
+            });
+                    //Array.prototype.push.apply(self.imageIds, resp);
         }else if(response.errorMessage){
           self.errors.push({
             fileId: file.id,
@@ -288,6 +331,7 @@ return Vue.component('uploader', {
       uploader.onError = function(code) {
         ELEMENT.Message.error('Eroor: ' + code);
       };
+      //保证
       self.uploader = uploader;
     },
     startUpload: function(event){
@@ -444,6 +488,94 @@ return Vue.component('uploader', {
     }
   },
   mounted: function(){
+  var self = this ;
+    //继点续传判断
+    WebUploader.Uploader.register(
+        {
+            "before-send-file" : "makeMd5", //计算文件的md5，用来判断是否为同一个文件
+            "before-send" : "beforeSend"
+        },
+        {
+            "makeMd5" : function(file){
+                file._info = {} ; //初始化
+                if(!self.options.chunked) return ; //不分片，不进行md5
+                var me = this,
+                owner = this.owner,
+                deferred = WebUploader.Deferred();
+                file.isProgress = true ;
+                owner.md5File( file.source )
+                // 如果读取出错了，则通过reject告诉webuploader文件上传出错。
+                .fail(function() {
+                    deferred.reject();
+                })
+                // 及时显示进度
+                .progress(function(percentage) {
+                    file.progress = percentage*100 ;
+                })
+                // 完成
+                .then(function(val) {
+                    file.md5 = val ;
+                    // 接受此promise, webuploader接着往下走。
+                    var waitMd5FileEvent = WebUploader.Deferred() ;
+                    self.md5File(val, waitMd5FileEvent);
+                    var chunked = self.options.chunked ; //必传，是否启用分片上传
+                    waitMd5FileEvent.then(function(info){
+                        file._info.n_total = file.size ;
+                        if(file.size < self.options.chunkSize){
+                            deferred.resolve();
+                            return ;
+                        }
+                        if(!chunked || info.c_image_id) {
+                            deferred.resolve();
+                            return ;
+                        }
+                        //跨域支持
+                        $.ajaxSetup({ 
+                            crossDomain: true,
+                            xhrFields: {
+                                withCredentials: true
+                            }
+                        });
+                        $.post( self.options.server , 
+                            merge({
+                                md5 : val,
+                                chunked : chunked ,
+                                size : file.size,
+                                name : file.name,
+                            }, self.options.formData, { operate : "chunkinit"}),
+                            function(response){
+                                if(response && response.files && response.files.length > 0){
+                                    var fileInfo = response.files[0] ;
+                                    file._info.c_image_id = fileInfo.fileId ; //影像id
+                                    deferred.resolve();
+                                }
+                            } 
+                        );
+                    });
+                });
+                return deferred.promise();
+            },
+            "beforeSend": function(block) {
+                if(!self.options.chunked) return ; //不分片，不进行md5校验
+                deferred = WebUploader.Deferred();
+                //deferred.resolve(); //接收该分片
+                //deferred.reject();  //拒绝上传该分片
+                //初始化c_position 按位标识分片
+                if(!block.file._info.c_position){
+                    block.file._info.c_position = [] ;
+                    for(var i=0;i<block.chunks;i++){
+                        block.file._info.c_position.push("0") ;
+                    }
+                }
+                //执行判定逻辑
+                if("1" === block.file._info.c_position[block.chunk]){
+                    deferred.reject();
+                }else
+                    deferred.resolve(); 
+                return deferred.promise();
+            }
+        }
+    );
     this.init(this.options);
   }
 });

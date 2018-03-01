@@ -4,13 +4,19 @@ define([
   'text!uploader/doc-upload/components/fullview/fullview-main/main.tpl',
   'uploader/doc-upload/components/utils/interact',
   'uploader/doc-upload/components/utils/transform',
+  'uploader/constants/img-constants',
+  'utils/dom'
 ], function(
   Vue,
   tpl,
   interact,
-  Transform
+  Transform,
+  CONSTS,
+  dom
 ){
   'use strict';
+var CONSTANTS = CONSTS.CONSTANTS;
+var on = dom.on, off = dom.off
 
 return Vue.component('fullview-main', {
   template: tpl,
@@ -41,6 +47,16 @@ return Vue.component('fullview-main', {
         i = this.rows.length - 1;
       }
       return i;
+    },
+    E_YES_OR_NO: function(){
+       return CONSTANTS.E_YES_OR_NO;
+    }
+  },
+  watch:{
+    "currentEl.c_image_id": function(val){
+        this.$nextTick(function(){
+           this.updateStyle();
+        });
     }
   },
   methods: {
@@ -69,7 +85,7 @@ return Vue.component('fullview-main', {
       var src = this.currentEl.src ;
       if(src === this.currentEl.c_new_image_id){
           src = this.currentEl.c_image_id ;
-      }else if (this.currentEl.c_new_image_id) {
+      }else{
           src = this.currentEl.c_new_image_id;
       }
       this.currentEl.src = src;
@@ -146,7 +162,15 @@ return Vue.component('fullview-main', {
       // translate the element
       map.setTranslate(x,y);
       self.$set(self.transformMap, self.currentEl.c_image_id , map);
-    }
+    },
+    updateStyle(){
+       var elH = $('img.Look_img[src*="'+this.currentEl.src+'"]' ).height();
+       var wH = $('#' + this.id).height();
+       var avgH = ( wH - elH ) /2 ;
+       var map = this.transformMap[this.currentEl.c_image_id] || new Transform();
+       map.setBottom(avgH);
+       this.$set(this.transformMap, this.currentEl.c_image_id , map);
+     }
   },
   created: function(){
     if(this.rows){
@@ -171,8 +195,11 @@ return Vue.component('fullview-main', {
         onmove: this.dragMoveListener
       });
     });
+    setTimeout( this.updateStyle, 100);
+    on(window, 'resize', this.updateStyle);
   },
   beforDestroy: function() {
+    off(window, 'resize', this.updateStyle);
     interact(".LookPicture .Look_img").unset();
     this.close();
   }

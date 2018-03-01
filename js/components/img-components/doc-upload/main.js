@@ -46,6 +46,10 @@ return Vue.component('doc-upload', {
     disUploadBtn :{ //是否禁用上传按键
       type : Boolean ,
       default : false
+    },
+    chunked : {
+      type : Boolean,
+      default : false , //是否启用分片断点续传，默认为否
     }
   },
   data: function() {
@@ -387,6 +391,7 @@ return Vue.component('doc-upload', {
     handlerUploadImages: function(images){
       //处理上传成功后 影像的预览
       this.$refs.docPreview.setImages(images);
+      this.$emit("uploadFinished", images);
     },
     upload: function(){
       if(this.notece.c_pk_id && this.notece.c_pk_id !==''){
@@ -435,6 +440,12 @@ return Vue.component('doc-upload', {
           //ELEMENT.Message.error(data.message);
         }
       });
+    },
+    getZtreeId(){
+      return this.ztreeId ;
+    },
+    getSelectNode(){
+      return this.notece ;
     }
   },
   watch:{

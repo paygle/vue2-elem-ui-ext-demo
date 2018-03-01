@@ -6,6 +6,7 @@ function transform(scale, rotate,translateX,translateY) {
     this.rotate = rotate || 0;
     this.translateX = translateX || 0;
     this.translateY = translateY || 0;
+    this.bottom = '40px' ;
 }
 
 transform.prototype.toStyle = function(){
@@ -29,10 +30,21 @@ transform.prototype.setRotate = function(flag){
     }else{
         this.rotate = this.rotate - 90 ;
     }
+    //将图片拖动位置重置，避免旋转异常
+    this.translateX = 0 ;
+    this.translateY = 0 ;
 };
 transform.prototype.setTranslate = function(x,y){
     this.translateX = x ;
     this.translateY = y ;
+    this.rotate = 0 ; //将图片旋转重置，避免拖动异常
+};
+
+transform.prototype.setBottom = function(bottom){
+    this.bottom = bottom + 'px';
+};
+transform.prototype.getBottom = function(){
+    return this.bottom || '' ;
 };
 
 return transform;

@@ -291,27 +291,26 @@ body.none {
 
     margin-right: 8px;
 }
-
-/*
-.Look_tools span.rotateRight {
-    background-position: -24px -24px;
-}
-.Look_tools span.delete {
-    background-position: -48px -24px;
-}
-.Look_tools span.edit{
-	background: url(../../../images/edit_hover.png) no-repeat;
-}
-.Look_tools span.zoomIn{
-	background: url(../../../images/zoom-in.png) no-repeat;
-}
-.Look_tools span.zoomOut{
-	background: url(../../../images/zoom-out.png) no-repeat;
-}
-.Look_tools span.orignal{
-	background: url(../../../images/qjst_hover.png) no-repeat;
-}
-*/
 .Look_Open {
-    display: block !important;
+    /*display: block !important;*/
+    display: flex !important;;
+    justify-content: center;
+    align-items: center;
+}
+.LookPicture .isPS:after {
+    content: "PS";
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color: #ec4e29;
+    border: 2px solid #ec4e29;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-top: 7px;
+    position: absolute;
+    bottom: 35px;
+    right: 20px;
+    transform: rotate(20deg);
 }
