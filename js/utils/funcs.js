@@ -33,17 +33,22 @@ funcs.prototype.focusInput = function(el) {
 
 function mixFields(arr, fo, op) {
   if (arr.length) {
-    return arr.map(function(item) {
+    var marknew = [];
+    var opdata = arr.map(function(item) {
       var nf = JSON.parse(JSON.stringify(fo));
+      marknew.push({});
       Object.keys(nf).forEach(function(f) {
         if (op === 'add') {
           item[f] = nf[f];
         } else if (op === 'del') {
           delete item[f];
+        } else if (op === 'mark' && item.hasOwnProperty(f)) {
+          marknew[marknew.length-1][f] = item[f];
         }
       });
       return item;
     });
+    return op === 'mark' ? marknew : opdata;
   }
   return arr;
 }
@@ -69,8 +74,9 @@ function mixFieldInArray(arr, field, op) {
  * 格式： 'fieldname'  添加单个字段到数组
  * @param { Object | String | Array } field
  */
-funcs.prototype.arrayFieldsAdd = function(arr, field) { return mixFieldInArray(arr, field, 'add') };
-funcs.prototype.arrayFieldsdel = function(arr, field) { return mixFieldInArray(arr, field, 'del') };
+funcs.prototype.arrayFieldsAdd = function(arr, field) { return mixFieldInArray(arr, field, 'add') }; // 添加
+funcs.prototype.arrayFieldsdel = function(arr, field) { return mixFieldInArray(arr, field, 'del') }; // 删除
+funcs.prototype.arrayMarkNew = function(arr, field) { return mixFieldInArray(arr, field, 'mark') }; // 选取
 
 function DateCompute(init) {
   function getDateTimes(Dstr) {
