@@ -14,6 +14,10 @@ define([
       state.dict[key] = _dict_cache.dict[key]
     }
   }
+  //将静态下拉框数据存入cache
+  for(var key in state.dict){
+    cacheUtil.setDict(key, {}, state.dict[key]);
+  }
 
   var isFunction = function (value) {
     return Object.prototype.toString.call(value) === '[object Function]'
